@@ -5,6 +5,9 @@ import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Profile from './pages/Profile'
+import Theory from './pages/Theory'
+import Eartraining from './pages/Eartraining'
 
 function App() {
   const { user } = useAuthContext()
@@ -20,6 +23,18 @@ function App() {
               element={user ? <Home /> : <Navigate to="/login" />}
               />
               <Route
+              path='/profile'
+              element={user ? <Profile /> : <Navigate to="/login" />}
+              />
+              <Route
+              path='/theory'
+              element={user ? <Theory /> : <Navigate to="/login" />}
+              />
+              <Route
+              path='/eartraining'
+              element={user ? <Eartraining /> : <Navigate to="/login" />}
+              />
+              <Route
               path='/login'
               element={!user ? <Login /> : <Navigate to="/" />}
               />
@@ -27,6 +42,7 @@ function App() {
               path='/signup'
               element={!user ? <Signup /> : <Navigate to="/" />}
               />
+              
           </Routes>
         </div>
       </BrowserRouter>
