@@ -30,16 +30,17 @@ const getScore = async (req, res) => {
 
 // create a new score
 const createScore = async (req, res) => {
-    const {score} = req.body
+    const {single} = req.body
+    console.log(single)
 
-    if (!score) {
+    if (!single) {
         return res.status(400).json({ error: 'Cannot submit empty fields'})
     }
 
     // add doc to db
     try {
         const user_id = req.user._id
-        const newScore = await Score.create({score, user_id})
+        const newScore = await Score.create({single, user_id})
         res.status(200).json(newScore)
     } catch (error) {
         res.status(400).json({error: error.message})

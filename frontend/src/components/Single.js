@@ -37,7 +37,7 @@ const Single = () => {
             console.log('High!');
             setDbHighScore(() => highScore)
         }
-    }, [highScore])
+    }, [highScore, dbHighScore])
 
 
     //Main logic of the game

@@ -31,6 +31,7 @@ const getPractice = async (req, res) => {
 // create a new practice entry
 const createPractice = async (req, res) => {
     const {entry} = req.body
+    console.log(entry)
 
     if (!entry) {
         return res.status(400).json({ error: 'Cannot submit empty fields'})
