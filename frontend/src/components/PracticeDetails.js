@@ -1,10 +1,10 @@
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
+import { usePracticesContext } from "../hooks/usePracticesContext"
 import { useAuthContext } from '../hooks/useAuthContext'
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
-const JournalDetails = ({ workout }) => {
-    const { dispatch } = useWorkoutsContext()
+const PracticeDetails = ({ practice }) => {
+    const { dispatch } = usePracticesContext()
     const { user } = useAuthContext()
 
     const handleClick = async () => {
@@ -12,7 +12,7 @@ const JournalDetails = ({ workout }) => {
             return
         }
 
-        const response = await fetch('api/workouts/' + workout._id, {
+        const response = await fetch('/api/practice' + practice._id, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${user.token}`
@@ -21,19 +21,17 @@ const JournalDetails = ({ workout }) => {
         const json = await response.json()
 
         if (response.ok) {
-            dispatch({type: 'DELETE_WORKOUT', payload: json})
+            dispatch({type: 'DELETE_PRACTICE', payload: json})
         }
     }
 
     return (
-        <div className="workout-details">
-            <h4>{workout.title}</h4>
-            <p><strong>Load (kg): </strong>{workout.load}</p>
-            <p><strong>Reps: </strong>{workout.reps}</p>
-            <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p>
+        <div className="practice-details">
+            <h4>{formatDistanceToNow(new Date(practice.createdAt), { addSuffix: true })}</h4>
+            <p>{practice.entry}</p>
             <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
         </div>
     )
 }
 
-export default Journal Details
+export default PracticeDetails
