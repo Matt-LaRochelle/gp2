@@ -26,7 +26,7 @@ const PracticeDetails = ({ practice }) => {
     }
 
     return (
-        <div className="practice-details">
+        <div className="workout-details">
             <h4>{formatDistanceToNow(new Date(practice.createdAt), { addSuffix: true })}</h4>
             <p>{practice.entry}</p>
             <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
