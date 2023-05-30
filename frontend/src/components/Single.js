@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import audioClip from '../sounds/noteSounds';
 
@@ -31,12 +31,20 @@ const Single = () => {
         setInputText(newValue);
     }
 
+    //Update db highscore
+    useEffect(() => {
+        if (highScore > dbHighScore) {
+            console.log('High!');
+            setDbHighScore(() => highScore)
+        }
+    }, [highScore])
+
+
     //Main logic of the game
     function check_answer() {
 
         //First three tries:
         if (count > 1) {
-            console.log(inputText);
             if (answer.includes(inputText.toLowerCase()) === true) {
                 setInputText("");
                 setCount(4);
@@ -45,9 +53,8 @@ const Single = () => {
                 const number = Math.floor(Math.random() * 37)
                 setSound(audioClips[number].clip)
                 setAnswer(audioClips[number].note_name);
-                
                 setGotAnswer(true);
-                setHighScore(highScore + 1);
+                setHighScore(highScore => highScore + 1);
                 setTimeout(() => {
                     setGotAnswer(null);
                 }, 1000);
@@ -55,7 +62,6 @@ const Single = () => {
             } else if (answer.includes(inputText.toLowerCase()) !== true) {
                 setInputText("");
                 setCount(count - 1);
-                
                 setGotAnswer(false);
                 setTimeout(() => {
                     setGotAnswer(null);
@@ -68,9 +74,8 @@ const Single = () => {
             if (answer.includes(inputText.toLowerCase()) === true) {
                 setInputText("");
                 setCount(4);
-                
                 setGotAnswer(true);
-                setHighScore(highScore + 1);
+                setHighScore(() => highScore + 1);
                 setTimeout(() => {
                     setGotAnswer(null);
                 }, 1000);
@@ -83,7 +88,6 @@ const Single = () => {
             } else if (answer.includes(inputText.toLowerCase()) !== true) {
                 setInputText("");
                 setCount(4);
-                
                 setGotAnswer(false);
                 setHighScore(0);
                 setTimeout(() => {
@@ -117,7 +121,7 @@ const Single = () => {
             <div>
                     <h2>Single Note Identification Game</h2>
                     <button onClick={play_note}>Play note</button>
-                    <label >Tries: {count}</label>
+                    <label >Tries: {count}, High Score: {highScore}, All Time High Score: {dbHighScore}</label>
                     <input onChange={handleChange} type="text" value={inputText} />
                     <button type="submit" onClick={check_answer}>Guess</button>
                     { gotAnswer === true ? <AiOutlineCheckCircle /> : null }
