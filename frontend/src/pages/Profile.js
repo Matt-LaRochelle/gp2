@@ -1,15 +1,42 @@
+import { useEffect } from 'react'
+import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
+import { useAuthContext } from '../hooks/useAuthContext'
+
+// components
+import WorkoutDetails from '../components/WorkoutDetails'
+import WorkoutForm from '../components/WorkoutForm'
 
 const Profile = () => {
+    const {workouts, dispatch} = useWorkoutsContext()
+    const { user } = useAuthContext()
     
-    return (
-        <div className="profile">
-            Hello Profile
+    useEffect(() => {
+        const fetchWorkouts = async () => {
+            const response = await fetch('/api/workouts', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+            const json = await response.json()
 
-            Before we do anything we need to set the color scheme better
-            Create a practice journal
-            Create a settings page - to edit the email/password
-            Create a max bpm spot
-            Create 3 secions - songs known, songs working, dream songs
+            if (response.ok) {
+                dispatch({type: 'SET_WORKOUTS', payload: json})
+            }
+        }
+
+        if (user) {
+            fetchWorkouts()
+        }
+    }, [dispatch, user])
+
+    return (
+        <div className="home">
+            <div className="workouts">
+                {workouts && workouts.map((workout) => (
+                    <WorkoutDetails key={workout._id} workout={workout} />
+                ))}
+            </div>
+            <WorkoutForm />
         </div>
     )
 }
