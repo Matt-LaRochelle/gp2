@@ -6,13 +6,97 @@ const Single = () => {
 
     const audioClips = audioClip;
 
-        //Which sound is being used
-        const [sound, setSound] = useState(audioClips[29].clip);
+    //Which sound is being used
+    const [sound, setSound] = useState(audioClips[29].clip);
+    //Amount of tries
+    const [count, setCount] = useState(4);
+    //Name of note
+    const [answer, setAnswer] = useState(["a"]);
+    //Input text answer
+    const [inputText, setInputText] = useState("");
+    //Green check mark or red x
+    const [gotAnswer, setGotAnswer] = useState(null);
+    //Follows in the app the best high score today
+    const [highScore, setHighScore] = useState(0);
+    const [dbHighScore, setDbHighScore] = useState(0);
 
-        const play_note = () => {
-            const note = new Audio(sound);
-            note.play();
+    const play_note = () => {
+        const note = new Audio(sound);
+        note.play();
+    }
+
+    //Function for logging what is written in input
+    function handleChange(event) {
+        const newValue = event.target.value;
+        setInputText(newValue);
+    }
+
+    //Main logic of the game
+    function check_answer() {
+
+        //First three tries:
+        if (count > 1) {
+            console.log(inputText);
+            if (answer.includes(inputText.toLowerCase()) === true) {
+                setInputText("");
+                setCount(4);
+
+                // Get a new number
+                const number = Math.floor(Math.random() * 37)
+                setSound(audioClips[number].clip)
+                setAnswer(audioClips[number].note_name);
+                
+                setGotAnswer(true);
+                setHighScore(highScore + 1);
+                setTimeout(() => {
+                    setGotAnswer(null);
+                }, 1000);
+            
+            } else if (answer.includes(inputText.toLowerCase()) !== true) {
+                setInputText("");
+                setCount(count - 1);
+                
+                setGotAnswer(false);
+                setTimeout(() => {
+                    setGotAnswer(null);
+                }, 1000);
+            }
+            
+        } 
+        // Last try:
+        else if (count === 1) {
+            if (answer.includes(inputText.toLowerCase()) === true) {
+                setInputText("");
+                setCount(4);
+                
+                setGotAnswer(true);
+                setHighScore(highScore + 1);
+                setTimeout(() => {
+                    setGotAnswer(null);
+                }, 1000);
+
+                 // Get a new number
+                 const number = Math.floor(Math.random() * 37)
+                 setSound(audioClips[number].clip)
+                 setAnswer(audioClips[number].note_name);
+
+            } else if (answer.includes(inputText.toLowerCase()) !== true) {
+                setInputText("");
+                setCount(4);
+                
+                setGotAnswer(false);
+                setHighScore(0);
+                setTimeout(() => {
+                    setGotAnswer(null);
+                }, 1000);
+
+                 // Get a new number
+                 const number = Math.floor(Math.random() * 37)
+                 setSound(audioClips[number].clip)
+                 setAnswer(audioClips[number].note_name);
+            }      
         }
+    }
 
     return (
         <div>
@@ -33,11 +117,11 @@ const Single = () => {
             <div>
                     <h2>Single Note Identification Game</h2>
                     <button onClick={play_note}>Play note</button>
-                    {/* <label >Tries: {count}</label> */}
-                    {/* <input onChange={handleChange} type="text" value={inputText} />
+                    <label >Tries: {count}</label>
+                    <input onChange={handleChange} type="text" value={inputText} />
                     <button type="submit" onClick={check_answer}>Guess</button>
                     { gotAnswer === true ? <AiOutlineCheckCircle /> : null }
-                    { gotAnswer === false ? <AiOutlineCloseCircle /> : null } */}
+                    { gotAnswer === false ? <AiOutlineCloseCircle /> : null }
                 </div>
         </div>
     )
