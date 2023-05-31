@@ -23,6 +23,7 @@ const Profile = () => {
 
             if (response.ok) {
                 dispatch({type: 'SET_PRACTICES', payload: json})
+                console.log(json)
             }
         }
 
@@ -42,18 +43,20 @@ const Profile = () => {
 
             if (response.ok) {
                 scoresDispatch({type: 'SET_SCORES', payload: json})
+                console.log(json)
             }
         }
 
         if (user) {
             fetchScores()
         }
+        
     }, [scoresDispatch, user])
 
     return (
         <div className="home">
         <h2>Scores:</h2>
-        <p>Single notes: {scores.single}</p>
+        <p>Single notes: {scores[0].single}</p>
             <div className="practices">
                 {practices && practices.map((practice) => (
                     <PracticeDetails key={practice._id} practice={practice} />
