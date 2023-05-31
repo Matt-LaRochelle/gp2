@@ -56,13 +56,16 @@ const Profile = () => {
 
     let date = format(new Date(), 'EEEE, MMMM do, yyyy')
     
+    const handleClick = () => {
+        console.log(scores.single)
+    }
 
 
     return (
         <div className="home">
         <div>
             <h2>Scores:</h2>
-            <p>Single notes: {scores[0].single}</p>
+            <p onClick={handleClick}>Single notes: {scores.single}</p>
         </div>
         <div>
             Hello {user.email}
