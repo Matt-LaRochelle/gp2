@@ -1,6 +1,7 @@
 import Single from '../components/Single'
 import { useAuthContext } from '../hooks/useAuthContext'
 
+
 const Eartraining = () => {
 
 const { user } = useAuthContext()

@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import audioClip from '../sounds/noteSounds';
 
+import { useAuthContext } from '../hooks/useAuthContext'
+import { useScoresContext } from '../hooks/useScores'
+
 const Single = () => {
+    const {scores, dispatch} = useScoresContext()
+    const { user } = useAuthContext()
 
     const audioClips = audioClip;
 
@@ -33,11 +38,43 @@ const Single = () => {
 
     //Update db highscore
     useEffect(() => {
-        if (highScore > dbHighScore) {
+        if (highScore > scores[0].single) {
             console.log('High!');
-            setDbHighScore(() => highScore)
+            const updateScore = async() => {
+                const response = await fetch('/api/score/' + scores._id, {
+                    method: 'PATCH',
+                    body: JSON.stringify(highScore),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${user.token}`
+                    }
+                })
+                const json = await response.json()
+            }
         }
-    }, [highScore, dbHighScore])
+    }, [highScore])
+
+    // load scores from db
+    useEffect(() => {
+        const fetchScores = async () => {
+            const response = await fetch('/api/score', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+            const json = await response.json()
+
+            if (response.ok) {
+                dispatch({type: 'SET_SCORES', payload: json})
+                console.log(json)
+            }
+        }
+
+        if (user) {
+            fetchScores()
+        }
+        
+    }, [dispatch, user])
 
 
     //Main logic of the game
@@ -121,7 +158,7 @@ const Single = () => {
             <div>
                     <h2>Single Note Identification Game</h2>
                     <button onClick={play_note}>Play note</button>
-                    <label >Tries: {count}, High Score: {highScore}, All Time High Score: {dbHighScore}</label>
+                    <label >Tries: {count}, High Score: {highScore}, All Time High Score: {scores && scores[0].single}</label>
                     <input onChange={handleChange} type="text" value={inputText} />
                     <button type="submit" onClick={check_answer}>Guess</button>
                     { gotAnswer === true ? <AiOutlineCheckCircle /> : null }
