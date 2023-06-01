@@ -30,17 +30,17 @@ const getScore = async (req, res) => {
 
 // create a new score
 const createScore = async (req, res) => {
-    const {single} = req.body
-    console.log(single)
+    const {single, interval, chord, scale, progression} = req.body
+    // console.log(single)
 
-    if (!single) {
-        return res.status(400).json({ error: 'Cannot submit empty fields'})
+    if (single !==0 || interval !==0 || chord !==0 || scale !==0 || progression !==0) {
+        return res.status(400).json({ error: 'Set up malfunction - all fields must be 0'})
     }
 
     // add doc to db
     try {
         const user_id = req.user._id
-        const newScore = await Score.create({single, user_id})
+        const newScore = await Score.create({single, interval, chord, scale, progression, user_id})
         res.status(200).json(newScore)
     } catch (error) {
         res.status(400).json({error: error.message})

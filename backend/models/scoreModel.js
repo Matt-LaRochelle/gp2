@@ -6,6 +6,18 @@ const scoreSchema = new Schema({
     single: {
         type: Number
     },
+    interval: {
+        type: Number
+    },
+    chord: {
+        type: Number
+    },
+    scale: {
+        type: Number
+    },
+    progression: {
+        type: Number
+    },
     user_id: {
         type: String,
         required: true
