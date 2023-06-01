@@ -12,6 +12,10 @@ export const scoresReducer = (state, action) => {
             return {
                 scores: [action.payload, ...state.scores]
             }
+        case 'UPDATE_SCORE':
+            return {
+                scores: action.payload
+            }
         case 'DELETE_SCORES':
             return {
                 scores: state.scores.filter((s) => s._id !== action.payload._id)

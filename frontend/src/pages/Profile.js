@@ -55,17 +55,17 @@ const Profile = () => {
     }, [scoresDispatch, user])
 
     let date = format(new Date(), 'EEEE, MMMM do, yyyy')
+
     
-    const handleClick = () => {
-        console.log(scores[0].single)
-    }
-
-
     return (
         <div className="home">
         <div>
             <h2>Scores:</h2>
-            <p onClick={handleClick}>Single notes: {scores && scores[0].single}</p>
+            <p>Single notes: {scores && scores[0].single}</p>
+            <p>Intervals: {scores && scores[0].interval}</p>
+            <p>Chords: {scores && scores[0].chord}</p>
+            <p>Scales: {scores && scores[0].scale}</p>
+            <p>Progressions: {scores && scores[0].progression}</p>
         </div>
         <div>
             Hello {user.email}
