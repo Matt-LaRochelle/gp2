@@ -9,6 +9,7 @@ const Single = () => {
     const {scores, dispatch} = useScoresContext()
     const { user } = useAuthContext()
 
+    //Object of audio clips
     const audioClips = audioClip;
 
     //Which sound is being used
@@ -23,9 +24,9 @@ const Single = () => {
     const [gotAnswer, setGotAnswer] = useState(null);
     //Follows in the app the best high score today
     const [highScore, setHighScore] = useState(0);
-    const [dbHighScore, setDbHighScore] = useState(0);
     const [error, setError] = useState(null);
 
+    //Fetch data from database before loading rest of page
     useEffect(() => {
         const fetchScores = async () => {
             const response = await fetch('/api/score', {
@@ -47,48 +48,38 @@ const Single = () => {
         
     }, [dispatch, user])
 
-    const play_note = () => {
-        const note = new Audio(sound);
-        note.play();
-    }
-
-    //Log what is written in input
-    function handleChange(event) {
-        const newValue = event.target.value;
-        setInputText(newValue);
-    }
-
     // Update db highscore
-    // useEffect(() => {
-    //     const updateScore = async () => {
-    //         if (highScore > scores[0].single) {
-    //             console.log('High!');
-    //             const packageScore = {"single": highScore}
-    //             const response = await fetch('/api/score/' + scores[0]._id, {
-    //                 method: 'PATCH',
-    //                 body: JSON.stringify(packageScore),
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     'Authorization': `Bearer ${user.token}`
-    //                 }
-    //             })
-    //             const json = await response.json()
+    useEffect(() => {
+        const updateScore = async () => {
+            if (highScore > scores[0].single) {
+                console.log('High!');
+                const packageScore = {"single": highScore}
+                const response = await fetch('/api/score/' + scores[0]._id, {
+                    method: 'PATCH',
+                    body: JSON.stringify(packageScore),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${user.token}`
+                    }
+                })
+                const json = await response.json()
 
-    //             if (!response.ok) {
-    //                 setError(json.error)
-    //             }
-    //             if (response.ok) {
-    //                 setError(null)
-    //                 console.log('new score updated', json)
-    //                 dispatch({type: 'UPDATE_SCORE', payload: json})
-    //             }
-    //         }
-    //     }
-    //     updateScore()
-    // }, [gotAnswer])
+                if (!response.ok) {
+                    setError(json.error)
+                }
+                if (response.ok) {
+                    setError(null)
+                    console.log('new score updated', json)
+                    dispatch({type: 'UPDATE_SCORE', payload: json})
+                }
+            }
+        }
+        updateScore()
+    }, [gotAnswer])
 
+    // Function for resetting high score for debugging purposes
     const updateHighScore = async () => {
-        let number = Math.floor(Math.random() * 10) + 1;
+        let number = 2;
         console.log("New number generated: _______=___________--->", number)
         console.log("ID of the mongodb file:", scores[0]._id)
         let single = number
@@ -114,48 +105,17 @@ const Single = () => {
         }
     }
 
-    // load scores from db
-    // useEffect(() => {
-    //     const fetchScores = async () => {
-    //         const response = await fetch('/api/score/' + scores[0]._id, {
-    //             headers: {
-    //                 'Authorization': `Bearer ${user.token}`
-    //             }
-    //         })
-    //         const json = await response.json()
+    //Plays note of current state
+    const play_note = () => {
+        const note = new Audio(sound);
+        note.play();
+    }
 
-    //         if (response.ok) {
-    //             dispatch({type: 'SET_SCORES', payload: json})
-    //             console.log(json)
-    //         }
-    //     }
-
-    //     if (user) {
-    //         fetchScores()
-    //     }
-        
-    // }, [dispatch, user])
-
-    // function getTheScores() {
-    //     const fetchScores = async () => {
-    //         const response = await fetch('/api/score/' + scores[0]._id, {
-    //             headers: {
-    //                 'Authorization': `Bearer ${user.token}`
-    //             }
-    //         })
-    //         const json = await response.json()
-
-    //         if (response.ok) {
-    //             dispatch({type: 'SET_SCORES', payload: json})
-    //             console.log(json)
-    //         }
-    //     }
-
-    //     if (user) {
-    //         fetchScores()
-    //     }
-    // }
-
+    //Log what is written in input
+    function handleChange(event) {
+        const newValue = event.target.value;
+        setInputText(newValue);
+    }
 
     //Main logic of the game
     function check_answer() {
