@@ -37,56 +37,101 @@ const Single = () => {
         setInputText(newValue);
     }
 
-    //Update db highscore
-    useEffect(() => {
-        const updateScore = async () => {
-            if (highScore > scores[0].single) {
-                console.log('High!');
-                const packageScore = {"single": highScore}
-                const response = await fetch('/api/score/' + scores[0]._id, {
-                    method: 'PATCH',
-                    body: JSON.stringify(packageScore),
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${user.token}`
-                    }
-                })
-                const json = await response.json()
+    // Update db highscore
+    // useEffect(() => {
+    //     const updateScore = async () => {
+    //         if (highScore > scores[0].single) {
+    //             console.log('High!');
+    //             const packageScore = {"single": highScore}
+    //             const response = await fetch('/api/score/' + scores[0]._id, {
+    //                 method: 'PATCH',
+    //                 body: JSON.stringify(packageScore),
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'Authorization': `Bearer ${user.token}`
+    //                 }
+    //             })
+    //             const json = await response.json()
 
-                if (!response.ok) {
-                    setError(json.error)
-                }
-                if (response.ok) {
-                    setError(null)
-                    console.log('new score updated', json)
-                    dispatch({type: 'UPDATE_SCORE', payload: json})
-                }
+    //             if (!response.ok) {
+    //                 setError(json.error)
+    //             }
+    //             if (response.ok) {
+    //                 setError(null)
+    //                 console.log('new score updated', json)
+    //                 dispatch({type: 'UPDATE_SCORE', payload: json})
+    //             }
+    //         }
+    //     }
+    //     updateScore()
+    // }, [gotAnswer])
+
+    const updateHighScore = async () => {
+        let number = Math.floor(Math.random() * 10) + 1;
+        console.log(number)
+        console.log(scores[0]._id)
+        const packageScore = {"single": highScore}
+        const response = await fetch('/api/score/' + scores[0]._id, {
+            method: 'PATCH',
+            body: JSON.stringify(packageScore),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
+        })
+        const json = await response.json()
+
+        if (!response.ok) {
+            setError(json.error)
         }
-        updateScore()
-    }, [highScore])
+        if (response.ok) {
+            setError(null)
+            console.log('new score updated', json)
+            dispatch({type: 'UPDATE_SCORE', payload: json})
+        }
+    }
 
     // load scores from db
-    useEffect(() => {
-        const fetchScores = async () => {
-            const response = await fetch('/api/score/' + scores[0]._id, {
-                headers: {
-                    'Authorization': `Bearer ${user.token}`
-                }
-            })
-            const json = await response.json()
+    // useEffect(() => {
+    //     const fetchScores = async () => {
+    //         const response = await fetch('/api/score/' + scores[0]._id, {
+    //             headers: {
+    //                 'Authorization': `Bearer ${user.token}`
+    //             }
+    //         })
+    //         const json = await response.json()
 
-            if (response.ok) {
-                dispatch({type: 'SET_SCORES', payload: json})
-                console.log(json)
-            }
-        }
+    //         if (response.ok) {
+    //             dispatch({type: 'SET_SCORES', payload: json})
+    //             console.log(json)
+    //         }
+    //     }
 
-        if (user) {
-            fetchScores()
-        }
+    //     if (user) {
+    //         fetchScores()
+    //     }
         
-    }, [dispatch, user])
+    // }, [dispatch, user])
+
+    // function getTheScores() {
+    //     const fetchScores = async () => {
+    //         const response = await fetch('/api/score/' + scores[0]._id, {
+    //             headers: {
+    //                 'Authorization': `Bearer ${user.token}`
+    //             }
+    //         })
+    //         const json = await response.json()
+
+    //         if (response.ok) {
+    //             dispatch({type: 'SET_SCORES', payload: json})
+    //             console.log(json)
+    //         }
+    //     }
+
+    //     if (user) {
+    //         fetchScores()
+    //     }
+    // }
 
 
     //Main logic of the game
@@ -170,6 +215,7 @@ const Single = () => {
             <div>
                 <h2>Single Note Identification Game</h2>
                 <button onClick={play_note}>Play note</button>
+                <button onClick={updateHighScore}>Update high score</button>
                 <label >Tries: {count}, High Score: {highScore}, All Time High Score: {scores && scores[0].single}</label>
                 <input onChange={handleChange} type="text" value={inputText} />
                 <button type="submit" onClick={check_answer}>Guess</button>
