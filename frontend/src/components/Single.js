@@ -37,7 +37,7 @@ const Single = () => {
 
             if (response.ok) {
                 dispatch({type: 'SET_SCORES', payload: json})
-                console.log(json)
+                console.log("only happens on load page:", json)
             }
         }
 
@@ -89,10 +89,11 @@ const Single = () => {
 
     const updateHighScore = async () => {
         let number = Math.floor(Math.random() * 10) + 1;
-        console.log(number)
-        console.log(scores[0]._id)
+        console.log("New number generated:", number)
+        console.log("ID of the mongodb file:", scores[0]._id)
         let single = number
         const packageScore = {single}
+        console.log("Data being sent to backend:", packageScore)
         const response = await fetch('/api/score/' + scores[0]._id, {
             method: 'PATCH',
             body: JSON.stringify(packageScore),
