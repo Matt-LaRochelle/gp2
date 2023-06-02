@@ -89,7 +89,7 @@ const Single = () => {
 
     const updateHighScore = async () => {
         let number = Math.floor(Math.random() * 10) + 1;
-        console.log("New number generated:", number)
+        console.log("New number generated: _______=___________--->", number)
         console.log("ID of the mongodb file:", scores[0]._id)
         let single = number
         const packageScore = {single}

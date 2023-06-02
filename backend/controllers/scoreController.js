@@ -83,6 +83,7 @@ const updateScore = async (req, res) => {
     }
 
     res.status(200).json(score)
+    console.log(score)
 }
 
 
