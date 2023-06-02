@@ -26,6 +26,27 @@ const Single = () => {
     const [dbHighScore, setDbHighScore] = useState(0);
     const [error, setError] = useState(null);
 
+    useEffect(() => {
+        const fetchScores = async () => {
+            const response = await fetch('/api/score', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+            const json = await response.json()
+
+            if (response.ok) {
+                dispatch({type: 'SET_SCORES', payload: json})
+                console.log(json)
+            }
+        }
+
+        if (user) {
+            fetchScores()
+        }
+        
+    }, [dispatch, user])
+
     const play_note = () => {
         const note = new Audio(sound);
         note.play();
@@ -70,7 +91,8 @@ const Single = () => {
         let number = Math.floor(Math.random() * 10) + 1;
         console.log(number)
         console.log(scores[0]._id)
-        const packageScore = {"single": highScore}
+        let single = number
+        const packageScore = {single}
         const response = await fetch('/api/score/' + scores[0]._id, {
             method: 'PATCH',
             body: JSON.stringify(packageScore),
@@ -216,7 +238,7 @@ const Single = () => {
                 <h2>Single Note Identification Game</h2>
                 <button onClick={play_note}>Play note</button>
                 <button onClick={updateHighScore}>Update high score</button>
-                <label >Tries: {count}, High Score: {highScore}, All Time High Score: {scores && scores[0].single}</label>
+                <label >Tries: {count}, High Score: {highScore}, All Time High Score: {scores ? scores[0].single : null}</label>
                 <input onChange={handleChange} type="text" value={inputText} />
                 <button type="submit" onClick={check_answer}>Guess</button>
                 { gotAnswer === true ? <AiOutlineCheckCircle /> : null }

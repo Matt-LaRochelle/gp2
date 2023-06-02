@@ -73,7 +73,7 @@ const updateScore = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({error: 'No such entry'})
     }
-
+    console.log(req.body)
     const score = await Score.findOneAndUpdate({_id: id}, {
         ...req.body
     })

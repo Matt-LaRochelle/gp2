@@ -14,7 +14,7 @@ export const scoresReducer = (state, action) => {
             }
         case 'UPDATE_SCORE':
             return {
-                scores: action.payload
+                scores: [action.payload]
             }
         case 'DELETE_SCORES':
             return {
