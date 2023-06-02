@@ -76,7 +76,7 @@ const updateScore = async (req, res) => {
     console.log(req.body)
     const score = await Score.findOneAndUpdate({_id: id}, {
         ...req.body
-    })
+    }, { new: true })
 
     if (!score) {
         return res.status(404).json({error: 'No such entry'})
