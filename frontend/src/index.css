@@ -32,41 +32,6 @@ header a {
   margin: 0 auto;
 }
 
-/* homepage */
-.home {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 100px;
-}
-.workout-details {
-  background: #fff;
-  border-radius: 4px;
-  margin: 20px auto;
-  padding: 20px;
-  position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
-}
-.workout-details h4 {
-  margin: 0 0 10px 0;
-  font-size: 1.2em;
-  color: var(--primary);
-}
-.workout-details p {
-  margin: 0;
-  font-size: 0.9em;
-  color: #555;
-}
-.workout-details span {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
-  border-radius: 50%;
-  color: #333;
-}
-
 /* new workout form */
 label, input {
   display: block;
@@ -123,6 +88,60 @@ input.error {
 .profile-scores p, h4 {
   line-height: 5px;
 }
+
+/* single */
+
+.single-container {
+  max-width: 400px;
+  margin-left: 3%;
+  position: relative;
+}
+
+.single-container button, input {
+  display: block;
+  margin: auto;
+}
+
+.single-container input {
+  max-width: 150px;
+  margin: 10px auto;
+}
+
+.single-container h2 {
+  margin-bottom: 0;
+}
+
+.single-format {
+  display: flex;
+  justify-content: space-between;
+}
+
+.p {
+  text-align: center;
+}
+
+.correct {
+  font-size: 4rem;
+  color: var(--primary);
+  position: absolute;
+  right: 90px;
+  bottom: 5px;
+}
+
+.incorrect {
+  font-size: 4rem;
+  color: var(--error);
+  position: absolute;
+  right: 90px;
+  bottom: 5px;
+}
+
+
+
+
+
+
+
 
 /* navbar */
 nav {

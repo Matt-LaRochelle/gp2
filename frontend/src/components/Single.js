@@ -180,16 +180,22 @@ const Single = () => {
     }
 
     return (
-        <div>
+        <div className="single-container">
             <div>
                 <h2>Single Note Identification Game</h2>
+                <div className="single-format">
+                    <p>Correct: {highScore}</p>
+                    <p>High Score: {scores ? scores[0].single : null}</p>
+                </div>
+                
                 <button onClick={play_note}>Play note</button>
-                <button onClick={updateHighScore}>Update high score</button>
-                <label >Tries: {count}, High Score: {highScore}, All Time High Score: {scores ? scores[0].single : null}</label>
+                {/* <button onClick={updateHighScore}>Update high score</button> */}
                 <input onChange={handleChange} type="text" value={inputText} />
-                <button type="submit" onClick={check_answer}>Guess</button>
-                { gotAnswer === true ? <AiOutlineCheckCircle /> : null }
-                { gotAnswer === false ? <AiOutlineCloseCircle /> : null }
+                <button type="submit" onClick={check_answer}>Guess</button> 
+                <p className="p">Tries: {count}</p>
+                
+                { gotAnswer === true ? <AiOutlineCheckCircle className="correct"/> : null }
+                { gotAnswer === false ? <AiOutlineCloseCircle className="incorrect"/> : null }
             </div>
             {error && <div className="error">{error}</div>}
         </div>
