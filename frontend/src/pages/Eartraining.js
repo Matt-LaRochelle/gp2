@@ -1,14 +1,18 @@
 import Single from '../components/Single'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useState } from 'react'
 
 
 const Eartraining = () => {
+    const { user } = useAuthContext()
+    const [display, setDisplay] = useState(null)
 
-const { user } = useAuthContext()
 
-const handleClick = () => {
-    console.log(user)
-}
+
+    const toggle = (e) => {
+        console.log(e.target.id)
+        setDisplay(e.target.id)
+    }
     return (
         <div className="eartraining">
             <h1>Ear Training</h1>
@@ -26,7 +30,16 @@ const handleClick = () => {
                 be incredibly motivating. So, why not give it a try? Who knows, 
                 you might just discover a new passion for music!
             </p>
-            <Single />
+            <button id="1" onClick={toggle}>Level 1</button>
+            <button id="2" onClick={toggle}>Level 2</button>
+            <button id="3" onClick={toggle}>Level 3</button>
+            <button id="4" onClick={toggle}>Level 4</button>
+            <button id="5" onClick={toggle}>Level 5</button>
+            {display === "1" && <Single />}
+            {display === "2" && <p>Interval</p>}
+            {display === "3" && <p>Chord</p>}
+            {display === "4" && <p>Scale</p>}
+            {display === "5" && <p>Progression</p>}
         </div>
     )
 }
