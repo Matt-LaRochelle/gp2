@@ -43,10 +43,9 @@ const PracticeForm = () => {
     return (
         <form className="create" onSubmit={handleSubmit}>
             <h3>Add a New Journal Entry</h3>
-
-            <label>Entry:</label>
             <input
                 type="text"
+                placeholder="Today I practiced..."
                 onChange={(e) => setEntry(e.target.value)}
                 value={entry}
                 // className={emptyFields.includes('title') ? 'error' : ''}

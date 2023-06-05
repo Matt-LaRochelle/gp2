@@ -101,6 +101,29 @@ input.error {
   border: 1px solid var(--error);
 }
 
+/* profile */
+.profile-header {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 100px;
+}
+
+.profile-scores {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 0px;
+  background: #fff;
+  padding: 0 20px;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.profile-scores p, h4 {
+  line-height: 5px;
+}
+
 /* navbar */
 nav {
   display: flex;
