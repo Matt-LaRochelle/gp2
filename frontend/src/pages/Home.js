@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useSetup } from '../hooks/useSetup'
 
 // components
 import WorkoutDetails from '../components/WorkoutDetails'
@@ -9,6 +10,7 @@ import WorkoutForm from '../components/WorkoutForm'
 const Home = () => {
     const {workouts, dispatch} = useWorkoutsContext()
     const { user } = useAuthContext()
+    const {setup, error, isLoading} = useSetup()
 
     useEffect(() => {
         const fetchWorkouts = async () => {
@@ -29,6 +31,10 @@ const Home = () => {
         }
     }, [dispatch, user])
 
+    const setScores = () => {
+        setup();
+    }
+
     return (
         <div className="home">
             <div className="workouts">
@@ -37,6 +43,7 @@ const Home = () => {
                 ))}
             </div>
             <WorkoutForm />
+            <button onClick={setScores}>Set the scores</button>
         </div>
     )
 }

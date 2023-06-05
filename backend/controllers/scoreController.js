@@ -31,7 +31,7 @@ const getScore = async (req, res) => {
 // create a new score
 const createScore = async (req, res) => {
     const {single, interval, chord, scale, progression} = req.body
-    // console.log(single)
+    console.log(req.body)
 
     if (single !==0 || interval !==0 || chord !==0 || scale !==0 || progression !==0) {
         return res.status(400).json({ error: 'Set up malfunction - all fields must be 0'})

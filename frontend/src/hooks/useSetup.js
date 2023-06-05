@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useScoresContext } from './useScores'
+import { useAuthContext } from "./useAuthContext"
 
 export const useSetup = () => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
     const { dispatch } = useScoresContext()
+    const { user } = useAuthContext()
 
     const setup = async () => {
         setIsLoading(true)
@@ -12,10 +14,14 @@ export const useSetup = () => {
 
         const response = await fetch('/api/user/score', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({"single": 0, "interval": 0, "chord": 0, "scale": 0, "progression": 0})
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            },
+            body: JSON.stringify({single: 0, interval: 0, chord: 0, scale: 0, progression: 0})
         })
         const json = await response.json()
+        console.log(json)
 
         if (!response.ok) {
             setIsLoading(false)
