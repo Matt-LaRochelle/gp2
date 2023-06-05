@@ -11,8 +11,9 @@ export const useSetup = () => {
     const setup = async () => {
         setIsLoading(true)
         setError(null)
+        console.log("step 1")
 
-        const response = await fetch('/api/user/score', {
+        const response = await fetch('/api/score', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -21,7 +22,7 @@ export const useSetup = () => {
             body: JSON.stringify({single: 0, interval: 0, chord: 0, scale: 0, progression: 0})
         })
         const json = await response.json()
-        console.log(json)
+        console.log("step 2")
 
         if (!response.ok) {
             setIsLoading(false)

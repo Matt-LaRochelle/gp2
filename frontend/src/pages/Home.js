@@ -32,6 +32,7 @@ const Home = () => {
     }, [dispatch, user])
 
     const setScores = () => {
+        console.log("let's go!")
         setup();
     }
 
