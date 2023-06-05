@@ -8,16 +8,17 @@ export const useSetup = () => {
     const { dispatch } = useScoresContext()
     const { user } = useAuthContext()
 
-    const setup = async () => {
+    const setup = async (jSon) => {
         setIsLoading(true)
         setError(null)
         console.log("step 1")
+        console.log(jSon)
 
         const response = await fetch('/api/score', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
+                'Authorization': `Bearer ${jSon.token}`
             },
             body: JSON.stringify({single: 0, interval: 0, chord: 0, scale: 0, progression: 0})
         })

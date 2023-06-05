@@ -37,7 +37,7 @@ const Profile = () => {
                 <div>
                     <p>{date}</p>
                     <p>Hello {user.email}!</p>
-                    <p>Reset password: <button>Reset</button></p>
+                    {/* <p>Reset password: <button>Reset</button></p> */}
                 </div>
                 <div className="profile-scores">
                     <h3>Scores:</h3> <h4> </h4>
