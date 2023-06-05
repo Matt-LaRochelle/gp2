@@ -19,7 +19,6 @@ const Navbar = () => {
                 <nav>
                     {user && (
                         <div>
-                            <Link to="/eartraining">Ear Training</Link>
                             <Link to="/profile">{user.email}</Link>
                             {/* <span>{user.email}</span> */}
                             <button onClick={handleClick}>Log out</button>

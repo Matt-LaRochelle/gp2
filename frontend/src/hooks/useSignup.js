@@ -30,7 +30,10 @@ export const useSignup = () => {
             // update the auth context
             dispatch({type: 'LOGIN', payload: json})
 
+            // set new scores
             await setup(json)
+
+            // back to normal code
             setIsLoading(false)
         }
     }
