@@ -30,11 +30,13 @@ const Eartraining = () => {
                 be incredibly motivating. So, why not give it a try? Who knows, 
                 you might just discover a new passion for music!
             </p>
-            <button id="1" onClick={toggle}>Level 1</button>
-            <button id="2" onClick={toggle}>Level 2</button>
-            <button id="3" onClick={toggle}>Level 3</button>
-            <button id="4" onClick={toggle}>Level 4</button>
-            <button id="5" onClick={toggle}>Level 5</button>
+            <div className="toggle-level">
+                <button id="1" onClick={toggle}>Level 1</button>
+                <button id="2" onClick={toggle}>Level 2</button>
+                <button id="3" onClick={toggle}>Level 3</button>
+                <button id="4" onClick={toggle}>Level 4</button>
+                <button id="5" onClick={toggle}>Level 5</button>
+            </div>
             {display === "1" && <Single />}
             {display === "2" && <p>Interval</p>}
             {display === "3" && <p>Chord</p>}
