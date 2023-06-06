@@ -33,6 +33,9 @@ header a {
   padding: 20px;
   margin: 0 auto;
 }
+h1, h2, h3, h4, h5 ,h6 {
+  color: #333;
+}
 
 /* new workout form */
 label, input {

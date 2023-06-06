@@ -39,10 +39,10 @@ const Eartraining = () => {
                 <button id="5" onClick={toggle}>Level 5</button>
             </div>
             {display === "1" && <Single />}
-            {display === "2" && <p>Interval</p>}
-            {display === "3" && <p>Chord</p>}
-            {display === "4" && <p>Scale</p>}
-            {display === "5" && <p>Progression</p>}
+            {display === "2" && <p>Interval - coming soon...</p>}
+            {display === "3" && <p>Chord - coming soon...</p>}
+            {display === "4" && <p>Scale - coming soon...</p>}
+            {display === "5" && <p>Progression - coming soon...</p>}
         </div>
     )
 }
