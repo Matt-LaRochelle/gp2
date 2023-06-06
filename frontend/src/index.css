@@ -165,9 +165,12 @@ input.error {
 .help {
   max-width: 700px;
 }
+.help h2 {
+  text-align: center;
+}
 .help ul {
   display: block;
-  margin-left:60px;
+  max-width:540px;
   /* border: 2px solid blue; */
 }
 .key img {
@@ -176,6 +179,13 @@ input.error {
   margin-bottom: 50px;
   border-radius: 4px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+@media screen and (max-width: 700px) {
+  
+  .key img, .key ul {
+    max-width: 100%;
+  }
 }
 
 

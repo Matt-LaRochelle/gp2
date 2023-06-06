@@ -2,7 +2,7 @@ const SHelp = () => {
     return (
         <div className="help">
         <hr></hr>
-            <h1>How to Play</h1>
+            <h2>How to Play</h2>
             <ul>
                 <li>Press "Play note" button to hear the note</li>
                 <li>Play notes on your guitar until you find one that matches</li>
