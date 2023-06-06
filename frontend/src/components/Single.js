@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import audioClip from '../sounds/noteSounds';
+import SHelp from './SHelp'
+import SKey from './SKey'
 
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useScoresContext } from '../hooks/useScores'
@@ -25,6 +27,8 @@ const Single = () => {
     //Follows in the app the best high score today
     const [highScore, setHighScore] = useState(0);
     const [error, setError] = useState(null);
+    const [help, setHelp] = useState(false)
+    const [key, setKey] = useState(false)
 
     //Fetch data from database before loading rest of page
     useEffect(() => {
@@ -111,10 +115,20 @@ const Single = () => {
         note.play();
     }
 
-    //Log what is written in input
+    //Log which radio button is clicked
     function handleChange(event) {
         const newValue = event.target.value;
         setInputText(newValue);
+    }
+
+    //Display help screen
+    function helpScreen() {
+        setHelp(!help)
+    }
+
+    //Display key
+    function keyScreen() {
+        setKey(!key)
     }
 
     //Main logic of the game
@@ -241,18 +255,21 @@ const Single = () => {
                         <label for="G#/Ab">G#/Ab</label>
                     </div>
                 </div>
+                <button type="submit" onClick={check_answer}>Guess</button> 
                 <div className="bottom-buttons">
-                    <button>Help</button>
-                    <button type="submit" onClick={check_answer}>Guess</button> 
-                    <button>Key</button>
+                    <button onClick={helpScreen}>Help</button>
+                    <p className="tries">Tries: {count}</p>
+                    <button onClick={keyScreen}>Key</button>
                 </div>
                 
-                <p className="p">Tries: {count}</p>
+                
                 
                 { gotAnswer === true ? <AiOutlineCheckCircle className="correct"/> : null }
                 { gotAnswer === false ? <AiOutlineCloseCircle className="incorrect"/> : null }
             </div>
             {error && <div className="error">{error}</div>}
+            {help ? <SHelp /> : null}
+            {key ? <SKey /> : null}
         </div>
     )
 }
