@@ -137,7 +137,7 @@ const Single = () => {
         //First three tries:
         if (count > 1) {
             if (answer.includes(inputText.toLowerCase()) === true) {
-                setInputText("");
+                // setInputText("");
                 setCount(4);
 
                 // Get a new number
@@ -151,7 +151,7 @@ const Single = () => {
                 }, 1000);
             
             } else if (answer.includes(inputText.toLowerCase()) !== true) {
-                setInputText("");
+                // setInputText("");
                 setCount(count - 1);
                 setGotAnswer(false);
                 setTimeout(() => {
@@ -163,7 +163,7 @@ const Single = () => {
         // Last try:
         else if (count === 1) {
             if (answer.includes(inputText.toLowerCase()) === true) {
-                setInputText("");
+                // setInputText("");
                 setCount(4);
                 setGotAnswer(true);
                 setHighScore(() => highScore + 1);
@@ -177,7 +177,7 @@ const Single = () => {
                  setAnswer(audioClips[number].note_name);
 
             } else if (answer.includes(inputText.toLowerCase()) !== true) {
-                setInputText("");
+                // setInputText("");
                 setCount(4);
                 setGotAnswer(false);
                 setHighScore(0);
@@ -211,7 +211,7 @@ const Single = () => {
                         <label for="A">A</label>
                     </div>
                     <div className="select-answer-format">
-                        <input type="radio" id="A#/Bb" name="note" value="A#/Bb" onChange={handleChange}></input>
+                        <input type="radio" id="A#/Bb" name="note" value="A#" onChange={handleChange}></input>
                         <label for="A#/Bb">A#/Bb</label>
                     </div>
                     <div className="select-answer-format">
@@ -223,7 +223,7 @@ const Single = () => {
                         <label for="C">C</label>
                     </div>
                     <div className="select-answer-format">
-                        <input type="radio" id="C#/Db" name="note" value="C#/Db" onChange={handleChange}></input>
+                        <input type="radio" id="C#/Db" name="note" value="C#" onChange={handleChange}></input>
                         <label for="C#/Db">C#/Db</label>
                     </div>
                     <div className="select-answer-format">
@@ -231,7 +231,7 @@ const Single = () => {
                         <label for="D">D</label>
                     </div>
                     <div className="select-answer-format">
-                        <input type="radio" id="D#/Eb" name="note" value="D#/Eb" onChange={handleChange}></input>
+                        <input type="radio" id="D#/Eb" name="note" value="D#" onChange={handleChange}></input>
                         <label for="D#/Eb">D#/Eb</label>
                     </div>
                     <div className="select-answer-format">
@@ -243,7 +243,7 @@ const Single = () => {
                         <label for="F">F</label>
                     </div>
                     <div className="select-answer-format">
-                        <input type="radio" id="F#/Gb" name="note" value="F#/Gb" onChange={handleChange}></input>
+                        <input type="radio" id="F#/Gb" name="note" value="F#" onChange={handleChange}></input>
                         <label for="F#/Gb">F#/Gb</label>
                     </div>
                     <div className="select-answer-format">
@@ -251,11 +251,13 @@ const Single = () => {
                         <label for="G">G</label>
                     </div>
                     <div className="select-answer-format">
-                        <input type="radio" id="G#/Ab" name="note" value="G#/Ab" onChange={handleChange}></input>
+                        <input type="radio" id="G#/Ab" name="note" value="G#" onChange={handleChange}></input>
                         <label for="G#/Ab">G#/Ab</label>
                     </div>
                 </div>
                 <button type="submit" onClick={check_answer}>Guess</button> 
+                { gotAnswer === true ? <AiOutlineCheckCircle className="correct"/> : null }
+                { gotAnswer === false ? <AiOutlineCloseCircle className="incorrect"/> : null }
                 <div className="bottom-buttons">
                     <button onClick={helpScreen}>Help</button>
                     <p className="tries">Tries: {count}</p>
@@ -264,8 +266,7 @@ const Single = () => {
                 
                 
                 
-                { gotAnswer === true ? <AiOutlineCheckCircle className="correct"/> : null }
-                { gotAnswer === false ? <AiOutlineCloseCircle className="incorrect"/> : null }
+
             </div>
             {error && <div className="error">{error}</div>}
             {help ? <SHelp /> : null}

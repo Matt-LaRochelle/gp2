@@ -16,6 +16,7 @@ const Eartraining = () => {
     return (
         <div className="eartraining">
             <h1>Ear Training</h1>
+            {display ? null :
             <p>
                 Learning to identify notes by ear is an essential skill 
                 for any musician, and it's also a lot of fun! It can 
@@ -29,7 +30,7 @@ const Eartraining = () => {
                 you'll feel a sense of accomplishment and progress, which can 
                 be incredibly motivating. So, why not give it a try? Who knows, 
                 you might just discover a new passion for music!
-            </p>
+            </p>}
             <div className="toggle-level">
                 <button id="1" onClick={toggle}>Level 1</button>
                 <button id="2" onClick={toggle}>Level 2</button>

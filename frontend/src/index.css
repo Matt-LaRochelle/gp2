@@ -87,20 +87,20 @@ input.error {
 }
 .profile-scores p, h4 {
   line-height: 5px;
-  border: 2px solid aqua;
+  /* border: 2px solid aqua; */
   text-align: left;
 
 }
 
 /* ear training */
 .eartraining p, h1 {
-  text-align: left;
+  text-align: center;
   max-width: 700px;
   margin: auto;
 }
 .toggle-level {
   display: block;
-  margin: 50px auto;
+  margin: 10px auto;
   width: 295px;
 }
 
@@ -113,35 +113,42 @@ input.error {
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
   border-radius: 4px;
   padding: 20px;
+  /* border: 2px solid red; */
 }
 .single-container button {
   display: block;
   margin: 40px auto;
+  /* border: 2px solid orange; */
 }
 .single-container h2 {
   margin-bottom: 0;
   text-align: center;
+  /* border: 2px solid yellow; */
 }
 .single-format {
   display: flex;
   justify-content: space-between;
+  /* border: 2px solid lime; */
 }
 .tries {
   text-align: center;
+  /* border: 2px solid aqua; */
 }
 .correct {
   font-size: 4rem;
   color: var(--primary);
   position: absolute;
-  right: 90px;
-  bottom: 5px;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .incorrect {
   font-size: 4rem;
   color: var(--error);
   position: absolute;
-  right: 90px;
-  bottom: 5px;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .select-answer {
   display: grid;
@@ -149,7 +156,7 @@ input.error {
   grid-row-gap: 0;
   grid-column-gap: 50px;
   margin: 18px auto 0;
-  max-width: 400px;
+  max-width: 500px;
   /* border: 2px solid blue; */
 }
 .select-answer input {
@@ -158,15 +165,17 @@ input.error {
   color: var(--primary);
   /* vertical-align: middle; */
   accent-color: var(--primary);
+  /* border: 2px solid violet; */
 }
 .select-answer-format {
   display: flex;
   justify-content: flex-start;
-  /* border: 2px solid aqua; */
+  /* border: 2px solid purple; */
 }
 .bottom-buttons {
   display: flex;
   justify-content: space-between;
+  /* border: 2px solid grey; */
 }
 .help {
   max-width: 700px;
@@ -182,15 +191,19 @@ input.error {
 .key img {
   max-width: 600px;
   min-width: 200px;
-  margin-bottom: 50px;
-  border-radius: 4px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  margin: 0 auto 50px;
+  /* box-shadow: 2px 2px 5px rgba(0,0,0,0.05); */
 }
 
+/* dynamic sizing for single game */
 @media screen and (max-width: 700px) {
   
   .key img, .key ul {
     max-width: 100%;
+  }
+  .select-answer {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
   }
 }
 
