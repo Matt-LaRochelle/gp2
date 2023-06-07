@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import audioClip from '../sounds/noteSounds';
-import SHelp from './SHelp'
-import SKey from './SKey'
+import SHelp from './SingleHelp'
+import SKey from './SingleKey'
 
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useScoresContext } from '../hooks/useScores'
