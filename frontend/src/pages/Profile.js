@@ -9,7 +9,7 @@ const Profile = () => {
 
     useEffect(() => {
         const fetchScores = async () => {
-            const response = await fetch('https://guitar-paths-api.onrender.com/api/score', {
+            const response = await fetch('/api/score', {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }

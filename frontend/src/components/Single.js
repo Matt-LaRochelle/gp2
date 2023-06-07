@@ -58,7 +58,7 @@ const Single = () => {
             if (highScore > scores[0].single) {
                 console.log('High!');
                 const packageScore = {"single": highScore}
-                const response = await fetch('https://guitar-paths-api.onrender.com/api/score/' + scores[0]._id, {
+                const response = await fetch('/api/score/' + scores[0]._id, {
                     method: 'PATCH',
                     body: JSON.stringify(packageScore),
                     headers: {
@@ -89,7 +89,7 @@ const Single = () => {
     //     let single = number
     //     const packageScore = {single}
     //     console.log("Data being sent to backend:", packageScore)
-    //     const response = await fetch('https://guitar-paths-api.onrender.com/api/score/' + scores[0]._id, {
+    //     const response = await fetch('/api/score/' + scores[0]._id, {
     //         method: 'PATCH',
     //         body: JSON.stringify(packageScore),
     //         headers: {
