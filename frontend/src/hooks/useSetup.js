@@ -6,7 +6,6 @@ export const useSetup = () => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
     const { dispatch } = useScoresContext()
-    const { user } = useAuthContext()
 
     const setup = async (jSon) => {
         setIsLoading(true)

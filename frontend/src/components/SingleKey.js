@@ -6,9 +6,9 @@ const SKey = () => {
         <div className="key">
             <hr></hr>
             <h2>Sharps:</h2>
-            <img src={sharps} />
+            <img src={sharps} alt="notes on the guitar using naturals and sharps" />
             <h2>Flats:</h2>
-            <img src={flats} />
+            <img src={flats} alt="notes on the guitar using naturals and flats" />
         </div>
     )
 }

@@ -4,7 +4,6 @@ import { useState } from 'react'
 
 
 const Eartraining = () => {
-    const { user } = useAuthContext()
     const [display, setDisplay] = useState(null)
 
 

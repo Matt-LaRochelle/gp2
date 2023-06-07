@@ -82,32 +82,32 @@ const Single = () => {
     }, [gotAnswer])
 
     // Function for resetting high score for debugging purposes
-    const updateHighScore = async () => {
-        let number = 2;
-        console.log("New number generated: _______=___________--->", number)
-        console.log("ID of the mongodb file:", scores[0]._id)
-        let single = number
-        const packageScore = {single}
-        console.log("Data being sent to backend:", packageScore)
-        const response = await fetch('https://guitar-paths-api.onrender.com/api/score/' + scores[0]._id, {
-            method: 'PATCH',
-            body: JSON.stringify(packageScore),
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
-            }
-        })
-        const json = await response.json()
+    // const updateHighScore = async () => {
+    //     let number = 2;
+    //     console.log("New number generated: _______=___________--->", number)
+    //     console.log("ID of the mongodb file:", scores[0]._id)
+    //     let single = number
+    //     const packageScore = {single}
+    //     console.log("Data being sent to backend:", packageScore)
+    //     const response = await fetch('https://guitar-paths-api.onrender.com/api/score/' + scores[0]._id, {
+    //         method: 'PATCH',
+    //         body: JSON.stringify(packageScore),
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Authorization': `Bearer ${user.token}`
+    //         }
+    //     })
+    //     const json = await response.json()
 
-        if (!response.ok) {
-            setError(json.error)
-        }
-        if (response.ok) {
-            setError(null)
-            console.log('new score updated', json)
-            dispatch({type: 'UPDATE_SCORE', payload: json})
-        }
-    }
+    //     if (!response.ok) {
+    //         setError(json.error)
+    //     }
+    //     if (response.ok) {
+    //         setError(null)
+    //         console.log('new score updated', json)
+    //         dispatch({type: 'UPDATE_SCORE', payload: json})
+    //     }
+    // }
 
     //Plays note of current state
     const play_note = () => {
