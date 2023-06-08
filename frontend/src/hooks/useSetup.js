@@ -13,7 +13,7 @@ export const useSetup = () => {
         console.log("step 1")
         console.log(jSon)
 
-        const response = await fetch('/api/score', {
+        const response = await fetch('https://guitar-paths-api.onrender.com/api/score', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
