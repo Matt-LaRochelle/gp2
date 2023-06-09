@@ -14,7 +14,7 @@ const Eartraining = () => {
     }
     return (
         <div className="eartraining">
-            <h1>Ear Training</h1>
+            {/* <h1>Ear Training</h1> */}
             {display ? null :
             <p>
                 Learning to identify notes by ear is an essential skill 

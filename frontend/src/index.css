@@ -104,7 +104,16 @@ input.error {
 .toggle-level {
   display: block;
   margin: 10px auto;
-  width: 295px;
+  width: 350px;
+}
+.toggle-level button {
+  margin: 0 5px;
+}
+.toggle-level button:hover {
+  border: 1px solid var(--primary);
+  border-radius: 2px;
+  color: var(--primary);
+  padding: 2px 7px;
 }
 
 /* single */
@@ -132,6 +141,11 @@ input.error {
   display: flex;
   justify-content: space-between;
   /* border: 2px solid lime; */
+}
+.primary {
+  color: var(--primary);
+  font-weight: 600;
+  /* font-size: 1.4rem; */
 }
 .tries {
   text-align: center;
@@ -174,6 +188,20 @@ input.error {
   display: flex;
   justify-content: flex-start;
   /* border: 2px solid purple; */
+}
+.primary-button {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 10px;
+}
+.primary-button:hover {
+  background: var(--wall)
 }
 .bottom-buttons {
   display: flex;
@@ -229,6 +257,10 @@ nav button {
   cursor: pointer;
   font-size: 1em;
   margin-left: 10px;
+}
+
+nav button:hover {
+  background: var(--wall)
 }
 
 /* auth forms */

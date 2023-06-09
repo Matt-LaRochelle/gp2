@@ -198,11 +198,11 @@ const Single = () => {
             <div>
                 <h2>Single Note Identification Game</h2>
                 <div className="single-format">
-                    <p>Correct: {highScore}</p>
-                    <p>High Score: {scores ? scores[0].single : null}</p>
+                    <p>Correct: <span className="primary">{highScore}</span></p>
+                    <p>High Score: <span className="primary">{scores ? scores[0].single : null}</span></p>
                 </div>
                 
-                <button onClick={play_note}>Play note</button>
+                <button className="primary-button" onClick={play_note}>Play note</button>
                 {/* <button onClick={updateHighScore}>Update high score</button> */}
                 {/* <input onChange={handleChange} type="text" value={inputText} /> */}
                 <div className="select-answer">
@@ -255,12 +255,12 @@ const Single = () => {
                         <label for="G#/Ab">G#/Ab</label>
                     </div>
                 </div>
-                <button type="submit" onClick={check_answer}>Guess</button> 
+                <button className="primary-button" type="submit" onClick={check_answer}>Guess</button> 
                 { gotAnswer === true ? <AiOutlineCheckCircle className="correct"/> : null }
                 { gotAnswer === false ? <AiOutlineCloseCircle className="incorrect"/> : null }
                 <div className="bottom-buttons">
                     <button onClick={helpScreen}>Help</button>
-                    <p className="tries">Tries: {count}</p>
+                    <p className="tries">Tries: <span className="primary">{count}</span></p>
                     <button onClick={keyScreen}>Key</button>
                 </div>
                 
