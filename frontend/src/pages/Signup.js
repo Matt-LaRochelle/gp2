@@ -30,6 +30,11 @@ const Signup = () => {
 
             <button disabled={isLoading}>Sign up</button>
             {error && <div className="error">{error}</div>}
+            {isLoading && 
+                <div>
+                    <p>Fetching data from server...</p>
+                    <p>This process tends to take 5-60 seconds</p>
+                </div>}
         </form>
     )
 }
