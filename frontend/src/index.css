@@ -71,7 +71,7 @@ input.error {
   border: 1px solid var(--error);
 }
 
-/* profile */
+/* profile -- not in use currently*/
 .profile-header {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -90,12 +90,10 @@ input.error {
 }
 .profile-scores p, h4 {
   line-height: 5px;
-  /* border: 2px solid aqua; */
   text-align: left;
-
 }
 
-/* ear training */
+/* ear training -- not in use currently*/
 .eartraining p, h1 {
   text-align: center;
   max-width: 700px;
@@ -125,31 +123,25 @@ input.error {
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
   border-radius: 4px;
   padding: 20px;
-  /* border: 2px solid red; */
 }
 .single-container button {
   display: block;
   margin: 40px auto;
-  /* border: 2px solid orange; */
 }
 .single-container h2 {
   margin-bottom: 0;
   text-align: center;
-  /* border: 2px solid yellow; */
 }
 .single-format {
   display: flex;
   justify-content: space-between;
-  /* border: 2px solid lime; */
 }
 .primary {
   color: var(--primary);
   font-weight: 600;
-  /* font-size: 1.4rem; */
 }
 .tries {
   text-align: center;
-  /* border: 2px solid aqua; */
 }
 .correct {
   font-size: 4rem;
@@ -174,20 +166,16 @@ input.error {
   grid-column-gap: 50px;
   margin: 18px auto 0;
   max-width: 500px;
-  /* border: 2px solid blue; */
 }
 .select-answer input {
   width: 20px;
   margin-top: 5.2px;
   color: var(--primary);
-  /* vertical-align: middle; */
   accent-color: var(--primary);
-  /* border: 2px solid violet; */
 }
 .select-answer-format {
   display: flex;
   justify-content: flex-start;
-  /* border: 2px solid purple; */
 }
 .primary-button {
   background: #fff;
@@ -228,7 +216,6 @@ input.error {
 
 /* dynamic sizing for single game */
 @media screen and (max-width: 700px) {
-  
   .key img, .key ul {
     max-width: 100%;
   }
@@ -237,13 +224,11 @@ input.error {
     grid-column-gap: 20px;
   }
 }
-
 @media screen and (max-width: 500px) {
   h1, h2 {
     font-size: 1.4rem;
   }
 }
-
 @media screen and (max-width: 350px) {
   .select-answer {
     grid-template-columns: 1fr 1fr;
@@ -273,7 +258,6 @@ nav button {
   font-size: 1em;
   margin-left: 10px;
 }
-
 nav button:hover {
   background: var(--wall)
 }
