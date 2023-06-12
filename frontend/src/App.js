@@ -4,7 +4,6 @@ import { useAuthContext } from './hooks/useAuthContext'
 import Navbar from './components/Navbar'
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Profile from './pages/Profile'
 import Eartraining from './pages/Eartraining'
 
 function App() {
