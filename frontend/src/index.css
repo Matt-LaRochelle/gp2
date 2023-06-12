@@ -238,6 +238,21 @@ input.error {
   }
 }
 
+@media screen and (max-width: 500px) {
+  h1, h2 {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .select-answer {
+    grid-template-columns: 1fr 1fr;
+  }
+  h1, h2 {
+    font-size: 1rem;
+  }
+}
+
 
 /* navbar */
 nav {

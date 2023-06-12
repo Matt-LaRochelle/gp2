@@ -20,10 +20,10 @@ function App() {
               path='/'
               element={user ? <Eartraining /> : <Navigate to="/login" />}
               />
-              <Route
+              {/* <Route
               path='/profile'
               element={user ? <Profile /> : <Navigate to="/login" />}
-              />
+              /> */}
               <Route
               path='/login'
               element={!user ? <Login /> : <Navigate to="/" />}
