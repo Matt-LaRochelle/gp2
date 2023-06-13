@@ -194,7 +194,6 @@ input.error {
 .bottom-buttons {
   display: flex;
   justify-content: space-between;
-  /* border: 2px solid grey; */
 }
 .help {
   max-width: 700px;
@@ -205,16 +204,15 @@ input.error {
 .help ul {
   display: block;
   max-width:540px;
-  /* border: 2px solid blue; */
+  margin-left: -15px;
 }
 .key img {
   max-width: 600px;
   min-width: 200px;
   margin: 0 auto 50px;
-  /* box-shadow: 2px 2px 5px rgba(0,0,0,0.05); */
 }
 
-/* dynamic sizing for single game */
+/* dynamic sizing */
 @media screen and (max-width: 700px) {
   .key img, .key ul {
     max-width: 100%;
