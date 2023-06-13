@@ -28,7 +28,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
             />
-
+            <p>Forgot your password? <a href="https://example.com/reset-password">Reset it here</a>.</p>
             <button disabled={isLoading}>Log in</button>
             {error && <div className="error">{error}</div>}
             {isLoading && 
