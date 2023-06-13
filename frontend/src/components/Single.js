@@ -55,7 +55,7 @@ const Single = () => {
     // Update db highscore
     useEffect(() => {
         const updateScore = async () => {
-            if (highScore > scores[0].single) {
+            if (scores !== null && highScore > scores[0].single) {
                 console.log('High!');
                 const packageScore = {"single": highScore}
                 const response = await fetch('https://guitar-paths-api.onrender.com/api/score/' + scores[0]._id, {
