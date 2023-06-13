@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useScoresContext } from './useScores'
-import { useAuthContext } from "./useAuthContext"
 
 export const useSetup = () => {
     const [error, setError] = useState(null)

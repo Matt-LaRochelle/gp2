@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLogin } from '../hooks/useLogin'
+import PacmanLoader from "react-spinners/PacmanLoader";
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -34,6 +35,7 @@ const Login = () => {
                 <div>
                     <p>Fetching data from server...</p>
                     <p>This process tends to take 20-60 seconds</p>
+                    <PacmanLoader color="#36d7b7" />
                 </div>}
         </form>
     )

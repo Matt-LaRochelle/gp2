@@ -79,7 +79,7 @@ const Single = () => {
             }
         }
         updateScore()
-    }, [gotAnswer])
+    }, [gotAnswer, dispatch, highScore, scores, user.token])
 
     // Function for resetting high score for debugging purposes
     // const updateHighScore = async () => {
@@ -144,8 +144,8 @@ const Single = () => {
                 const number = Math.floor(Math.random() * 37)
                 setSound(audioClips[number].clip)
                 setAnswer(audioClips[number].note_name);
-                setGotAnswer(true);
                 setHighScore(highScore => highScore + 1);
+                setGotAnswer(true);
                 setTimeout(() => {
                     setGotAnswer(null);
                 }, 1000);
@@ -165,8 +165,8 @@ const Single = () => {
             if (answer.includes(inputText.toLowerCase()) === true) {
                 // setInputText("");
                 setCount(4);
-                setGotAnswer(true);
                 setHighScore(() => highScore + 1);
+                setGotAnswer(true);
                 setTimeout(() => {
                     setGotAnswer(null);
                 }, 1000);
@@ -179,8 +179,8 @@ const Single = () => {
             } else if (answer.includes(inputText.toLowerCase()) !== true) {
                 // setInputText("");
                 setCount(4);
-                setGotAnswer(false);
                 setHighScore(0);
+                setGotAnswer(false);
                 setTimeout(() => {
                     setGotAnswer(null);
                 }, 1000);
@@ -199,7 +199,7 @@ const Single = () => {
                 <h2>Single Note Identification Game</h2>
                 <div className="single-format">
                     <p>Correct: <span className="primary">{highScore}</span></p>
-                    <p>High Score: <span className="primary">{scores ? scores[0].single : null}</span></p>
+                    <p>High Score: <span className="primary">{!scores ? null : scores[0].single}</span></p>
                 </div>
                 
                 <button className="primary-button" onClick={play_note}>Play note</button>
