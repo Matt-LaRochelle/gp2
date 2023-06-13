@@ -32,10 +32,10 @@ const Login = () => {
             <button disabled={isLoading}>Log in</button>
             {error && <div className="error">{error}</div>}
             {isLoading && 
-                <div>
+                <div className="loading">
                     <p>Fetching data from server...</p>
                     <p>This process tends to take 20-60 seconds</p>
-                    <PacmanLoader color="#36d7b7" />
+                    <PacmanLoader color="#c1dafb" />
                 </div>}
         </form>
     )

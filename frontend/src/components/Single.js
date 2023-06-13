@@ -198,8 +198,8 @@ const Single = () => {
             <div>
                 <h2>Single Note Identification Game</h2>
                 <div className="single-format">
-                    <p>Correct: <span className="primary">{highScore}</span></p>
-                    <p>High Score: <span className="primary">{!scores ? null : scores[0].single}</span></p>
+                    <p className="primary">Correct: <span>{highScore}</span></p>
+                    <p className="primary">High Score: <span>{!scores ? null : scores[0].single}</span></p>
                 </div>
                 
                 <button className="primary-button" onClick={play_note}>Play note</button>
@@ -260,7 +260,7 @@ const Single = () => {
                 { gotAnswer === false ? <AiOutlineCloseCircle className="incorrect"/> : null }
                 <div className="bottom-buttons">
                     <button onClick={helpScreen}>Help</button>
-                    <p className="tries">Tries: <span className="primary">{count}</span></p>
+                    <p className="tries"><span className="primary">Tries: {count}</span></p>
                     <button onClick={keyScreen}>Key</button>
                 </div>
                 

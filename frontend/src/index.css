@@ -7,6 +7,23 @@
   --error: #e7195a;
   --feature: #fff;
   --wall: #f1f1f1;
+  --accent: #30a2c5;
+
+  /* --primary: #0fc5d2;
+  --secondary: #c1dafb;
+  --feature: #fff;
+  --error: #e7195a;
+  --wall: #cffce8;
+  --accent: #0f63d2 */
+
+  /* --wall: #333;
+  --feature: #17081b;
+  --primary: #4ba031;
+  --accent: #270e2f; */
+
+
+
+
 }
 body {
   background: var(--wall);
@@ -51,11 +68,13 @@ input {
   box-sizing: border-box;
 }
 form button {
-  background: var(--primary);
-  border: 0;
-  color: #fff;
+  border: 2px solid var(--primary);
+  background: var(--feature);
+  /* border: 0; */
+  color: var(--primary);
   padding: 10px;
   font-family: "Poppins";
+  font-size: 1em;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -195,6 +214,16 @@ input.error {
   display: flex;
   justify-content: space-between;
 }
+.bottom-buttons button, .help button {
+  color: var(--accent);
+  background-color: var(--feature);
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+}
+.bottom-buttons button:hover, .help button:hover {
+  background-color: var(--wall);
+  cursor: pointer;
+}
 .help {
   max-width: 700px;
 }
@@ -257,7 +286,8 @@ nav button {
   margin-left: 10px;
 }
 nav button:hover {
-  background: var(--wall)
+  background: var(--wall);
+  cursor: pointer;
 }
 
 /* auth forms */
@@ -267,4 +297,7 @@ form.signup, form.login {
   padding: 20px;
   background: var(--feature);
   border-radius: 4px;
+}
+.loading {
+  margin: 20px;
 }
