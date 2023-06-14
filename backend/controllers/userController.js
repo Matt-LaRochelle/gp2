@@ -15,6 +15,10 @@ const loginUser = async (req, res) => {
         // create a token
         const token = createToken(user._id)
 
+        // get extra user information for application
+        const fName = user.fName
+        const year = user.year
+
         res.status(200).json({email, fName, year, token})
     } catch (error) {
         res.status(400).json({error: error.message})
