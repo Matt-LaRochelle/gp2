@@ -21,6 +21,12 @@ const userSchema = new Schema({
     year: {
         type: Number,
         required: true
+    },
+    resetPasswordToken: {
+        type: String
+    },
+    resetPasswordExpires: {
+        type: Number
     }
 })
 
@@ -45,10 +51,13 @@ userSchema.statics.signup = async function(email, password, fName, year) {
         throw Error ('Email already in use')
     }
 
+    const resetPasswordToken = null
+    const resetPasswordExpires = null
+
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
-    const user = await this.create({ email, password: hash, fName, year })
+    const user = await this.create({ email, password: hash, fName, year, resetPasswordToken, resetPasswordExpires })
     
     return user
 
