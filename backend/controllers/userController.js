@@ -45,15 +45,19 @@ const signupUser = async (req, res) => {
 // reset password
 const forgotUser = async (req, res) => {
     const email = req.body.email
+    console.log("step 1: email: " + email)
 
     try {
         const user = await User.forgot(email)
+        console.log("step 2: user: " + user)
 
         // create a token
         const token = jwt.sign(user._id, process.env.SECRET, { expiresIn: '1h' })
+        console.log("step 3: token" + token)
         user.resetPasswordToken = token;
         user.resetPasswordExpires = Date.now() + 3600000; // Expires in 1 hour
         await user.save();
+        res.status(200).json({"Everything looks good!": "yay"})
 
     } catch (error) {
         res.status(400).json({error: error.message})
