@@ -13,7 +13,14 @@ const Forgot = () => {
             body: JSON.stringify({email: email})
         })
         const json = await response.json()
-        console.log("frontend step 2: json: " + json)
+
+        if (!response.ok) {
+            console.log(json.error)
+        }
+        if (response.ok) {
+            const text = JSON.stringify(json)
+            console.log("got things back: " + text)
+        }
     }
     return (
         <form className="login" onSubmit={handleForgotSubmit}>

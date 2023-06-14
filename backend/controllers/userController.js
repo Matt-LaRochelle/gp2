@@ -58,7 +58,7 @@ const forgotUser = async (req, res) => {
         user.resetPasswordToken = token;
         user.resetPasswordExpires = Date.now() + 3600000; // Expires in 1 hour
         await user.save();
-        res.status(200).json({"Everything looks good!": "yay"})
+        res.status(200).json({message: "backend got it!"})
 
     } catch (error) {
         res.status(400).json({error: error.message})
