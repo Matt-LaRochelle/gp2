@@ -15,7 +15,7 @@ const Forgot = () => {
         const json = await response.json()
 
         if (!response.ok) {
-            console.log(json.error)
+            console.log("response is not ok: " + json.error)
         }
         if (response.ok) {
             const text = JSON.stringify(json)

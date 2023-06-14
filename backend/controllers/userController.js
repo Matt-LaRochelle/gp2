@@ -53,7 +53,7 @@ const forgotUser = async (req, res) => {
         console.log("step 3: user.id: " + user._id)
 
         // create a token
-        const token = jwt.sign(user._id, process.env.SECRET, { expiresIn: '1h' })
+        const token = jwt.sign({ userID: user._id }, process.env.SECRET, { expiresIn: '1h' })
         console.log("step 4: token: " + token)
         user.resetPasswordToken = token;
         user.resetPasswordExpires = Date.now() + 3600000; // Expires in 1 hour
