@@ -10,7 +10,7 @@ const Forgot = () => {
         const response = await fetch('https://guitar-paths-api.onrender.com/api/user/forgot', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({email})
+            body: JSON.stringify({email: email})
         })
         const json = await response.json()
         console.log(json)

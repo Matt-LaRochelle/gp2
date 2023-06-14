@@ -44,7 +44,7 @@ const signupUser = async (req, res) => {
 
 // reset password
 const forgotUser = async (req, res) => {
-    const email = req.body
+    const email = req.body.email
 
     try {
         const user = await User.forgot(email)
