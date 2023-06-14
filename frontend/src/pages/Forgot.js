@@ -6,14 +6,14 @@ const Forgot = () => {
 
     const handleForgotSubmit = async (e) => {
         e.preventDefault()
-        console.log(email)
+        console.log("frontend step 1: email: " + email)
         const response = await fetch('https://guitar-paths-api.onrender.com/api/user/forgot', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email: email})
         })
         const json = await response.json()
-        console.log(json)
+        console.log("frontend step 2: json: " + json)
     }
     return (
         <form className="login" onSubmit={handleForgotSubmit}>
