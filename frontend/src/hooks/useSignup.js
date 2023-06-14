@@ -8,14 +8,14 @@ export const useSignup = () => {
     const { dispatch } = useAuthContext()
     const { setup } = useSetup()
 
-    const signup = async (fName, birthday, email, password) => {
+    const signup = async (email, password, fName, year) => {
         setIsLoading(true)
         setError(null)
 
         const response = await fetch('https://guitar-paths-api.onrender.com/api/user/signup', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({fName, birthday, email, password})
+            body: JSON.stringify({email, password, fName, year})
         })
         const json = await response.json()
 

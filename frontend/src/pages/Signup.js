@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import { useSignup } from '../hooks/useSignup'
 import PacmanLoader from "react-spinners/PacmanLoader";
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 
 const Signup = () => {
     const [fName, setFName] = useState('')
-    const [birthday, setBirthday] = useState(new Date());
+    const [year, setYear] = useState('');
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {signup, error, isLoading} = useSignup()
@@ -14,7 +12,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        await signup(fName, birthday, email, password)
+        await signup(email, password, fName, year)
     }
     return (
         <form className="signup" onSubmit={handleSubmit}>
@@ -26,8 +24,12 @@ const Signup = () => {
                 onChange={(e) => setFName(e.target.value)}
                 value={fName}
             />
-            <label>Birthday:</label>
-            <DatePicker selected={birthday} onChange={(date) => setBirthday(date)} />
+            <label>Year of birth:</label>
+            <input
+                type="number"
+                onChange={(e) => setYear(e.target.value)}
+                value={year}
+                 />
             <label>Email:</label>
             <input
                 type="email"
