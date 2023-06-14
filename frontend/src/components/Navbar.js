@@ -18,9 +18,9 @@ const Navbar = () => {
                 </Link>
                 <nav>
                     {user && (
-                        <div>
+                        <div className="user-nav">
                             {/* <Link to="/profile">{user.email}</Link> */}
-                            <span>{user.year}</span>
+                            <span>Hello {user.fName}</span>
                             <button onClick={handleClick}>Log out</button>
                         </div>
                     )}

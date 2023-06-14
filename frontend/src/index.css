@@ -289,6 +289,10 @@ nav button:hover {
   background: var(--wall);
   cursor: pointer;
 }
+.user-nav {
+  display: flex;
+  align-items: center;
+}
 
 /* auth forms */
 form.signup, form.login {

@@ -1,40 +1,35 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { useLogin } from '../hooks/useLogin'
 import PacmanLoader from "react-spinners/PacmanLoader";
 
-const Login = () => {
+const Forgot = () => {
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const {login, error, isLoading} = useLogin()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        await login(email, password)
+        console.log(email)
+        const response = await fetch('https://guitar-paths-api.onrender.com/api/user/forgot', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email})
+        })
+        const json = await response.json()
+        console.log(json)
     }
     return (
         <form className="login" onSubmit={handleSubmit}>
             <h3>Log in</h3>
-
             <label>Email:</label>
             <input
                 type="email"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
             />
-            <label>Password:</label>
-            <input
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-            />
-            <p>Forgot your password? <Link to="/forgot">Reset it here</Link></p>
-            <button disabled={isLoading}>Log in</button>
+            <button disabled={isLoading}>Send link</button>
             {error && <div className="error">{error}</div>}
             {isLoading && 
                 <div className="loading">
-                    <p>Fetching data from server...</p>
+                    <p>Sending email...</p>
                     <p>This process tends to take 20-60 seconds</p>
                     <PacmanLoader color="#c1dafb" />
                 </div>}
@@ -42,4 +37,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Forgot

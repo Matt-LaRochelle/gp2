@@ -77,4 +77,18 @@ userSchema.statics.login = async function(email, password) {
 
 }
 
+// static forgot method
+userSchema.statics.forgot = async function (email) {
+    if (!email) {
+        throw Error('Must include an email')
+    }
+
+    const user = await this.findOne({ email })
+
+    if (!user) {
+        throw Error ('Incorrect email')
+    }
+    return user
+}
+
 module.exports = mongoose.model('User', userSchema)

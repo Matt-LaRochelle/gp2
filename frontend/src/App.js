@@ -4,6 +4,7 @@ import { useAuthContext } from './hooks/useAuthContext'
 import Navbar from './components/Navbar'
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Forgot from './pages/Forgot';
 import Eartraining from './pages/Eartraining'
 
 function App() {
@@ -26,6 +27,10 @@ function App() {
               <Route
               path='/login'
               element={!user ? <Login /> : <Navigate to="/" />}
+              />
+              <Route
+              path='/forgot'
+              element={!user ? <Forgot /> : <Navigate to="/" />}
               />
               <Route
               path='/signup'
