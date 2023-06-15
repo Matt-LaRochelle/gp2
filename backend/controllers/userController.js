@@ -63,10 +63,10 @@ const forgotUser = async (req, res) => {
         console.log("step 5: saved user data")
         // create the email
         const message = {
-            to: 'larochelle.matthew@gmail.com',
+            to: user.email,
             from: 'mattsdevprojects@gmail.com',
             subject: 'Password reset link',
-            html: '<p>Click <a href="https://example.com/reset-password?token=TOKEN_HERE">here</a> to reset your password.</p>',
+            html: '<p>Click <a href="https://example.com/reset-password?token=' + user.resetPasswordToken + '>here"</a> to reset your password.</p>',
           };
         // send the email
         sgMail.send(message)
