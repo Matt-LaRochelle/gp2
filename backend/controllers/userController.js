@@ -44,7 +44,7 @@ const signupUser = async (req, res) => {
     }
 }
 
-// reset password
+// send reset password link
 const forgotUser = async (req, res) => {
     const email = req.body.email
     console.log("step 1: email: " + email)
@@ -83,4 +83,26 @@ const forgotUser = async (req, res) => {
     }
 }
 
-module.exports = { signupUser, loginUser, forgotUser }
+// reset password from email link
+const verifyLink = async (req, res) => {
+    const { token }= req.query;
+    console.log(token)
+    try {
+            // Look up the user by token
+    const user = await User.findOne({ resetPasswordToken: token, resetPasswordExpires: { $gt: Date.now() } });
+    if (!user) {
+      // If the token is invalid or has expired, render an error message or redirect to an error page
+      return res.status(400).send('Invalid or expired password reset token');
+    }
+    // Render the password reset form with the token as a hidden input
+    res.render('reset-password', { token });
+  } catch (err) {
+    // Handle any errors that occur
+    console.error(err);
+    res.status(500).send('Internal server error');
+  }
+}
+    
+
+
+module.exports = { signupUser, loginUser, forgotUser, verifyLink }
