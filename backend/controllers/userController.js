@@ -1,7 +1,5 @@
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
-const ReactDOMServer = require('react-dom/server');
-const ResetPassword = require('../../frontend/src/pages/Reset');
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -97,10 +95,7 @@ const verifyLink = async (req, res) => {
       return res.status(400).send('Invalid or expired password reset token');
     }
     // Render the password reset form with the token as a hidden input
-    const html = ReactDOMServer.renderToString(
-        <ResetPassword token={token} />
-      );
-      res.send(html);
+    res.json({ token });
   } catch (err) {
     // Handle any errors that occur
     console.error(err);
