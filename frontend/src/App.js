@@ -22,7 +22,7 @@ function App() {
               element={user ? <Eartraining /> : <Navigate to="/login" />}
               />
             <Route 
-              path="/reset-password/:token"
+              path="/reset-password/?token=:token"
               element={<ResetPassword />}
               />
               {/* <Route
