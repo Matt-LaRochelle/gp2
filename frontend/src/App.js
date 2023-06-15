@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Forgot from './pages/Forgot';
+import ResetPassword from './pages/Reset';
 import Eartraining from './pages/Eartraining'
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
               path='/'
               element={user ? <Eartraining /> : <Navigate to="/login" />}
               />
+              <Route path="/reset-password/:token">
+                <ResetPassword />
+              </Route>
               {/* <Route
               path='/profile'
               element={user ? <Profile /> : <Navigate to="/login" />}
