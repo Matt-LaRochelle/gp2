@@ -3,6 +3,7 @@ import PacmanLoader from "react-spinners/PacmanLoader";
 
 const Forgot = () => {
     const [email, setEmail] = useState('')
+    const [linkSent, setLinkSent] = useState(false)
 
     const handleForgotSubmit = async (e) => {
         e.preventDefault()
@@ -20,27 +21,39 @@ const Forgot = () => {
         if (response.ok) {
             const text = JSON.stringify(json)
             console.log("got things back: " + text)
+            setLinkSent(true)
         }
     }
+
+    const handleReset = async (e) => {
+        e.preventDefault()
+        console.log(e)
+    }
     return (
-        <form className="login" onSubmit={handleForgotSubmit}>
-            <h3>Log in</h3>
-            <label>Email:</label>
-            <input
-                type="email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-            />
-            <button>Send link</button>
-            {/* disabled={isLoading} */}
-            {/* {error && <div className="error">{error}</div>}
-            {isLoading && 
-                <div className="loading">
-                    <p>Sending email...</p>
-                    <p>This process tends to take 20-60 seconds</p>
-                    <PacmanLoader color="#c1dafb" />
-                </div>} */}
-        </form>
+        <div>
+            <form className="login" onSubmit={handleForgotSubmit}>
+                <h3>Log in</h3>
+                <label>Email:</label>
+                <input
+                    type="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                />
+                <button>Send link</button>
+                {/* disabled={isLoading} */}
+                {/* {error && <div className="error">{error}</div>}
+                {isLoading && 
+                    <div className="loading">
+                        <p>Sending email...</p>
+                        <p>This process tends to take 20-60 seconds</p>
+                        <PacmanLoader color="#c1dafb" />
+                    </div>} */}
+            </form>
+            {linkSent &&
+            <form onSubmit={handleReset}>
+                <p>Check your email for the reset link</p>
+            </form>}
+        </div>
     )
 }
 

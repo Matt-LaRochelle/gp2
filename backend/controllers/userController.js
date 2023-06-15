@@ -95,7 +95,10 @@ const verifyLink = async (req, res) => {
       return res.status(400).send('Invalid or expired password reset token');
     }
     // Render the password reset form with the token as a hidden input
-    res.json({ token });
+    const html = ReactDOMServer.renderToString(
+        <ResetPassword token={token} />
+      );
+      res.send(html);
   } catch (err) {
     // Handle any errors that occur
     console.error(err);
