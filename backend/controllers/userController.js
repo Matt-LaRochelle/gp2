@@ -1,5 +1,7 @@
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
+const ReactDOMServer = require('react-dom/server');
+const ResetPassword = require('../../frontend/src/pages/Reset');
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
