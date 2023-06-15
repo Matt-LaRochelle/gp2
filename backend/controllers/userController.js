@@ -60,7 +60,23 @@ const forgotUser = async (req, res) => {
         user.resetPasswordToken = token;
         user.resetPasswordExpires = Date.now() + 3600000; // Expires in 1 hour
         await user.save();
-        res.status(200).json({message: "backend got it!"})
+        console.log("step 5: saved user data")
+        // create the email
+        const message = {
+            to: 'larochelle.matthew@gmail.com',
+            from: 'mattsdevprojects@gmail.com',
+            subject: 'Password reset link',
+            html: '<p>Click <a href="https://example.com/reset-password?token=TOKEN_HERE">here</a> to reset your password.</p>',
+          };
+        // send the email
+        sgMail.send(message)
+        .then(() => {
+            console.log('step 6: Email sent');
+        })
+        .catch((error) => {
+            console.error('step 6 failed: ' + error);
+        });
+        res.status(200).json({message: "step 7: backend got it!"})
 
     } catch (error) {
         res.status(400).json({error: error.message})
