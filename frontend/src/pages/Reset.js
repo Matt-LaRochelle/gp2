@@ -3,9 +3,13 @@ import { useParams } from 'react-router-dom';
 
 function ResetPassword() {
   const { token } = useParams();
+  const [authenticated, setAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [authenticated, setAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const [completeReset, setCompleteReset] = useState(false)
+  
 
   useEffect(() => {
     const checkToken = async () => {
@@ -18,7 +22,7 @@ function ResetPassword() {
       })
   const json = await response.json()
         if (!response.ok) {
-            console.log("response is not ok: " + json.error)
+            setError("response is not ok: " + json.error)
             setAuthenticated(false);
         }
         if (response.ok) {
@@ -34,6 +38,7 @@ function ResetPassword() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true)
     // TODO: Send password reset request to server
     if (password === confirmPassword) {
       const response = await fetch('https://guitar-paths-api.onrender.com/api/user/reset', {
@@ -43,17 +48,18 @@ function ResetPassword() {
       })
   const json = await response.json()
         if (!response.ok) {
-            console.log("response is not ok: " + json.error)
-            setAuthenticated(false);
+            setError("response is not ok: " + json.error)
+            setIsLoading(false)
         }
         if (response.ok) {
             const text = JSON.stringify(json)
             console.log("got things back: " + text)
-            setAuthenticated(true);
+            setError(null)
+            setIsLoading(false)
+            setCompleteReset(true)
         }
-    console.log(token)
     } else {
-      alert("passwords must match")
+      setError("passwords must match")
     }
 
   };
@@ -69,8 +75,15 @@ function ResetPassword() {
           <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
           <label htmlFor="confirm-password">Confirm Password</label>
           <input type="password" name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
-          <button type="submit">Reset Password</button>
-          <p>{token}</p>
+          <button disabled={isLoading} type="submit">Reset Password</button>
+          {error && <div className="error">{error}</div>}
+          {completeReset && <div>Password has been reset!</div>}
+            {isLoading && 
+                <div className="loading">
+                    <p>Fetching data from server...</p>
+                    <p>This process tends to take 5-60 seconds</p>
+                    <PacmanLoader color="#c1dafb" />
+                </div>}
         </form> 
       </div> }
     </div>

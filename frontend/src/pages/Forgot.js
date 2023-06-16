@@ -3,11 +3,13 @@ import PacmanLoader from "react-spinners/PacmanLoader";
 
 const Forgot = () => {
     const [email, setEmail] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
     const [linkSent, setLinkSent] = useState(false)
 
     const handleForgotSubmit = async (e) => {
         e.preventDefault()
-        console.log("frontend step 1: email: " + email)
+        setIsLoading(true)
         const response = await fetch('https://guitar-paths-api.onrender.com/api/user/forgot', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -16,12 +18,15 @@ const Forgot = () => {
         const json = await response.json()
 
         if (!response.ok) {
-            console.log("response is not ok: " + json.error)
+            setIsLoading(false)
+            setError("There was an error: " + json.error)
         }
         if (response.ok) {
             const text = JSON.stringify(json)
             console.log("got things back: " + text)
             setLinkSent(true)
+            setIsLoading(false)
+            setError(false)
         }
     }
 
@@ -39,20 +44,17 @@ const Forgot = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                 />
-                <button>Send link</button>
-                {/* disabled={isLoading} */}
-                {/* {error && <div className="error">{error}</div>}
+                <button disabled={isLoading}>Send link</button>
+                
+                {error && <div className="error">{error}</div>}
                 {isLoading && 
                     <div className="loading">
                         <p>Sending email...</p>
-                        <p>This process tends to take 20-60 seconds</p>
+                        <p>This process tends to take 5-60 seconds</p>
                         <PacmanLoader color="#c1dafb" />
-                    </div>} */}
+                    </div>}
             </form>
-            {linkSent &&
-            <form onSubmit={handleReset}>
-                <p>Check your email for the reset link</p>
-            </form>}
+            {linkSent && <p>A reset link has been sent to your email.</p>}
         </div>
     )
 }
