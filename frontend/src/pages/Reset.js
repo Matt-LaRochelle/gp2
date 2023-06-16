@@ -1,33 +1,34 @@
 import React, { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
-import queryString from 'query-string';
+import { useParams } from 'react-router-dom';
+// import queryString from 'query-string';
 
 function ResetPassword() {
-  const { token } = queryString.parse(window.location.search);
-  // const { token } = useParams();
+  // const { token } = queryString.parse(window.location.search);
+  const { token } = useParams();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  useEffect(() => {
-    // Fetch the user data from the server using the token
-    fetch(`/api/user/reset?token=${token}`)
-      .then(res => res.json())
-      .then(data => {
-        // Check if the token is invalid or has expired
-        if (data.error) {
-          // TODO: Render an error message or redirect to an error page
-          console.log(data.error)
-        }
-      })
-      .catch(err => {
-        // TODO: Handle any errors that occur
-        console.error(err);
-      });
-  }, [token]);
+  // useEffect(() => {
+  //   // Fetch the user data from the server using the token
+  //   fetch(`/api/user/reset?token=${token}`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       // Check if the token is invalid or has expired
+  //       if (data.error) {
+  //         // TODO: Render an error message or redirect to an error page
+  //         console.log(data.error)
+  //       }
+  //     })
+  //     .catch(err => {
+  //       // TODO: Handle any errors that occur
+  //       console.error(err);
+  //     });
+  // }, [token]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // TODO: Send password reset request to server
+    console.log(token)
   };
 
   return (
