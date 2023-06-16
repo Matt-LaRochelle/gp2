@@ -29,11 +29,7 @@ const Forgot = () => {
             setError(false)
         }
     }
-
-    const handleReset = async (e) => {
-        e.preventDefault()
-        console.log(e)
-    }
+    
     return (
         <div>
             <form className="login" onSubmit={handleForgotSubmit}>
@@ -47,6 +43,7 @@ const Forgot = () => {
                 <button disabled={isLoading}>Send link</button>
                 
                 {error && <div className="error">{error}</div>}
+                {linkSent && <p>A reset link has been sent to your email.</p>}
                 {isLoading && 
                     <div className="loading">
                         <p>Sending email...</p>
@@ -54,7 +51,7 @@ const Forgot = () => {
                         <PacmanLoader color="#1aac83" />
                     </div>}
             </form>
-            {linkSent && <p>A reset link has been sent to your email.</p>}
+            
         </div>
     )
 }

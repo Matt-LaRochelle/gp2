@@ -61,6 +61,7 @@ function ResetPassword() {
         }
     } else {
       setError("passwords must match")
+      setIsLoading(false)
     }
 
   };
