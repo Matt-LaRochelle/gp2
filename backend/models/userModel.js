@@ -100,4 +100,31 @@ userSchema.statics.forgot = async function (email) {
     return user
 }
 
+// static reset method
+userSchema.statics.reset = async function (token, password) {
+    if (!token || !password) {
+        throw Error('All fields must be filled')
+    }
+    if (!validator.isStrongPassword(password)) {
+        throw Error('Password not strong enough')
+    }
+
+    const user = await this.findOne({ resetPasswordToken: token })
+
+    if (!user) {
+        throw Error ('Invalid token')
+    }
+
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(password, salt)
+
+    // Update the user's password field
+    user.password = hash
+
+    // Save the updated user document to the database
+    await user.save()
+
+    return user
+}
+
 module.exports = mongoose.model('User', userSchema)
