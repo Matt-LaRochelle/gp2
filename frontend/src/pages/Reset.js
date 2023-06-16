@@ -34,13 +34,14 @@ function ResetPassword() {
   return (
     <div>
       <h1>Reset Your Password</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="login" onSubmit={handleSubmit}>
         <input type="hidden" value={token} name="token" />
         <label htmlFor="password">New Password</label>
         <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <label htmlFor="confirm-password">Confirm Password</label>
         <input type="password" name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
         <button type="submit">Reset Password</button>
+        <p>{token}</p>
       </form>
     </div>
   );
