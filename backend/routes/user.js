@@ -14,7 +14,10 @@ router.post('/signup', signupUser)
 // send password reset link route
 router.post('/forgot', forgotUser)
 
-// reset password from email route
-router.post('/reset', verifyLink)
+// verify link from email route
+router.post('/verify', verifyLink)
+
+// reset password
+router.post('/reset', resetPassword)
 
 module.exports = router

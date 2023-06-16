@@ -11,7 +11,7 @@ function ResetPassword() {
     const checkToken = async () => {
       // Check token with backend
       if (token) {
-        const response = await fetch('https://guitar-paths-api.onrender.com/api/user/reset', {
+        const response = await fetch('https://guitar-paths-api.onrender.com/api/user/verify', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({token: token})
@@ -32,10 +32,30 @@ function ResetPassword() {
   },[token])
     
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // TODO: Send password reset request to server
+    if (password === confirmPassword) {
+      const response = await fetch('https://guitar-paths-api.onrender.com/api/user/reset', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ token, password })
+      })
+  const json = await response.json()
+        if (!response.ok) {
+            console.log("response is not ok: " + json.error)
+            setAuthenticated(false);
+        }
+        if (response.ok) {
+            const text = JSON.stringify(json)
+            console.log("got things back: " + text)
+            setAuthenticated(true);
+        }
     console.log(token)
+    } else {
+      alert("passwords must match")
+    }
+
   };
 
   return (
