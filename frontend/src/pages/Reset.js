@@ -1,29 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-// import queryString from 'query-string';
 
 function ResetPassword() {
-  // const { token } = queryString.parse(window.location.search);
   const { token } = useParams();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  // useEffect(() => {
-  //   // Fetch the user data from the server using the token
-  //   fetch(`/api/user/reset?token=${token}`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       // Check if the token is invalid or has expired
-  //       if (data.error) {
-  //         // TODO: Render an error message or redirect to an error page
-  //         console.log(data.error)
-  //       }
-  //     })
-  //     .catch(err => {
-  //       // TODO: Handle any errors that occur
-  //       console.error(err);
-  //     });
-  // }, [token]);
+  useEffect(() => {
+    const checkToken = async () => {
+      // Check token with backend
+      if (token) {
+        const response = await fetch('https://guitar-paths-api.onrender.com/api/user/reset', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({token: token})
+      })
+  const json = await response.json()
+        if (!response.ok) {
+            console.log("response is not ok: " + json.error)
+        }
+        if (response.ok) {
+            const text = JSON.stringify(json)
+            console.log("got things back: " + text)
+        }
+      }
+    }
+  checkToken()
+  },[])
+    
 
   const handleSubmit = (event) => {
     event.preventDefault();

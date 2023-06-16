@@ -85,7 +85,7 @@ const forgotUser = async (req, res) => {
 
 // reset password from email link
 const verifyLink = async (req, res) => {
-    const { token }= req.query;
+    const { token }= req.body.token;
     console.log(token)
     try {
             // Look up the user by token
