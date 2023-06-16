@@ -5,6 +5,7 @@ function ResetPassword() {
   const { token } = useParams();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     const checkToken = async () => {
@@ -18,15 +19,17 @@ function ResetPassword() {
   const json = await response.json()
         if (!response.ok) {
             console.log("response is not ok: " + json.error)
+            setAuthenticated(false);
         }
         if (response.ok) {
             const text = JSON.stringify(json)
             console.log("got things back: " + text)
+            setAuthenticated(true);
         }
       }
     }
   checkToken()
-  },[])
+  },[token])
     
 
   const handleSubmit = (event) => {
@@ -37,16 +40,19 @@ function ResetPassword() {
 
   return (
     <div>
-      <h1>Reset Your Password</h1>
-      <form className="login" onSubmit={handleSubmit}>
-        <input type="hidden" value={token} name="token" />
-        <label htmlFor="password">New Password</label>
-        <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <label htmlFor="confirm-password">Confirm Password</label>
-        <input type="password" name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
-        <button type="submit">Reset Password</button>
-        <p>{token}</p>
-      </form>
+      {!authenticated ? <h1>Bad link, please try again</h1> :
+      <div>
+        <h1>Reset Your Password</h1>
+        <form className="login" onSubmit={handleSubmit}>
+          <input type="hidden" value={token} name="token" />
+          <label htmlFor="password">New Password</label>
+          <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <label htmlFor="confirm-password">Confirm Password</label>
+          <input type="password" name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+          <button type="submit">Reset Password</button>
+          <p>{token}</p>
+        </form> 
+      </div> }
     </div>
   );
 }
