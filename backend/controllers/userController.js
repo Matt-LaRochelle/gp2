@@ -99,7 +99,7 @@ const verifyLink = async (req, res) => {
   } catch (err) {
     // Handle any errors that occur
     console.error(err);
-    res.status(500).send('Internal server error');
+    res.status(400).json({error: err.message})
   }
 }
 
@@ -120,7 +120,7 @@ const resetPassword = async (req, res) => {
     } catch (err) {
     // Handle any errors that occur
     console.error(err);
-    res.status(500).send('Internal server error');
+    res.status(400).json({error: err.message})
     }
 }
     
