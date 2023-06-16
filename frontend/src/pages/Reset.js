@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import PacmanLoader from "react-spinners/PacmanLoader";
 
 function ResetPassword() {
   const { token } = useParams();
@@ -82,7 +83,7 @@ function ResetPassword() {
                 <div className="loading">
                     <p>Fetching data from server...</p>
                     <p>This process tends to take 5-60 seconds</p>
-                    <PacmanLoader color="#c1dafb" />
+                    <PacmanLoader color="#1aac83" />
                 </div>}
         </form> 
       </div> }

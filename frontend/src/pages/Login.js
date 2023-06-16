@@ -36,7 +36,7 @@ const Login = () => {
                 <div className="loading">
                     <p>Fetching data from server...</p>
                     <p>This process tends to take 20-60 seconds</p>
-                    <PacmanLoader color="#c1dafb" />
+                    <PacmanLoader color="#1aac83" />
                 </div>}
         </form>
     )

@@ -51,7 +51,7 @@ const Forgot = () => {
                     <div className="loading">
                         <p>Sending email...</p>
                         <p>This process tends to take 5-60 seconds</p>
-                        <PacmanLoader color="#c1dafb" />
+                        <PacmanLoader color="#1aac83" />
                     </div>}
             </form>
             {linkSent && <p>A reset link has been sent to your email.</p>}
