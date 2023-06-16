@@ -15,6 +15,6 @@ router.post('/signup', signupUser)
 router.post('/forgot', forgotUser)
 
 // reset password from email route
-router.get('/reset', verifyLink)
+router.post('/reset', verifyLink)
 
 module.exports = router
