@@ -23,7 +23,7 @@ function App() {
               />
             <Route 
               path="/reset-password/:token"
-              element={<ResetPassword />}
+              element={!user ? <ResetPassword /> : <Navigate to="/" />}
               />
               {/* <Route
               path='/profile'
