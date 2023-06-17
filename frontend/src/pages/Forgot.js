@@ -32,6 +32,7 @@ const Forgot = () => {
     
     return (
         <div>
+        {!linkSent ? 
             <form className="login" onSubmit={handleForgotSubmit}>
                 <h3>Log in</h3>
                 <label>Email:</label>
@@ -43,7 +44,6 @@ const Forgot = () => {
                 <button disabled={isLoading}>Send link</button>
                 
                 {error && <div className="error">{error}</div>}
-                {linkSent && <div className="good-response">A reset link has been sent to your email.</div>}
                 {isLoading && 
                     <div className="loading">
                         <p>Sending email...</p>
@@ -51,6 +51,7 @@ const Forgot = () => {
                         <PacmanLoader color="#1aac83" />
                     </div>}
             </form>
+            : <div className="good-response">A reset link has been sent to your email.</div> }
             
         </div>
     )
