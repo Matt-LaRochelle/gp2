@@ -43,7 +43,7 @@ const Forgot = () => {
                 <button disabled={isLoading}>Send link</button>
                 
                 {error && <div className="error">{error}</div>}
-                {linkSent && <p>A reset link has been sent to your email.</p>}
+                {linkSent && <div className="good-response">A reset link has been sent to your email.</div>}
                 {isLoading && 
                     <div className="loading">
                         <p>Sending email...</p>

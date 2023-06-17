@@ -23,7 +23,7 @@ function ResetPassword() {
       })
   const json = await response.json()
         if (!response.ok) {
-            setError("response is not ok: " + json.error)
+            setError(json.error)
             setAuthenticated(false);
         }
         if (response.ok) {
@@ -49,7 +49,7 @@ function ResetPassword() {
       })
   const json = await response.json()
         if (!response.ok) {
-            setError("response is not ok: " + json.error)
+            setError(json.error)
             setIsLoading(false)
         }
         if (response.ok) {
@@ -79,7 +79,7 @@ function ResetPassword() {
           <input type="password" name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
           <button disabled={isLoading} type="submit">Reset Password</button>
           {error && <div className="error">{error}</div>}
-          {completeReset && <div>Password has been reset!</div>}
+          {completeReset && <div className="good-response">Password has been reset!</div>}
             {isLoading && 
                 <div className="loading">
                     <p>Fetching data from server...</p>
