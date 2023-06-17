@@ -71,6 +71,7 @@ function ResetPassword() {
       {!authenticated ? <h1>Bad link, please try again</h1> :
       <div>
         <h1>Reset Your Password</h1>
+        {!completeReset ? 
         <form className="login" onSubmit={handleSubmit}>
           <input type="hidden" value={token} name="token" />
           <label htmlFor="password">New Password</label>
@@ -79,14 +80,13 @@ function ResetPassword() {
           <input type="password" name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
           <button disabled={isLoading} type="submit">Reset Password</button>
           {error && <div className="error">{error}</div>}
-          {completeReset && <div className="good-response">Password has been reset!</div>}
             {isLoading && 
                 <div className="loading">
                     <p>Fetching data from server...</p>
                     <p>This process tends to take 5-60 seconds</p>
                     <PacmanLoader color="#1aac83" />
                 </div>}
-        </form> 
+        </form> : <div className="good-response">Password has been reset!</div> }
       </div> }
     </div>
   );
