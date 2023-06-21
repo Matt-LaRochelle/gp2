@@ -74,7 +74,7 @@ const Single = () => {
         let number = 0;
         let single = number
         const packageScore = {single}
-        const response = await fetch('/api/score/' + scores[0]._id, {
+        const response = await fetch('https://guitar-paths-api.onrender.com/api/score/' + scores[0]._id, {
             method: 'PATCH',
             body: JSON.stringify(packageScore),
             headers: {
