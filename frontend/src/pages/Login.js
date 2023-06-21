@@ -15,7 +15,7 @@ const Login = () => {
     }
     return (
         <form className="login" onSubmit={handleSubmit}>
-            <h3>Log in</h3>
+            <h3>Log In</h3>
 
             <label>Email:</label>
             <input
@@ -30,12 +30,12 @@ const Login = () => {
                 value={password}
             />
             <p>Forgot your password? <Link to="/forgot">Reset it here</Link></p>
-            <button disabled={isLoading}>Log in</button>
+            <button disabled={isLoading}>Log In</button>
             {error && <div className="error">{error}</div>}
             {isLoading && 
                 <div className="loading">
                     <p>Fetching data from server...</p>
-                    <p>This process tends to take 20-60 seconds</p>
+                    <p>This process tends to take 5-60 seconds</p>
                     <PacmanLoader color="#1aac83" />
                 </div>}
         </form>

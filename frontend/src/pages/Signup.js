@@ -16,15 +16,15 @@ const Signup = () => {
     }
     return (
         <form className="signup" onSubmit={handleSubmit}>
-            <h3>Sign up</h3>
+            <h3>Sign Up</h3>
 
-            <label>First name:</label>
+            <label>First Name:</label>
             <input
                 type="text"
                 onChange={(e) => setFName(e.target.value)}
                 value={fName}
             />
-            <label>Year of birth:</label>
+            <label>Year of Birth:</label>
             <input
                 type="number"
                 onChange={(e) => setYear(e.target.value)}
@@ -43,7 +43,7 @@ const Signup = () => {
                 value={password}
             />
 
-            <button disabled={isLoading}>Sign up</button>
+            <button disabled={isLoading}>Sign Up</button>
             {error && <div className="error">{error}</div>}
             {isLoading && 
                 <div>

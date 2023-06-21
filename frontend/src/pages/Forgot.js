@@ -34,14 +34,14 @@ const Forgot = () => {
         <div>
         {!linkSent ? 
             <form className="login" onSubmit={handleForgotSubmit}>
-                <h3>Log in</h3>
+                <h3>Log In</h3>
                 <label>Email:</label>
                 <input
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                 />
-                <button disabled={isLoading}>Send link</button>
+                <button disabled={isLoading}>Send Link</button>
                 
                 {error && <div className="error">{error}</div>}
                 {isLoading && 

@@ -30,6 +30,8 @@ const Single = () => {
     const [help, setHelp] = useState(false)
     const [key, setKey] = useState(false)
 
+    const [testUser, setTestUser] = useState(false)
+
     //Fetch data from database before loading rest of page
     useEffect(() => {
         const fetchScores = async () => {
@@ -51,6 +53,14 @@ const Single = () => {
         }
         
     }, [dispatch, user])
+
+    // Check if the user is a test user - then set up page for a client
+    useEffect(() => {
+        const check = user.email
+        if (check === "testuser@testing.user") {
+            setTestUser(true)
+        }
+    }, [])
 
     // Update db highscore
     useEffect(() => {
@@ -82,32 +92,32 @@ const Single = () => {
     }, [gotAnswer, dispatch, highScore, scores, user.token])
 
     // Function for resetting high score for debugging purposes
-    // const updateHighScore = async () => {
-    //     let number = 2;
-    //     console.log("New number generated: _______=___________--->", number)
-    //     console.log("ID of the mongodb file:", scores[0]._id)
-    //     let single = number
-    //     const packageScore = {single}
-    //     console.log("Data being sent to backend:", packageScore)
-    //     const response = await fetch('/api/score/' + scores[0]._id, {
-    //         method: 'PATCH',
-    //         body: JSON.stringify(packageScore),
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Authorization': `Bearer ${user.token}`
-    //         }
-    //     })
-    //     const json = await response.json()
+    const updateHighScore = async () => {
+        let number = 0;
+        console.log("New number generated: _______=___________--->", number)
+        console.log("ID of the mongodb file:", scores[0]._id)
+        let single = number
+        const packageScore = {single}
+        console.log("Data being sent to backend:", packageScore)
+        const response = await fetch('/api/score/' + scores[0]._id, {
+            method: 'PATCH',
+            body: JSON.stringify(packageScore),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+        const json = await response.json()
 
-    //     if (!response.ok) {
-    //         setError(json.error)
-    //     }
-    //     if (response.ok) {
-    //         setError(null)
-    //         console.log('new score updated', json)
-    //         dispatch({type: 'UPDATE_SCORE', payload: json})
-    //     }
-    // }
+        if (!response.ok) {
+            setError(json.error)
+        }
+        if (response.ok) {
+            setError(null)
+            console.log('new score updated', json)
+            dispatch({type: 'UPDATE_SCORE', payload: json})
+        }
+    }
 
     //Plays note of current state
     const play_note = () => {
@@ -202,9 +212,14 @@ const Single = () => {
                     <p className="primary">High Score: <span>{!scores ? null : scores[0].single}</span></p>
                 </div>
                 
-                <button className="primary-button" onClick={play_note}>Play note</button>
-                {/* <button onClick={updateHighScore}>Update high score</button> */}
-                {/* <input onChange={handleChange} type="text" value={inputText} /> */}
+                <button className="primary-button" onClick={play_note}>Play Note</button>
+                {testUser && 
+                    <div className="test-features">
+                        <p>This feature only available for the test user account.</p>
+                        <p><strong>Answer: {answer}</strong></p>
+                        <button onClick={updateHighScore}>Reset High Score</button>
+                    </div>
+                    }
                 <div className="select-answer">
                     <div className="select-answer-format">
                         <input type="radio" id="A" name="note" value="A" onChange={handleChange}></input>
