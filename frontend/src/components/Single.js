@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import audioClip from '../sounds/noteSounds';
 import SHelp from './SingleHelp'
@@ -8,29 +8,35 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import { useScoresContext } from '../hooks/useScores'
 
 const Single = () => {
+    //Database scores and client side rendering
     const {scores, dispatch} = useScoresContext()
+    //User information
     const { user } = useAuthContext()
-
     //Object of audio clips
     const audioClips = audioClip;
-
     //Which sound is being used
     const [sound, setSound] = useState(audioClips[29].clip);
     //Amount of tries
     const [count, setCount] = useState(4);
     //Name of note
     const [answer, setAnswer] = useState(["a"]);
-    //Input text answer
+    //Input radio answer
     const [inputText, setInputText] = useState("");
-    //Green check mark or red x
+    //Renders green check mark or red x
     const [gotAnswer, setGotAnswer] = useState(null);
-    //Follows in the app the best high score today
+    //Follows in the app the best high score for current session
     const [highScore, setHighScore] = useState(0);
+    //Set error if API sends one
     const [error, setError] = useState(null);
+    //Render help screen
     const [help, setHelp] = useState(false)
+    //Render key screen
     const [key, setKey] = useState(false)
-
+    //Renders features for test user
     const [testUser, setTestUser] = useState(false)
+    //For scrolling to key or help pages:
+    const keyRef = useRef(null);
+    const helpRef = useRef(null);
 
     //Fetch data from database before loading rest of page
     useEffect(() => {
@@ -41,13 +47,14 @@ const Single = () => {
                 }
             })
             const json = await response.json()
-
+            if (!response.ok) {
+                setError(json.error)
+            }
             if (response.ok) {
+                setError(null)
                 dispatch({type: 'SET_SCORES', payload: json})
-                console.log("only happens on load page:", json)
             }
         }
-
         if (user) {
             fetchScores()
         }
@@ -62,11 +69,33 @@ const Single = () => {
         }
     }, [])
 
+     // Function for resetting high score for test user
+     const updateHighScore = async () => {
+        let number = 0;
+        let single = number
+        const packageScore = {single}
+        const response = await fetch('/api/score/' + scores[0]._id, {
+            method: 'PATCH',
+            body: JSON.stringify(packageScore),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+        const json = await response.json()
+        if (!response.ok) {
+            setError(json.error)
+        }
+        if (response.ok) {
+            setError(null)
+            dispatch({type: 'UPDATE_SCORE', payload: json})
+        }
+    }
+
     // Update db highscore
     useEffect(() => {
         const updateScore = async () => {
             if (scores !== null && highScore > scores[0].single) {
-                console.log('High!');
                 const packageScore = {"single": highScore}
                 const response = await fetch('https://guitar-paths-api.onrender.com/api/score/' + scores[0]._id, {
                     method: 'PATCH',
@@ -77,13 +106,11 @@ const Single = () => {
                     }
                 })
                 const json = await response.json()
-
                 if (!response.ok) {
                     setError(json.error)
                 }
                 if (response.ok) {
                     setError(null)
-                    console.log('new score updated', json)
                     dispatch({type: 'UPDATE_SCORE', payload: json})
                 }
             }
@@ -91,34 +118,7 @@ const Single = () => {
         updateScore()
     }, [gotAnswer, dispatch, highScore, scores, user.token])
 
-    // Function for resetting high score for debugging purposes
-    const updateHighScore = async () => {
-        let number = 0;
-        console.log("New number generated: _______=___________--->", number)
-        console.log("ID of the mongodb file:", scores[0]._id)
-        let single = number
-        const packageScore = {single}
-        console.log("Data being sent to backend:", packageScore)
-        const response = await fetch('/api/score/' + scores[0]._id, {
-            method: 'PATCH',
-            body: JSON.stringify(packageScore),
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
-            }
-        })
-        const json = await response.json()
-
-        if (!response.ok) {
-            setError(json.error)
-        }
-        if (response.ok) {
-            setError(null)
-            console.log('new score updated', json)
-            dispatch({type: 'UPDATE_SCORE', payload: json})
-        }
-    }
-
+   
     //Plays note of current state
     const play_note = () => {
         const note = new Audio(sound);
@@ -134,12 +134,34 @@ const Single = () => {
     //Display help screen
     function helpScreen() {
         setHelp(!help)
+        if (help) {
+            helpRef.current.scrollIntoView({ behavior: 'smooth' })
+        }
     }
+
+    //Effect for scrolling to help - must separate these two for faster performance
+    useEffect(() => {
+        if (helpRef.current) {
+            helpRef.current.scrollIntoView({ behavior: 'smooth' })
+        }
+    }, [help])
 
     //Display key
     function keyScreen() {
         setKey(!key)
+        if (key) {
+            keyRef.current.scrollIntoView({ behavior: 'smooth' })
+        } 
     }
+    
+    //Effect for scrolling to key
+    useEffect(() => {
+        if (keyRef.current) {
+          keyRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, [key]);
+
+
 
     //Main logic of the game
     function check_answer() {
@@ -213,13 +235,7 @@ const Single = () => {
                 </div>
                 
                 <button className="primary-button" onClick={play_note}>Play Note</button>
-                {testUser && 
-                    <div className="test-features">
-                        <p>This feature only available for the test user account.</p>
-                        <p><strong>Answer: {answer}</strong></p>
-                        <button onClick={updateHighScore}>Reset High Score</button>
-                    </div>
-                    }
+                
                 <div className="select-answer">
                     <div className="select-answer-format">
                         <input type="radio" id="A" name="note" value="A" onChange={handleChange}></input>
@@ -278,14 +294,17 @@ const Single = () => {
                     <p className="tries"><span className="primary">Tries: {count}</span></p>
                     <button onClick={keyScreen}>Key</button>
                 </div>
-                
-                
-                
-
+                {testUser && 
+                    <div className="test-features">
+                        <p>This feature only available for the test user account.</p>
+                        <p><strong>Answer: {answer}</strong></p>
+                        <button onClick={updateHighScore}>Reset High Score</button>
+                    </div>
+                    }
             </div>
             {error && <div className="error">{error}</div>}
-            {help ? <SHelp /> : null}
-            {key ? <SKey /> : null}
+            {help ? <section ref={helpRef}><SHelp /> </section> : null}
+            {key ? <section ref={keyRef}><SKey /></section> : null}
         </div>
     )
 }
