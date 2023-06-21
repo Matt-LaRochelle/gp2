@@ -284,9 +284,12 @@ const Single = () => {
                         <label for="G#/Ab">G#/Ab</label>
                     </div>
                 </div>
-                <button className="primary-button" type="submit" onClick={check_answer}>Guess</button> 
-                { gotAnswer === true ? <AiOutlineCheckCircle className="correct"/> : null }
-                { gotAnswer === false ? <AiOutlineCloseCircle className="incorrect"/> : null }
+                <div className="guess-container">
+                    <button className="primary-button" type="submit" onClick={check_answer}>Guess</button> 
+                    { gotAnswer === true ? <AiOutlineCheckCircle className="correct"/> : null }
+                    { gotAnswer === false ? <AiOutlineCloseCircle className="incorrect"/> : null }
+                </div>
+                
                 <div className="bottom-buttons">
                     <button onClick={helpScreen}>Help</button>
                     <p className="tries"><span className="primary">Tries: {count}</span></p>

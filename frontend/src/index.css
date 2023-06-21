@@ -162,20 +162,23 @@ input.error {
 .tries {
   text-align: center;
 }
+.guess-container {
+  position: relative;
+}
 .correct {
   font-size: 4rem;
   color: var(--primary);
   position: absolute;
-  bottom: 10%;
-  left: 50%;
+  bottom: -105px;
+  left: 50.5%;
   transform: translate(-50%, -50%);
 }
 .incorrect {
   font-size: 4rem;
   color: var(--error);
   position: absolute;
-  bottom: 10%;
-  left: 50%;
+  bottom: -105px;
+  left: 50.5%;
   transform: translate(-50%, -50%);
 }
 .select-answer {
