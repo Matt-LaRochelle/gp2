@@ -161,8 +161,6 @@ const Single = () => {
         }
       }, [key]);
 
-
-
     //Main logic of the game
     function check_answer() {
 
