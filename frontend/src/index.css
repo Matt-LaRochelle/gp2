@@ -241,11 +241,21 @@ input.error {
   margin: 0 auto 50px;
 }
 .test-features {
-  border: 2px solid #333;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  border: 2px solid #8a25d8;
+  color: #8a25d8;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+  background-color: #8a25d81d;
 }
 .test-features button {
   margin: 5px auto;
+  cursor: pointer;
+  border: 2px solid #8a25d8;
+  border-radius: 4px;
+  color: #8a25d8;
+  background-color: #e0d9e509;
+}
+.test-features button:hover {
+  background-color: #8a25d836;
 }
 
 /* dynamic sizing */
