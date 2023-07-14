@@ -22,9 +22,26 @@ export const AuthContextProvider = ({ children }) => {
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'))
 
-        if (user) {
-            dispatch({ type: 'LOGIN', payload: user })
-        }
+        const validateUser = async () => {
+            if (user) {
+                // Check if the token is valid or invalid
+                const response = await fetch('https://guitar-paths-api.onrender.com/api/score', {
+                        headers: {
+                            'Authorization': `Bearer ${user.token}`
+                        }
+                    })
+                    const json = await response.json()
+                    console.log(json)
+
+                    if (response.ok) {
+                        dispatch({ type: 'LOGIN', payload: user })
+                    }
+                    else {
+                        dispatch({ type: 'LOGOUT', payload: null})
+                    }
+                }
+            }
+        validateUser()
     }, [])
 
     // back to normal code
