@@ -1,0 +1,52 @@
+.lContainer {
+    background-image: linear-gradient(#426BFF, #3E3BD7);
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.lCircle {
+    height: 310px;
+    width: 310px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translate(-50%);
+    position: relative;
+}
+
+.lCircle p {
+    display: none;
+    border: 2px solid lime;
+    text-align: center;
+}
+
+.lTitle {
+    position: absolute;
+    top: 400px;
+    left: 41px;
+}
+
+.lTitle h1 {
+    font-size: 48px;
+    font-weight: 300;
+    text-align: left;
+    color: white;
+}
+
+.lButtons {
+    position: absolute;
+    bottom: 40px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+}
+.lButtons button {
+    border-radius: 20px;
+    background-color: #05036D;
+    color: #fff;
+    font-size: 28px;
+    padding: 5px 10px;
+}

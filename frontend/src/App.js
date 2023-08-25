@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext'
 // pages & components
-import Navbar from './components/Navbar'
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Forgot from './pages/Forgot';
 import ResetPassword from './pages/Reset';
 import Eartraining from './pages/Eartraining'
+import Landing from './pages/landing/Landing';
 
 function App() {
   const { user } = useAuthContext()
@@ -14,12 +14,15 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
         <div className="pages">
           <Routes>
             <Route
               path='/'
               element={user ? <Eartraining /> : <Navigate to="/login" />}
+              />
+            <Route
+              path='/landing'
+              element={!user ? <Landing /> : <Navigate to="/" />}
               />
             <Route 
               path="/reset-password/:token"
