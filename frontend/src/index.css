@@ -12,7 +12,7 @@
 :root {
     --primary: #05036D;
     --secondary: #fff;
-    --error: #BE0000;
+    --error: #f68c8c;
     --correct: #2E8958;
     --subtext: #737373;
 
@@ -61,4 +61,21 @@ input {
 .lCircle p {
     text-align: center;
     padding-top: 140px;
+}
+
+.error {
+    display: inline;
+    color: var(--error);
+    margin-left: 30px;
+}
+
+.loading {
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+    background-color: lime;
+}
+
+.loading p {
+    text-align: right;
 }

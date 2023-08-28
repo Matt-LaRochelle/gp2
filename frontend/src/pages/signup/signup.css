@@ -1,0 +1,14 @@
+.signupForm {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 52vh;
+    /* border: 2px solid lime; */
+}
+
+.signupBottom {
+    width: 300px;
+    margin: auto;
+    /* border: 2px solid red; */
+}

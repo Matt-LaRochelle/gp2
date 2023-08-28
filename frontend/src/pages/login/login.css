@@ -35,6 +35,7 @@
 .login input {
     margin-bottom: 30px;
     font-size: 28px;
+    color: #333;
 }
 
 .loginLinkContainer {
