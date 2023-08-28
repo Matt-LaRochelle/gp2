@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { useLogin } from '../../hooks/useLogin'
 import PacmanLoader from "react-spinners/PacmanLoader";
 import './login.css'
+import Loading from '../../components/loading/Loading';
+import Password from '../../components/password/Password';
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -49,6 +51,9 @@ const Login = () => {
                             <p>This process tends to take 5-60 seconds</p>
                             <PacmanLoader color="#1aac83" />
                         </div>}
+                </div>
+                <div className='passwordScreen'>
+                    <Password />
                 </div>
             </form>
         </div>

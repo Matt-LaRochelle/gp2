@@ -65,3 +65,8 @@ color:var(--subtext);
     margin: auto;
     margin-top: 16%;
 }
+
+.passwordScreen {
+    position: absolute;
+    border: 2px solid red;
+}

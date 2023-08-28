@@ -1,0 +1,15 @@
+.loadingScreenContainer {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    border: 2px solid aqua;
+}
+
+.loadingDisplay {
+    height: 25vh;
+    width: 25vh;
+    background-color: red;
+    margin: auto;
+    margin-top: 5vh;
+}
