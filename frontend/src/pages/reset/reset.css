@@ -19,3 +19,8 @@
     width: 300px;
     margin: 7vh auto;
 }
+
+.passwordScreen {
+    position: absolute;
+    border: 2px solid red;
+}

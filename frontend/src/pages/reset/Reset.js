@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import PacmanLoader from "react-spinners/PacmanLoader";
 import './reset.css'
+import Password from '../../components/password/Password';
 
 function ResetPassword() {
   const { token } = useParams();
   const [authenticated, setAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
   const [completeReset, setCompleteReset] = useState(false)
+  const [checkList, setCheckList] = useState(false)
+  const passwordInputRef = useRef(null);
   
+
 
   useEffect(() => {
     const checkToken = async () => {
@@ -41,8 +44,7 @@ function ResetPassword() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true)
-    // TODO: Send password reset request to server
-    if (password === confirmPassword) {
+    if (password) {
       const response = await fetch('https://guitar-paths-api.onrender.com/api/user/reset', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -61,11 +63,31 @@ function ResetPassword() {
             setCompleteReset(true)
         }
     } else {
-      setError("passwords must match")
       setIsLoading(false)
     }
 
   };
+
+
+  // Opens the check-list when you click the password input
+  const passwordCheckList = () => {
+    setCheckList(true)
+  }
+
+// Takes away the check-list when you click outside the input
+const handleClickOutside = (e) => {
+    if (passwordInputRef.current && !passwordInputRef.current.contains(e.target)) {
+      setCheckList(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="reset">
@@ -74,14 +96,26 @@ function ResetPassword() {
             <p>Logo</p>
         </div>   
       </div>
+      {checkList && 
+        <div className='passwordScreen'>
+            <Password content={password} />
+        </div>
+      }
       {!authenticated ? <h1>Bad link, please try again</h1> :
       <div>
         <p>Reset your password</p>
         {!completeReset ? 
         <form onSubmit={handleSubmit}>
           <input type="hidden" value={token} name="token" />
-          <input type="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-          <input type="password" name="confirmPassword" placeholder='Confirm Password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+          <input 
+            type="password" 
+            name="password" 
+            placeholder="Password" 
+            value={password} 
+            onFocus={passwordCheckList}
+            onChange={(e) => setPassword(e.target.value)} 
+            ref={passwordInputRef}
+            required />
           <div className='resetBottom'>
             <button disabled={isLoading} type="submit">Reset Password</button>
             {error && <div className="error">{error}</div>}
