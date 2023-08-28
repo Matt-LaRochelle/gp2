@@ -4,7 +4,7 @@ import { useAuthContext } from './hooks/useAuthContext'
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Forgot from './pages/forgot/Forgot';
-import ResetPassword from './pages/Reset';
+import ResetPassword from './pages/reset/Reset';
 import Eartraining from './pages/Eartraining'
 import Landing from './pages/landing/Landing';
 

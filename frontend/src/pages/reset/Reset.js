@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PacmanLoader from "react-spinners/PacmanLoader";
+import './reset.css'
 
 function ResetPassword() {
   const { token } = useParams();
@@ -67,25 +68,30 @@ function ResetPassword() {
   };
 
   return (
-    <div>
+    <div className="reset">
+      <div className='loginTop'>
+        <div className="loginLogo">
+            <p>Logo</p>
+        </div>   
+      </div>
       {!authenticated ? <h1>Bad link, please try again</h1> :
       <div>
-        <h1>Reset Your Password</h1>
+        <p>Reset your password</p>
         {!completeReset ? 
-        <form className="login" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <input type="hidden" value={token} name="token" />
-          <label htmlFor="password">New Password</label>
-          <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-          <label htmlFor="confirm-password">Confirm Password</label>
-          <input type="password" name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
-          <button disabled={isLoading} type="submit">Reset Password</button>
-          {error && <div className="error">{error}</div>}
-            {isLoading && 
-                <div className="loading">
-                    <p>Fetching data from server...</p>
-                    <p>This process tends to take 5-60 seconds</p>
-                    <PacmanLoader color="#1aac83" />
-                </div>}
+          <input type="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <input type="password" name="confirmPassword" placeholder='Confirm Password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+          <div className='resetBottom'>
+            <button disabled={isLoading} type="submit">Reset Password</button>
+            {error && <div className="error">{error}</div>}
+              {isLoading && 
+                  <div className="loading">
+                      <p>Fetching data from server...</p>
+                      <p>This process tends to take 5-60 seconds</p>
+                      <PacmanLoader color="#1aac83" />
+                  </div>}
+          </div>
         </form> : <div className="good-response">Password has been reset!</div> }
       </div> }
     </div>

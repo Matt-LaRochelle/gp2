@@ -1,0 +1,21 @@
+.reset p {
+    color: var(--secondary);
+    font-size: 22px;
+    display: block;
+    width: 300px;
+    margin: 5vh auto;
+}
+
+.loginLogo p {
+    color: #333;
+}
+
+.reset input {
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.resetBottom {
+    width: 300px;
+    margin: 7vh auto;
+}
