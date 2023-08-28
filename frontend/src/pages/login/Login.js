@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useLogin } from '../../hooks/useLogin'
 import PacmanLoader from "react-spinners/PacmanLoader";
@@ -9,13 +9,34 @@ import Password from '../../components/password/Password';
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [checkList, setCheckList] = useState(false)
     const {login, error, isLoading} = useLogin()
+    const passwordInputRef = useRef(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         await login(email, password)
     }
+
+    const passwordCheckList = () => {
+        setCheckList(true)
+    }
+
+    const handleClickOutside = (e) => {
+        if (passwordInputRef.current && !passwordInputRef.current.contains(e.target)) {
+          setCheckList(false);
+        }
+      };
+    
+      useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+    
+        return () => {
+          document.removeEventListener('mousedown', handleClickOutside);
+        };
+      }, []);
+
     return (
         <div className='login'>
             <div className='loginTop'>
@@ -23,6 +44,11 @@ const Login = () => {
                     <p>Logo</p>
                 </div>   
             </div>
+            {checkList && 
+                    <div className='passwordScreen'>
+                        <Password content={password} />
+                    </div>
+                }
 
             <form className="loginForm" onSubmit={handleSubmit}>
                 <div className='loginMiddle'>
@@ -35,8 +61,10 @@ const Login = () => {
                     <input
                         type="password"
                         placeholder='Password'
+                        onFocus={passwordCheckList}
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
+                        ref={passwordInputRef}
                     />
                     <div className='loginLinkContainer'>
                         <Link to="/forgot" className="loginLink">Forgot password</Link>
@@ -51,9 +79,6 @@ const Login = () => {
                             <p>This process tends to take 5-60 seconds</p>
                             <PacmanLoader color="#1aac83" />
                         </div>}
-                </div>
-                <div className='passwordScreen'>
-                    <Password />
                 </div>
             </form>
         </div>
