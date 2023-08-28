@@ -1,26 +1,9 @@
-.lContainer {
+/* .lContainer {
     background-image: linear-gradient(#426BFF, #3E3BD7);
     height: 100vh;
     width: 100vw;
     position: relative;
-}
-
-.lCircle {
-    height: 310px;
-    width: 310px;
-    background-color: #fff;
-    border-radius: 50%;
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translate(-50%);
-    position: relative;
-}
-
-.lCircle p {
-    text-align: center;
-    padding-top: 140px;
-}
+} */
 
 .lTitle {
     position: absolute;
@@ -42,7 +25,7 @@
     display: flex;
     justify-content: space-around;
 }
-.lButtons button {
+/* .lButtons button {
     border-radius: 20px;
     border: none;
     background-color: #05036D;
@@ -50,4 +33,4 @@
     font-size: 24px;
     font-weight: light 300;
     padding: 8px 18px;
-}
+} */

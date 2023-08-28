@@ -1,6 +1,9 @@
 import './landing.css'
+import { Link } from 'react-router-dom'
+
 
 const Landing = () => {
+
     return (
         <div className="lContainer">
             <div className="lCircle">
@@ -11,8 +14,8 @@ const Landing = () => {
                 <h1>Buddy</h1>
             </div>
             <div className="lButtons">
-                <button>Sign in</button>
-                <button>Register</button>
+                <Link to="/login"><button>Sign in</button></Link>
+                <Link to="/signup"><button>Register</button></Link>
             </div>
         </div>
     )

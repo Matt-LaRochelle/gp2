@@ -1,0 +1,330 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+/* layout */
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
+  --feature: #fff;
+  --wall: #f1f1f1;
+  --accent: #30a2c5;
+
+  /* --primary: #0fc5d2;
+  --secondary: #c1dafb;
+  --feature: #fff;
+  --error: #e7195a;
+  --wall: #cffce8;
+  --accent: #0f63d2 */
+
+  /* --wall: #333;
+  --feature: #17081b;
+  --primary: #4ba031;
+  --accent: #270e2f; */
+
+
+
+
+}
+body {
+  background: var(--wall);
+  margin: 0;
+  font-family: "Rubik";
+}
+header {
+  background: var(--feature);
+}
+header .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header a {
+  color: #333;
+  text-decoration: none;
+}
+.pages{
+  max-width: 1400px;
+  padding: 0px;
+  margin: 0 auto;
+}
+h1, h2, h3, h4, h5 ,h6 {
+  color: #333;
+}
+
+/* new workout form */
+label, input {
+  display: block;
+}
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+form button {
+  border: 2px solid var(--primary);
+  background: var(--feature);
+  /* border: 0; */
+  color: var(--primary);
+  padding: 10px;
+  font-family: "Poppins";
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+input.error {
+  border: 1px solid var(--error);
+}
+
+/* profile -- not in use currently*/
+.profile-header {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 100px;
+}
+.profile-scores {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 0px;
+  background: var(--feature);
+  padding: 0 20px;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+.profile-scores p, h4 {
+  line-height: 5px;
+  text-align: left;
+}
+
+/* ear training -- not in use currently*/
+.eartraining p, h1 {
+  text-align: center;
+  max-width: 700px;
+  margin: auto;
+}
+.toggle-level {
+  display: block;
+  margin: 10px auto;
+  width: 350px;
+}
+.toggle-level button {
+  margin: 0 5px;
+}
+.toggle-level button:hover {
+  border: 1px solid var(--primary);
+  border-radius: 2px;
+  color: var(--primary);
+  padding: 2px 7px;
+}
+
+/* single */
+.single-container {
+  max-width: 600px;
+  margin: auto;
+  position: relative;
+  background: var(--feature);
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  border-radius: 4px;
+  padding: 20px;
+}
+.single-container button {
+  display: block;
+  margin: 40px auto;
+}
+.single-container h2 {
+  margin-bottom: 0;
+  text-align: center;
+}
+.single-format {
+  display: flex;
+  justify-content: space-between;
+}
+.primary {
+  color: var(--primary);
+  font-weight: 600;
+}
+.tries {
+  text-align: center;
+}
+.guess-container {
+  position: relative;
+}
+.correct {
+  font-size: 4rem;
+  color: var(--primary);
+  position: absolute;
+  bottom: -105px;
+  left: 50.5%;
+  transform: translate(-50%, -50%);
+}
+.incorrect {
+  font-size: 4rem;
+  color: var(--error);
+  position: absolute;
+  bottom: -105px;
+  left: 50.5%;
+  transform: translate(-50%, -50%);
+}
+.select-answer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-row-gap: 0;
+  grid-column-gap: 50px;
+  margin: 18px auto 0;
+  max-width: 500px;
+}
+.select-answer input {
+  width: 20px;
+  margin-top: 5.2px;
+  color: var(--primary);
+  accent-color: var(--primary);
+}
+.select-answer-format {
+  display: flex;
+  justify-content: flex-start;
+}
+.primary-button {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 10px;
+}
+.primary-button:hover {
+  background: var(--wall)
+}
+.bottom-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.bottom-buttons button, .help button {
+  color: var(--accent);
+  background-color: var(--feature);
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+}
+.bottom-buttons button:hover, .help button:hover {
+  background-color: var(--wall);
+  cursor: pointer;
+}
+.help {
+  max-width: 700px;
+}
+.help h2 {
+  text-align: center;
+}
+.help ul {
+  display: block;
+  max-width:540px;
+  margin-left: -15px;
+}
+.key img {
+  max-width: 600px;
+  min-width: 200px;
+  margin: 0 auto 50px;
+}
+.test-features {
+  border: 2px solid #8a25d8;
+  color: #8a25d8;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+  background-color: #8a25d81d;
+}
+.test-features button {
+  margin: 5px auto;
+  cursor: pointer;
+  border: 2px solid #8a25d8;
+  border-radius: 4px;
+  color: #8a25d8;
+  background-color: #e0d9e509;
+}
+.test-features button:hover {
+  background-color: #8a25d836;
+}
+
+/* dynamic sizing */
+@media screen and (max-width: 700px) {
+  .key img, .key ul {
+    max-width: 100%;
+  }
+  .select-answer {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+  }
+}
+@media screen and (max-width: 500px) {
+  h1, h2 {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 350px) {
+  .select-answer {
+    grid-template-columns: 1fr 1fr;
+  }
+  h1, h2 {
+    font-size: 1rem;
+  }
+}
+
+
+/* navbar */
+nav {
+  display: flex;
+  align-items: center;
+}
+nav a {
+  margin: 10px;
+}
+nav button {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 10px;
+}
+nav button:hover {
+  background: var(--wall);
+  cursor: pointer;
+}
+.user-nav {
+  display: flex;
+  align-items: center;
+}
+
+/* auth forms */
+form.signup, form.login {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: var(--feature);
+  border-radius: 4px;
+}
+.loading {
+  margin: 20px;
+}
+.good-response {
+  margin: 20px;
+}
