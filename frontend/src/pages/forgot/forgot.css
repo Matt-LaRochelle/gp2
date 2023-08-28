@@ -1,0 +1,20 @@
+.forgot p {
+    color: var(--secondary);
+    font-size: 22px;
+    display: block;
+    width: 300px;
+    margin: 5vh auto;
+}
+
+.loginLogo p {
+    color: #333;
+}
+
+.forgot input {
+    font-size: 28px;
+}
+
+.forgotBottom {
+    width: 300px;
+    margin: 10vh auto;
+}
