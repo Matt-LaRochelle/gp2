@@ -235,55 +235,19 @@ const Single = () => {
                 
                 <button className="singlePlayButton" onClick={play_note}><AiOutlinePlayCircle /></button>
                 
-                <div className="select-answer">
-                    <div className="select-answer-format">
-                        <input type="radio" id="A" name="note" value="A" onChange={handleChange}></input>
-                        <label for="A">A</label>
-                    </div>
-                    <div className="select-answer-format">
-                        <input type="radio" id="A#/Bb" name="note" value="A#" onChange={handleChange}></input>
-                        <label for="A#/Bb">A#/Bb</label>
-                    </div>
-                    <div className="select-answer-format">
-                        <input type="radio" id="B" name="note" value="B" onChange={handleChange}></input>
-                        <label for="B">B</label>
-                    </div>
-                    <div className="select-answer-format">
-                        <input type="radio" id="C" name="note" value="C" onChange={handleChange}></input>
-                        <label for="C">C</label>
-                    </div>
-                    <div className="select-answer-format">
-                        <input type="radio" id="C#/Db" name="note" value="C#" onChange={handleChange}></input>
-                        <label for="C#/Db">C#/Db</label>
-                    </div>
-                    <div className="select-answer-format">
-                        <input type="radio" id="D" name="note" value="D" onChange={handleChange}></input>
-                        <label for="D">D</label>
-                    </div>
-                    <div className="select-answer-format">
-                        <input type="radio" id="D#/Eb" name="note" value="D#" onChange={handleChange}></input>
-                        <label for="D#/Eb">D#/Eb</label>
-                    </div>
-                    <div className="select-answer-format">
-                        <input type="radio" id="E" name="note" value="E" onChange={handleChange}></input>
-                        <label for="E">E</label>
-                    </div>
-                    <div className="select-answer-format">
-                        <input type="radio" id="F" name="note" value="F" onChange={handleChange}></input>
-                        <label for="F">F</label>
-                    </div>
-                    <div className="select-answer-format">
-                        <input type="radio" id="F#/Gb" name="note" value="F#" onChange={handleChange}></input>
-                        <label for="F#/Gb">F#/Gb</label>
-                    </div>
-                    <div className="select-answer-format">
-                        <input type="radio" id="G" name="note" value="G" onChange={handleChange}></input>
-                        <label for="G">G</label>
-                    </div>
-                    <div className="select-answer-format">
-                        <input type="radio" id="G#/Ab" name="note" value="G#" onChange={handleChange}></input>
-                        <label for="G#/Ab">G#/Ab</label>
-                    </div>
+                <div className="singleNoteSelection">
+                    <button className="singleNote" value="A" onChange={handleChange}>A</button>
+                    <button className="singleNote" value="A#" onChange={handleChange}>A#</button>
+                    <button className="singleNote" value="B" onChange={handleChange}>B</button>
+                    <button className="singleNote" value="C" onChange={handleChange}>C</button>
+                    <button className="singleNote" value="C#" onChange={handleChange}>C#</button>
+                    <button className="singleNote" value="D" onChange={handleChange}>D</button>
+                    <button className="singleNote" value="D#" onChange={handleChange}>D#</button>
+                    <button className="singleNote" value="E" onChange={handleChange}>E</button>
+                    <button className="singleNote" value="F" onChange={handleChange}>F</button>
+                    <button className="singleNote" value="F#" onChange={handleChange}>F#</button>
+                    <button className="singleNote" value="G" onChange={handleChange}>G</button>
+                    <button className="singleNote" value="G#" onChange={handleChange}>G#</button>
                 </div>
                 <div className="guess-container">
                     <button className="primary-button" type="submit" onClick={check_answer}>Guess</button> 
