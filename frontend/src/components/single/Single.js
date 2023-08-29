@@ -93,6 +93,11 @@ const Single = () => {
         }
     }
 
+    // TODO make this toggle the sharps and flats
+    const sharpFlatToggle = () => {
+        console.log("You clicked me!")
+    }
+
     // Update db highscore
     useEffect(() => {
         const updateScore = async () => {
@@ -119,6 +124,7 @@ const Single = () => {
         updateScore()
     }, [gotAnswer, dispatch, highScore, scores, user.token])
 
+    
    
     //Plays note of current state
     const play_note = () => {
@@ -249,15 +255,16 @@ const Single = () => {
                     <button className="singleNote" value="G" onChange={handleChange}>G</button>
                     <button className="singleNote" value="G#" onChange={handleChange}>G#</button>
                 </div>
-                <div className="guess-container">
+                <div className="guessContainer">
                     <button className="primary-button" type="submit" onClick={check_answer}>Guess</button> 
                     { gotAnswer === true ? <AiOutlineCheckCircle className="correct"/> : null }
                     { gotAnswer === false ? <AiOutlineCloseCircle className="incorrect"/> : null }
                 </div>
                 
-                <div className="bottom-buttons">
+                <div className="bottomButtons">
                     <button onClick={helpScreen}>Help</button>
                     <button onClick={keyScreen}>Key</button>
+                    <button onClick={sharpFlatToggle}>#/b</button>
                 </div>
                 {testUser && 
                     <div className="test-features">
