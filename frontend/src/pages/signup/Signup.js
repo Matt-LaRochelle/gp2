@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import { useSignup } from '../../hooks/useSignup'
-import PacmanLoader from "react-spinners/PacmanLoader";
 import './signup.css'
 import Password from '../../components/password/Password';
 import Loading from '../../components/loading/Loading';
@@ -8,7 +7,7 @@ import Error from '../../components/error/Error';
 
 const Signup = () => {
     const [fName, setFName] = useState('')
-    const [year, setYear] = useState('');
+    const [birthday, setBirthday] = useState('');
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [checkList, setCheckList] = useState(false)
@@ -18,7 +17,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        await signup(email, password, fName, year)
+        await signup(email, password, fName, birthday)
     }
 
     const passwordCheckList = () => {
@@ -63,10 +62,10 @@ const Signup = () => {
                     value={fName}
                 />
                 <input
-                    type="number"
+                    type="date"
                     placeholder='Birthday'
-                    onChange={(e) => setYear(e.target.value)}
-                    value={year}
+                    onChange={(e) => setBirthday(e.target.value)}
+                    value={birthday}
                     />
                 <input
                     type="email"

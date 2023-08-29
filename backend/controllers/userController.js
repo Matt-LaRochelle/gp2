@@ -19,9 +19,9 @@ const loginUser = async (req, res) => {
 
         // get extra user information for application
         const fName = user.fName
-        const year = user.year
+        const birthday = user.birthday
 
-        res.status(200).json({email, fName, year, token})
+        res.status(200).json({email, fName, birthday, token})
     } catch (error) {
         res.status(400).json({error: error.message})
     }
@@ -29,16 +29,16 @@ const loginUser = async (req, res) => {
 
 // signup user
 const signupUser = async (req, res) => {
-    const {email, password, fName, year} = req.body
+    const {email, password, fName, birthday} = req.body
 
     try {
-        const user = await User.signup(email, password, fName, year)
+        const user = await User.signup(email, password, fName, birthday)
 
         // create a token
         const token = createToken(user._id)
 
         // Let server know everything is good
-        res.status(200).json({email, fName, year, token})
+        res.status(200).json({email, fName, birthday, token})
     } catch (error) {
         res.status(400).json({error: error.message})
     }
@@ -47,20 +47,16 @@ const signupUser = async (req, res) => {
 // send reset password link to email
 const forgotUser = async (req, res) => {
     const email = req.body.email
-    console.log("step 1: email: " + email)
 
     try {
         const user = await User.forgot(email)
-        console.log("step 2: user: " + user)
-        console.log("step 3: user.id: " + user._id)
 
         // create a token
         const token = jwt.sign({ userID: user._id }, process.env.SECRET, { expiresIn: '1h' })
-        console.log("step 4: token: " + token)
         user.resetPasswordToken = token;
         user.resetPasswordExpires = Date.now() + 3600000; // Expires in 1 hour
         await user.save();
-        console.log("step 5: saved user data")
+
         // create the email
         const message = {
             to: user.email,
@@ -71,12 +67,12 @@ const forgotUser = async (req, res) => {
         // send the email
         sgMail.send(message)
         .then(() => {
-            console.log('step 6: Email sent');
+            console.log('Email sent');
         })
         .catch((error) => {
-            console.error('step 6 failed: ' + error);
+            console.error('Send email failed: ' + error);
         });
-        res.status(200).json({message: "step 7: backend got it!"})
+        res.status(200).json({message: "Final step: backend got it!"})
 
     } catch (error) {
         res.status(400).json({error: error.message})

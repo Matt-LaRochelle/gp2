@@ -18,8 +18,8 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    year: {
-        type: Number,
+    birthday: {
+        type: Date,
         required: true
     },
     resetPasswordToken: {
@@ -31,11 +31,11 @@ const userSchema = new Schema({
 })
 
 // static signup method
-userSchema.statics.signup = async function(email, password, fName, year) {
+userSchema.statics.signup = async function(email, password, fName, birthday) {
 
     // validation
-    console.log(email, password, fName, year);
-    if (!email || !password || !fName || !year) {
+    console.log(email, password, fName, birthday);
+    if (!email || !password || !fName || !birthday) {
         throw Error('All fields must be filled')
     }
     if (!validator.isEmail(email)) {
@@ -57,7 +57,7 @@ userSchema.statics.signup = async function(email, password, fName, year) {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
-    const user = await this.create({ email, password: hash, fName, year, resetPasswordToken, resetPasswordExpires })
+    const user = await this.create({ email, password: hash, fName, birthday, resetPasswordToken, resetPasswordExpires })
     
     return user
 
