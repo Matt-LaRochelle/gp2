@@ -16,8 +16,6 @@
     color: linear-gradient(to right, white, red);
 }
 
-
-
 .singleScoresBanner span {
     background-image: linear-gradient(to right, lime, aqua, rgb(135, 44, 255), rgb(255, 0, 255), red, orange, yellow, lime);
     -webkit-background-clip: text;
@@ -27,7 +25,6 @@
     font-size: 20px;
     font-weight: 700;
 }
-
 @keyframes rainbow-animation {
     0%, 100% {
         background-position: 0%;
@@ -37,16 +34,13 @@
     }
 }
 
-/* .singleScoresBanner span {
-    animation: color-change 10s infinite;
-}
+.singlePlayButton {
+    display: flex;
+    margin: auto;
+    height: 134px;
+    width: 175px;
+    font-size: 100px;
+    justify-content: center;
+    align-items: center;
 
-@keyframes color-change {
-    0% { color: red; }
-    20% { color: yellow ;}
-    35% { color: lime;}
-    50% { color: aqua; }
-    65% { color: blue; }
-    85% { color: purple; }
-    100% { color: pink; }
-  } */
+}

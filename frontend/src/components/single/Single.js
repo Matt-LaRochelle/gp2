@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
+import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlinePlayCircle } from 'react-icons/ai';
 import audioClip from '../../sounds/noteSounds';
 import SHelp from '../SingleHelp'
 import SKey from '../SingleKey'
@@ -233,7 +233,7 @@ const Single = () => {
                     <p>High Score: <span>{!scores ? "loading" : scores[0].single}</span></p>
                 </div>
                 
-                <button className="primary-button" onClick={play_note}>Play Note</button>
+                <button className="singlePlayButton" onClick={play_note}><AiOutlinePlayCircle /></button>
                 
                 <div className="select-answer">
                     <div className="select-answer-format">
