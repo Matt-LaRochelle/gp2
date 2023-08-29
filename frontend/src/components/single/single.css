@@ -1,0 +1,52 @@
+.singleScoresBanner {
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    margin: 29px auto 42px;
+    height: 53px;
+    border-radius: 20px;
+}
+
+.singleScoresBanner p {
+    font-size: 18px;
+    font-weight: 500;
+    color: linear-gradient(to right, white, red);
+}
+
+
+
+.singleScoresBanner span {
+    background-image: linear-gradient(to right, lime, aqua, rgb(135, 44, 255), rgb(255, 0, 255), red, orange, yellow, lime);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400% auto;
+    animation: rainbow-animation 16s linear infinite;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+@keyframes rainbow-animation {
+    0%, 100% {
+        background-position: 0%;
+    }
+    25%, 65% {
+        background-position: 100%;
+    }
+}
+
+/* .singleScoresBanner span {
+    animation: color-change 10s infinite;
+}
+
+@keyframes color-change {
+    0% { color: red; }
+    20% { color: yellow ;}
+    35% { color: lime;}
+    50% { color: aqua; }
+    65% { color: blue; }
+    85% { color: purple; }
+    100% { color: pink; }
+  } */

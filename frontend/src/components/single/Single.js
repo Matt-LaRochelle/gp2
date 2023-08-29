@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
-import audioClip from '../sounds/noteSounds';
-import SHelp from './SingleHelp'
-import SKey from './SingleKey'
+import audioClip from '../../sounds/noteSounds';
+import SHelp from '../SingleHelp'
+import SKey from '../SingleKey'
+import './single.css'
 
-import { useAuthContext } from '../hooks/useAuthContext'
-import { useScoresContext } from '../hooks/useScores'
+import { useAuthContext } from '../../hooks/useAuthContext'
+import { useScoresContext } from '../../hooks/useScores'
 
 const Single = () => {
     //Database scores and client side rendering
@@ -224,12 +225,12 @@ const Single = () => {
     }
 
     return (
-        <div className="single-container">
+        <div className="singleContainer">
             <div>
-                <h2>Single Note Identification Game</h2>
-                <div className="single-format">
-                    <p className="primary">Correct: <span>{highScore}</span></p>
-                    <p className="primary">High Score: <span>{!scores ? null : scores[0].single}</span></p>
+                <div className="singleScoresBanner">
+                    <p>Tries: <span>{count}</span></p>
+                    <p>Current: <span>{highScore}</span></p>
+                    <p>High Score: <span>{!scores ? "loading" : scores[0].single}</span></p>
                 </div>
                 
                 <button className="primary-button" onClick={play_note}>Play Note</button>
@@ -292,7 +293,6 @@ const Single = () => {
                 
                 <div className="bottom-buttons">
                     <button onClick={helpScreen}>Help</button>
-                    <p className="tries"><span className="primary">Tries: {count}</span></p>
                     <button onClick={keyScreen}>Key</button>
                 </div>
                 {testUser && 

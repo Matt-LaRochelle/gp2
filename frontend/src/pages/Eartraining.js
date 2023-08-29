@@ -1,9 +1,9 @@
-import Single from '../components/Single'
+import Single from '../components/single/Single'
 import Navbar from '../components/navbar/Navbar'
 
 const Eartraining = () => {
     return (
-        <div className="eartraining">
+        <div>
             <Navbar />
             <Single />
         </div>
