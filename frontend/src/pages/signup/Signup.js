@@ -3,6 +3,8 @@ import { useSignup } from '../../hooks/useSignup'
 import PacmanLoader from "react-spinners/PacmanLoader";
 import './signup.css'
 import Password from '../../components/password/Password';
+import Loading from '../../components/loading/Loading';
+import Error from '../../components/error/Error';
 
 const Signup = () => {
     const [fName, setFName] = useState('')
@@ -46,6 +48,8 @@ const Signup = () => {
                     <p>Logo</p>
                 </div>   
             </div>
+            {isLoading && <Loading />}
+            {error && <Error error={error}/>}
             {checkList && 
                     <div className='passwordScreen'>
                         <Password content={password} />
@@ -80,13 +84,6 @@ const Signup = () => {
                 />
                 <div className="signupBottom">
                     <button disabled={isLoading}>Sign Up</button>
-                    {error && <div className="error">{error}</div>}
-                    {isLoading && 
-                        <div>
-                            <p>Fetching data from server...</p>
-                            <p>This process tends to take 5-60 seconds</p>  
-                            <PacmanLoader color="#1aac83" />
-                        </div>}
                 </div>
             </form>
         </div>

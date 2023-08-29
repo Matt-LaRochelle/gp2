@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import PacmanLoader from "react-spinners/PacmanLoader";
 import './reset.css'
 import Password from '../../components/password/Password';
+import Loading from '../../components/loading/Loading';
+import Error from '../../components/error/Error';
 
 function ResetPassword() {
   const { token } = useParams();
@@ -96,6 +98,8 @@ const handleClickOutside = (e) => {
             <p>Logo</p>
         </div>   
       </div>
+      {isLoading && <Loading />}
+      {error && <Error error={error}/>}
       {checkList && 
         <div className='passwordScreen'>
             <Password content={password} />
@@ -118,13 +122,6 @@ const handleClickOutside = (e) => {
             required />
           <div className='resetBottom'>
             <button disabled={isLoading} type="submit">Reset Password</button>
-            {error && <div className="error">{error}</div>}
-              {isLoading && 
-                  <div className="loading">
-                      <p>Fetching data from server...</p>
-                      <p>This process tends to take 5-60 seconds</p>
-                      <PacmanLoader color="#1aac83" />
-                  </div>}
           </div>
         </form> : <div className="good-response">Password has been reset!</div> }
       </div> }
