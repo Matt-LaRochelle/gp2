@@ -38,6 +38,9 @@ const Single = () => {
     //For scrolling to key or help pages:
     const keyRef = useRef(null);
     const helpRef = useRef(null);
+    const [noteNames, setNoteNames] = useState([
+        "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#",
+    ])
 
     //Fetch data from database before loading rest of page
     useEffect(() => {
@@ -95,7 +98,13 @@ const Single = () => {
 
     // TODO make this toggle the sharps and flats
     const sharpFlatToggle = () => {
-        console.log("You clicked me!")
+        if (noteNames[1] === "A#") {
+            setNoteNames([
+                "A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab",
+            ])
+        } else {
+            setNoteNames(["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#",])
+        }
     }
 
     // Update db highscore
@@ -132,9 +141,10 @@ const Single = () => {
         note.play();
     }
 
-    //Log which radio button is clicked
-    function handleChange(event) {
+    //Log which button is clicked
+    function handleClick(event) {
         const newValue = event.target.value;
+        console.log(newValue)
         setInputText(newValue);
     }
 
@@ -238,29 +248,21 @@ const Single = () => {
                     <p>Current: <span>{highScore}</span></p>
                     <p>High Score: <span>{!scores ? "loading" : scores[0].single}</span></p>
                 </div>
-                
                 <button className="singlePlayButton" onClick={play_note}><AiOutlinePlayCircle /></button>
-                
                 <div className="singleNoteSelection">
-                    <button className="singleNote" value="A" onChange={handleChange}>A</button>
-                    <button className="singleNote" value="A#" onChange={handleChange}>A#</button>
-                    <button className="singleNote" value="B" onChange={handleChange}>B</button>
-                    <button className="singleNote" value="C" onChange={handleChange}>C</button>
-                    <button className="singleNote" value="C#" onChange={handleChange}>C#</button>
-                    <button className="singleNote" value="D" onChange={handleChange}>D</button>
-                    <button className="singleNote" value="D#" onChange={handleChange}>D#</button>
-                    <button className="singleNote" value="E" onChange={handleChange}>E</button>
-                    <button className="singleNote" value="F" onChange={handleChange}>F</button>
-                    <button className="singleNote" value="F#" onChange={handleChange}>F#</button>
-                    <button className="singleNote" value="G" onChange={handleChange}>G</button>
-                    <button className="singleNote" value="G#" onChange={handleChange}>G#</button>
+                
+                {noteNames.map((note) => (
+                    <button className="singleNote" value={note} onClick={handleClick}>
+                        {note}
+                    </button>
+                    ))}
+
                 </div>
                 <div className="guessContainer">
                     <button className="primary-button" type="submit" onClick={check_answer}>Guess</button> 
                     { gotAnswer === true ? <AiOutlineCheckCircle className="correct"/> : null }
                     { gotAnswer === false ? <AiOutlineCloseCircle className="incorrect"/> : null }
                 </div>
-                
                 <div className="bottomButtons">
                     <button onClick={helpScreen}>Help</button>
                     <button onClick={keyScreen}>Key</button>
