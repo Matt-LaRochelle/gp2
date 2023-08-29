@@ -5,6 +5,7 @@ import PacmanLoader from "react-spinners/PacmanLoader";
 import './login.css'
 import Loading from '../../components/loading/Loading';
 import Password from '../../components/password/Password';
+import Error from '../../components/error/Error';
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -49,6 +50,8 @@ const Login = () => {
                         <Password content={password} />
                     </div>
                 }
+            {isLoading && <Loading />}
+            {error && <Error error={error}/>}
 
             <form className="loginForm" onSubmit={handleSubmit}>
                 <div className='loginMiddle'>
@@ -72,13 +75,6 @@ const Login = () => {
                 </div>
                 <div className="loginBottom">
                     <button disabled={isLoading}>Log In</button>
-                    {error && <div className="error">{error}</div>}
-                    {isLoading && 
-                        <div className="loading">
-                            <p>Fetching data from server...</p>
-                            <p>This process tends to take 5-60 seconds</p>
-                            <PacmanLoader color="#1aac83" />
-                        </div>}
                 </div>
             </form>
         </div>

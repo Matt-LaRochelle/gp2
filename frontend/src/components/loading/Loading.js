@@ -1,17 +1,15 @@
 import './loading.css'
+import PacmanLoader from "react-spinners/PacmanLoader";
 
 const Loading = () => {
     return (
         <div className="loadingScreenContainer">
-            <div className='loadingDisplay'>
-                <h4>Password must include</h4>
-                <ul>
-                    <li>One upper case</li>
-                    <li>One lower case</li>
-                    <li>One number</li>
-                    <li>One special character</li>
-                    <li>Be at least 8 characters long</li>
-                </ul>
+            <div className='loadingDisplay'>   
+                <div className='loadingContent'>
+                    <PacmanLoader className="loadingIcon" color="var(--correct)" />
+                    <p>Fetching data from server...</p>
+                    <p>This process tends to take 5-60 seconds</p>
+                </div> 
             </div>
         </div>
     )

@@ -23,6 +23,7 @@ const Signup = () => {
         setCheckList(true)
     }
 
+    // handleClick for password
     const handleClickOutside = (e) => {
         if (passwordInputRef.current && !passwordInputRef.current.contains(e.target)) {
           setCheckList(false);
