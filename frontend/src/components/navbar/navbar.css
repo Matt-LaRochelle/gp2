@@ -1,0 +1,51 @@
+.navbarHeader {
+    height: 82px;
+}
+
+.navContainer {
+    display: flex;
+    position: relative;
+
+}
+
+.navLogo {
+    display: flex;
+    flex-direction: row;
+    /* border: 2px solid lime; */
+    align-self: flex-start;
+}
+
+.navLogo div {
+    border-radius: 50%;
+    background-color: #fff;
+    height: 66px;
+    width: 66px;
+    margin: 15px 13px;
+    position: relative;
+}
+
+.logoPlaceholder {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.navLogo h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 18px;
+    width: 120px;
+}
+
+
+
+.menuIcon {
+    color: #222;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+}

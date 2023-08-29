@@ -1,0 +1,35 @@
+import { Link } from 'react-router-dom'
+import { useLogout } from '../../hooks/useLogout'
+import { useAuthContext } from '../../hooks/useAuthContext'
+import './navbar.css'
+import {RxHamburgerMenu} from 'react-icons/rx';
+
+const Navbar = () => {
+    const { logout } = useLogout()
+    const { user } = useAuthContext()
+
+    const handleClick = () => {
+        logout()
+    }
+
+    return (
+        <header className='navbarHeader'>
+            <div className="navContainer">
+                <div className="navLogo">
+                    <div><h4 className='logoPlaceholder'>Logo</h4></div>
+                    <h2>Ear Training Buddy</h2>
+                </div>
+                <nav>
+                    {/* <div className="user-nav">
+                        <Link to="/profile">{user.email}</Link>
+                        <span>Hello {user.fName}</span>
+                        <button onClick={handleClick}>Log Out</button>
+                    </div> */}
+                    <RxHamburgerMenu className="menuIcon" />
+                </nav>
+            </div>
+        </header>
+    )
+}
+
+export default Navbar
