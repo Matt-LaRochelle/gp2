@@ -31,6 +31,8 @@ const Profile = () => {
         
     // }, [scoresDispatch, user])
 
+    let bDay = new Date(user.birthday)
+    console.log(bDay)
     let date = format(new Date(user.birthday), 'MMMM do, yyyy')
 
     
