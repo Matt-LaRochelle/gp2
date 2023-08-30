@@ -1,0 +1,9 @@
+.singleKeyContainer {
+    position: absolute;
+    top: 0px;
+    width: 100vh;
+}
+
+.singleKeyContainer img {
+    width: 100vw;
+}

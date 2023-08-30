@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlinePlayCircle } from 'react-icons/ai';
 import audioClip from '../../sounds/noteSounds';
 import SHelp from '../SingleHelp'
-import SKey from '../SingleKey'
+import SKey from '../singleKey/SingleKey'
 import './single.css'
 
 import { useAuthContext } from '../../hooks/useAuthContext'
@@ -41,6 +41,7 @@ const Single = () => {
     const [noteNames, setNoteNames] = useState([
         "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#",
     ])
+    const [sharp, setSharp] = useState(true)
 
     //Fetch data from database before loading rest of page
     useEffect(() => {
@@ -96,15 +97,27 @@ const Single = () => {
         }
     }
 
-    // TODO make this toggle the sharps and flats
+    // Toggle sharps and flats
     const sharpFlatToggle = () => {
         if (noteNames[1] === "A#") {
             setNoteNames([
                 "A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab",
             ])
+            setSharp(false)
         } else {
             setNoteNames(["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#",])
+            setSharp(true)
         }
+    }
+
+    // Toggle help screen
+    const helpScreen = () => {
+        setHelp(help => !help)
+    }
+
+    // Toggle key screen
+    const keyScreen = () => {
+        setKey(key => !key)
     }
 
     // Update db highscore
@@ -148,35 +161,6 @@ const Single = () => {
         setInputText(newValue);
     }
 
-    //Display help screen
-    function helpScreen() {
-        setHelp(!help)
-        if (help) {
-            helpRef.current.scrollIntoView({ behavior: 'smooth' })
-        }
-    }
-
-    //Effect for scrolling to help - must separate these two for faster performance
-    useEffect(() => {
-        if (helpRef.current) {
-            helpRef.current.scrollIntoView({ behavior: 'smooth' })
-        }
-    }, [help])
-
-    //Display key
-    function keyScreen() {
-        setKey(!key)
-        if (key) {
-            keyRef.current.scrollIntoView({ behavior: 'smooth' })
-        } 
-    }
-    
-    //Effect for scrolling to key
-    useEffect(() => {
-        if (keyRef.current) {
-          keyRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, [key]);
 
     //Main logic of the game
     function check_answer() {
@@ -277,8 +261,8 @@ const Single = () => {
                     }
             </div>
             {error && <div className="error">{error}</div>}
-            {help ? <section ref={helpRef}><SHelp /> </section> : null}
-            {key ? <section ref={keyRef}><SKey /></section> : null}
+            {help ? <SHelp /> : null}
+            {key ? <SKey type={sharp} /> : null}
         </div>
     )
 }
