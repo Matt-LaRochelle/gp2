@@ -1,0 +1,27 @@
+.helpScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(#426BFF, #3E3BD7);
+}
+
+.helpScreen h3 {
+    font-size: 28px;
+    font-weight: 500;
+    color: #fff;
+    width: 320px;
+    margin: auto;
+}
+
+.helpScreen p {
+    text-align: left;
+    width: 320px;
+    margin: 20px auto;
+    font-size: 18px;
+    font-weight: 200;
+    color: #fff;
+    line-height: 36px;
+}

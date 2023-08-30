@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlinePlayCircle } from 'react-icons/ai';
 import audioClip from '../../sounds/noteSounds';
-import SHelp from '../SingleHelp'
+import SHelp from '../singleHelp/SingleHelp'
 import SKey from '../singleKey/SingleKey'
 import './single.css'
 
@@ -248,9 +248,9 @@ const Single = () => {
                     { gotAnswer === false ? <AiOutlineCloseCircle className="singleIncorrect"/> : null }
                 </div>
                 <div className="bottomButtons">
-                    <button onClick={helpScreen}>Help</button>
-                    <button onClick={keyScreen}>Key</button>
-                    <button onClick={sharpFlatToggle}>#/b</button>
+                    <button className={help ? "highlight help" : "help"} onClick={helpScreen}>Help</button>
+                    <button className={key ? "highlight key" : "key"} onClick={keyScreen}>Key</button>
+                    <button className="key" onClick={sharpFlatToggle}>#/b</button>
                 </div>
                 {testUser && 
                     <div className="test-features">

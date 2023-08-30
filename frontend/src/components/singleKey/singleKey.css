@@ -1,12 +1,17 @@
-/* .singleKeyContainer {
-    position: absolute;
-    top: 0px;
-    width: 100vh;
-} */
+.keyContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(183, 183, 183, 0.38);
+    z-index: 5;
+}
 
 .window img {
     width: 100%;
     height: 100%;
+    z-index: 10;
 }
 
 .maximize {
@@ -17,6 +22,19 @@
     width: 25px;
     height: 25px;
     border: 1px solid var(--primary);
+    border-radius: 50%;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.minimize {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 20px;
+    width: 45px;
+    height: 45px;
+    border: 2px solid var(--primary);
     border-radius: 50%;
     color: var(--primary);
     cursor: pointer;

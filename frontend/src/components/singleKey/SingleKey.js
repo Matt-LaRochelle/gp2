@@ -2,7 +2,7 @@ import sharps from '../Sharps.png'
 import flats from '../Flats.png'
 import './singleKey.css'
 import { useState, useEffect } from 'react'
-import { AiOutlineFullscreen } from 'react-icons/ai'
+import { AiOutlineFullscreen, AiOutlineFullscreenExit } from 'react-icons/ai'
 
 const SKey = ({type}) => {
     const [sharpKey, setSharpKey] = useState(true)
@@ -21,11 +21,10 @@ const SKey = ({type}) => {
         left: isMaximized ? '0' : '50%',
         transform: isMaximized ? 'none' : 'translate(-50%, -50%)',
         zIndex: isMaximized ? '999' : '0',
+        transition: '1s'
       };
 
     // To do:
-    // In here you can have a maximize/minimize window
-    // Always display the key in a minimal fashion - 200 x 200
     // Still have a background fade color 
     // but make sure you can click through it
 
@@ -38,14 +37,18 @@ const SKey = ({type}) => {
     }, [type])
 
     return (
-        <div>
+        <div className="keyContainer">
             <div className="window" style={windowStyles}>
                 {
                     sharpKey 
                     ? <img src={sharps} alt="notes on the guitar using naturals and sharps" />
                     : <img src={flats} alt="notes on the guitar using naturals and flats" />
                 }
-                <AiOutlineFullscreen className='maximize' onClick={toggleMaximize} />
+                {
+                    isMaximized
+                    ? <AiOutlineFullscreenExit className='minimize' onClick={toggleMaximize} />
+                    : <AiOutlineFullscreen className='maximize' onClick={toggleMaximize} />
+                }
             </div>
         </div>
     )
