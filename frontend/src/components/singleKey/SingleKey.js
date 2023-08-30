@@ -6,13 +6,19 @@ import { useState, useEffect } from 'react'
 const SKey = ({type}) => {
     const [sharpKey, setSharpKey] = useState(true)
 
+    // To do:
+    // In here you can have a maximize/minimize window
+    // Always display the key in a minimal fashion - 200 x 200
+    // Still have a background fade color 
+    // but make sure you can click through it
+
     useEffect(() => {
         if (type) {
             setSharpKey(true)
         } else {
             setSharpKey(false)
         }
-    }, [])
+    }, [type])
 
     return (
         <div className="singleKeyContainer">
