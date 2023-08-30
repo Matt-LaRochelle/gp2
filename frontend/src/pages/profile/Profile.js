@@ -56,6 +56,7 @@ const Profile = () => {
                     <p>Progressions: </p><p>{scores && scores[0].progression}</p>
                 </div> */}
             </div>
+            <button className="resetPassword">Reset password</button>
         </div>
     )
 }

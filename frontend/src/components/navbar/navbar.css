@@ -24,6 +24,14 @@
     position: relative;
 }
 
+.hamburgerLink {
+    text-decoration: none;
+}
+
+.hamburgerLink:visited {
+    color: #fff;
+}
+
 .logoPlaceholder {
     position: absolute;
     left: 50%;

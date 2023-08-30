@@ -6,7 +6,7 @@
     margin-top: 80px;
     width: 300px;
     background-color: #fff;
-    margin: 80px auto;
+    margin: 80px auto 60px;
     padding: 28px 36px;
     border-radius: 20px;
     color: #737373;
@@ -23,4 +23,11 @@
     margin-bottom: 30px;
     font-size: 18px;
     font-weight: 300;
+}
+
+.resetPassword {
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    margin: auto;
 }
