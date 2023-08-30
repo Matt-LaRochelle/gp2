@@ -1,0 +1,26 @@
+.profileContainer {
+    height: 100vh;
+}
+
+.profileContentContainer {
+    margin-top: 80px;
+    width: 300px;
+    background-color: #fff;
+    margin: 80px auto;
+    padding: 28px 36px;
+    border-radius: 20px;
+    color: #737373;
+    position: relative;
+}
+
+.profileContentContainer label {
+    margin-top: 38px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.profileContentContainer p {
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 300;
+}

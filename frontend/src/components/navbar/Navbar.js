@@ -41,7 +41,7 @@ const Navbar = () => {
                         <ul>
                             <li>Play game</li>
                             <li>Tuner</li>
-                            <li>Profile</li>
+                            <li><Link to="/profile">Profile</Link></li>
                             <li onClick={handleClick}>Log out</li>
                         </ul>
                     </div>}

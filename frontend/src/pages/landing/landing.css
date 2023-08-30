@@ -1,9 +1,9 @@
-/* .lContainer {
+.lContainer {
     background-image: linear-gradient(#426BFF, #3E3BD7);
     height: 100vh;
     width: 100vw;
     position: relative;
-} */
+}
 
 .lTitle {
     position: absolute;
@@ -25,12 +25,3 @@
     display: flex;
     justify-content: space-around;
 }
-/* .lButtons button {
-    border-radius: 20px;
-    border: none;
-    background-color: #05036D;
-    color: #fff;
-    font-size: 24px;
-    font-weight: light 300;
-    padding: 8px 18px;
-} */

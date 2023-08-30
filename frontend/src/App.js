@@ -5,8 +5,9 @@ import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Forgot from './pages/forgot/Forgot';
 import ResetPassword from './pages/reset/Reset';
-import Eartraining from './pages/Eartraining'
+import Eartraining from './pages/Eartraining';
 import Landing from './pages/landing/Landing';
+import Profile from './pages/profile/Profile';
 
 function App() {
   const { user } = useAuthContext()
@@ -14,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <div className="pages">
+        <div className='pages'>
           <Routes>
             <Route
               path='/'
@@ -28,10 +29,10 @@ function App() {
               path="/reset-password/:token"
               element={!user ? <ResetPassword /> : <Navigate to="/" />}
               />
-              {/* <Route
+              <Route
               path='/profile'
               element={user ? <Profile /> : <Navigate to="/login" />}
-              /> */}
+              />
               <Route
               path='/login'
               element={!user ? <Login /> : <Navigate to="/" />}
