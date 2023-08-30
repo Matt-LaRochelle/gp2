@@ -3,10 +3,19 @@ import { useLogout } from '../../hooks/useLogout'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import './navbar.css'
 import {RxHamburgerMenu} from 'react-icons/rx';
+import { useState } from 'react';
 
 const Navbar = () => {
     const { logout } = useLogout()
     const { user } = useAuthContext()
+    const [menu, setMenu] = useState(false)
+
+    const openMenu = () => {
+        setMenu(true)
+    }
+    const closeMenu = () => {
+        setMenu(false)
+    }
 
     const handleClick = () => {
         logout()
@@ -25,7 +34,17 @@ const Navbar = () => {
                         <span>Hello {user.fName}</span>
                         <button onClick={handleClick}>Log Out</button>
                     </div> */}
-                    <RxHamburgerMenu className="menuIcon" />
+                    <RxHamburgerMenu onClick={openMenu} className="menuIcon" />
+                    {menu && 
+                    <div className="navMenuContainer">
+                        <button onClick={closeMenu}>Back</button>
+                        <ul>
+                            <li>Play game</li>
+                            <li>Tuner</li>
+                            <li>Profile</li>
+                            <li onClick={handleClick}>Log out</li>
+                        </ul>
+                    </div>}
                 </nav>
             </div>
         </header>

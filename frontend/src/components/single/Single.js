@@ -252,7 +252,7 @@ const Single = () => {
                 <div className="singleNoteSelection">
                 
                 {noteNames.map((note) => (
-                    <button className="singleNote" value={note} onClick={handleClick}>
+                    <button className={note === inputText ? "highlightNote" : "singleNote"} value={note} onClick={handleClick}>
                         {note}
                     </button>
                     ))}
@@ -260,8 +260,8 @@ const Single = () => {
                 </div>
                 <div className="guessContainer">
                     <button className="primary-button" type="submit" onClick={check_answer}>Guess</button> 
-                    { gotAnswer === true ? <AiOutlineCheckCircle className="correct"/> : null }
-                    { gotAnswer === false ? <AiOutlineCloseCircle className="incorrect"/> : null }
+                    { gotAnswer === true ? <AiOutlineCheckCircle className="singleCorrect"/> : null }
+                    { gotAnswer === false ? <AiOutlineCloseCircle className="singleIncorrect"/> : null }
                 </div>
                 <div className="bottomButtons">
                     <button onClick={helpScreen}>Help</button>

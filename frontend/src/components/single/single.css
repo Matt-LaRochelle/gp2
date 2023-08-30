@@ -5,8 +5,8 @@
     justify-content: space-around;
     align-items: center;
     width: 90%;
-    margin: 29px auto 42px;
-    height: 53px;
+    margin: 5px auto 28px;
+    height: 50px;
     border-radius: 20px;
 }
 
@@ -20,8 +20,8 @@
     background-image: linear-gradient(to right, lime, aqua, rgb(135, 44, 255), rgb(255, 0, 255), red, orange, yellow, lime);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-size: 400% auto;
-    animation: rainbow-animation 16s linear infinite;
+    background-size: 1000% auto;
+    animation: rainbow-animation 32s linear infinite;
     font-size: 20px;
     font-weight: 700;
 }
@@ -29,7 +29,7 @@
     0%, 100% {
         background-position: 0%;
     }
-    25%, 65% {
+    50% {
         background-position: 100%;
     }
 }
@@ -37,12 +37,11 @@
 .singlePlayButton {
     display: flex;
     margin: auto;
-    height: 134px;
-    width: 175px;
+    height: 124px;
+    width: 160px;
     font-size: 100px;
     justify-content: center;
     align-items: center;
-
 }
 
 .singleNoteSelection {
@@ -50,18 +49,32 @@
     grid-template-columns: repeat(4, 1fr);
     place-items: center;
     /* grid-column-gap: 20px;*/
-    grid-row-gap: 50px;
+    grid-row-gap: 16px;
     width: 90%;
-    margin: 40px auto;
+    margin: 30px auto;
 }
 
 .singleNote {
     color: #737373;
     background-color: #fff;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
-    height: 71px;
-    width: 71px;
+    height: 58px;
+    width: 58px;
+    padding: 3px;
+}
+
+.highlightNote {
+    color: #515151;
+    background-color: #b3b2b2;
+    font-size: 26px;
+    font-weight: 700;
+    height: 58px;
+    width: 58px;
+}
+
+.guessContainer {
+    position: relative;
 }
 
 .guessContainer button {
@@ -74,11 +87,30 @@
     text-align: center;
 }
 
+.singleCorrect {
+    height: 75px;
+    width: 75px;
+    color: var(--correct);
+    position: absolute;
+    top: -2.5px;
+    left: calc(50% + 90px);
+    /* transform: translateX(-50%); */
+}
+
+.singleIncorrect {
+    height: 75px;
+    width: 75px;
+    color: var(--error);
+    position: absolute;
+    top: -2.5px;
+    left: calc(50% + 90px);
+}
+
 .bottomButtons {
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
-    padding-bottom: 20px;
+    margin-top: 30px;
+    padding-bottom: 30px;
 }
 
 .bottomButtons button {
@@ -88,4 +120,37 @@
     width: 60px;
     height: 60px;
     padding: 5px;
+}
+
+.navMenuContainer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+
+    background-image: linear-gradient(#426BFF, #3E3BD7);
+    color: #fff;
+    z-index: 10;
+    transition: left 1s;
+}
+
+.navMenuContainer button {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+}
+
+.navMenuContainer ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 270px;
+    width: 150px;
+    list-style-type: none;
+    margin: 160px auto;
+    font-size: 28px;
+    font-weight: 400;
 }
