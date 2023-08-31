@@ -1,7 +1,7 @@
 .lContainer {
     background-image: linear-gradient(#426BFF, #3E3BD7);
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh; /* Set a minimum height of 100vh to cover the viewport */
+    height: calc(100% + 1px); /* Add 1px to make sure it covers the full content height */
     position: relative;
 }
 

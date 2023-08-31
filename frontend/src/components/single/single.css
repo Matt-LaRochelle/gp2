@@ -120,17 +120,21 @@
     width: 60px;
     height: 60px;
     padding: 5px;
-    z-index: 10;
+    /* z-index: 10; */
 }
 
 .help {
-    z-index: 100;
+    /* z-index: 100; */
     border-radius: 100%;
     background-color: #fff;
     color: #333;
     width: 60px;
     height: 60px;
     padding: 5px;
+}
+
+.raise {
+   z-index: 20; 
 }
 
 .highlight {
