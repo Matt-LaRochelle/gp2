@@ -30,23 +30,47 @@
 
 .tunerMiddle {
     position: relative;
-      width: 271px; /* Adjust the width of the component as per your requirement */
-      height: 225px; /* Adjust the height of the component as per your requirement */
-      background: linear-gradient(90deg, rgba(190, 190, 190, 0.5) 1px, transparent 1px),
-                  linear-gradient(0deg, rgba(190, 190, 190, 0.5) 1px, transparent 1px);
-      background-size: 30px 30px; /* Adjust the grid size as per your requirement */
-      margin: auto;
-      animation: vertical-lines 4s linear infinite; /* Adjust the animation duration as per your requirement */
+    width: 271px; /* Adjust the width of the component as per your requirement */
+    height: 225px; /* Adjust the height of the component as per your requirement */
+    background: linear-gradient(90deg, rgba(165, 165, 165, 0.5) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(165, 165, 165, 0.5) 1px, transparent 1px);
+    background-size: 30px 30px; /* Adjust the grid size as per your requirement */
+    margin: auto;
+    animation: vertical-lines 4s linear infinite; /* Adjust the animation duration as per your requirement */
+}
+@keyframes vertical-lines {
+    0% {
+    background-position: 0 0;
     }
+    100% {
+    background-position: 0 30px; /* Adjust the background-position value to match the grid size */
+    }
+}
 
-    @keyframes vertical-lines {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: 0 30px; /* Adjust the background-position value to match the grid size */
-      }
-    }
+.tunerMiddle h2{
+    color: #fff;
+    text-align: center;
+}
+
+.tunerCurrentNote p {
+    display: inline;
+    color: #222;
+    font-weight: 600;
+    font-size: 28px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tunerCurrentNote {
+    background: #fff;
+    padding: 5px;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    position: relative;
+}
 
 
 .tunerHeadstock {

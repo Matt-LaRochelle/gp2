@@ -10,7 +10,10 @@ const Tuner = () => {
                 <h1>b</h1><h1>#</h1>
             </div>
             <div className='tunerMiddle'>
-                
+                {/* <div className='tunerCurrentNote'>
+                    <p>E</p>
+                </div> */}
+                <h2>Coming soon...</h2>
             </div>
 
             <div className="tunerBottom">
