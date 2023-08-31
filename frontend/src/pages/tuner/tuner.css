@@ -1,0 +1,91 @@
+.tunerPageContainer {
+    min-height: 100vh; /* Set a minimum height of 100vh to cover the viewport */
+    height: calc(100% + 1px); /* Add 1px to make sure it covers the full content height */
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+}
+
+.tunerContainer {
+    width: 95%;
+    max-width: 400px;
+    height: 550px;
+    border-radius: 20px;
+    padding: 20px;
+    margin: auto;
+    background-color: var(--primary);
+    position: relative;
+}
+
+.tunerTop {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+}
+
+.tunerTop h1 {
+    display: inline;
+}
+
+
+.tunerMiddle {
+    position: relative;
+      width: 271px; /* Adjust the width of the component as per your requirement */
+      height: 225px; /* Adjust the height of the component as per your requirement */
+      background: linear-gradient(90deg, rgba(190, 190, 190, 0.5) 1px, transparent 1px),
+                  linear-gradient(0deg, rgba(190, 190, 190, 0.5) 1px, transparent 1px);
+      background-size: 30px 30px; /* Adjust the grid size as per your requirement */
+      margin: auto;
+      animation: vertical-lines 4s linear infinite; /* Adjust the animation duration as per your requirement */
+    }
+
+    @keyframes vertical-lines {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 30px; /* Adjust the background-position value to match the grid size */
+      }
+    }
+
+
+.tunerHeadstock {
+    height: 45%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 0;
+}
+
+.tunerBottom p {
+    border: 1px solid #fff;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    padding-bottom: 8px;
+    text-align: center;
+}
+
+.tunerPegNamesLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+    position: absolute;
+    bottom: 137px;
+    left: 100px;
+    height: 88px;
+    font-size: 20px;
+}
+
+.tunerPegNamesRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+    position: absolute;
+    bottom: 137px;
+    right: 100px;
+    height: 88px;
+    font-size: 20px;
+}
