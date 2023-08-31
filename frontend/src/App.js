@@ -5,7 +5,7 @@ import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Forgot from './pages/forgot/Forgot';
 import ResetPassword from './pages/reset/Reset';
-import Eartraining from './pages/Eartraining';
+import Eartraining from './pages/eartraining/Eartraining';
 import Landing from './pages/landing/Landing';
 import Profile from './pages/profile/Profile';
 

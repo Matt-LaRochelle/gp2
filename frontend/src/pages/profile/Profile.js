@@ -31,10 +31,20 @@ const Profile = () => {
         
     // }, [scoresDispatch, user])
 
-    let bDay = new Date(user.birthday)
-    console.log(bDay)
-    let date = format(new Date(user.birthday), 'MMMM do, yyyy')
+    // let bDay = user.birthday
+    // const birth = bDay.split('T')[0]
+    // console.log("b:", birth)
 
+
+    // let date = format(birth, 'MMMM do, yyyy')
+    // console.log("d:", date)
+    // let date = format((bDay), 'MMMM do, yyyy')
+
+    let bDay = new Date(Date.parse(user.birthday));
+    const options = { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' };
+    const formattedDate = bDay.toLocaleDateString('en-US', options);
+
+    console.log(formattedDate); // Output: January 1, 1991
     
     return (
         <div className="profileContainer">
@@ -46,7 +56,7 @@ const Profile = () => {
                     <label>Email:</label>
                     <p>{user.email}</p>
                     <label>Birthday:</label>
-                    <p>{date}</p>
+                    <p>{formattedDate}</p>
                     {/* <p>Reset password: <button>Reset</button></p> */}
                 </div>
                 {/* <div className="profile-scores">

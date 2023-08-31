@@ -1,3 +1,7 @@
+.forgot {
+    height: 100vh;
+}
+
 .forgot p {
     color: var(--secondary);
     font-size: 22px;
