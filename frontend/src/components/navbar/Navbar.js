@@ -39,9 +39,9 @@ const Navbar = () => {
                     <div className="navMenuContainer">
                         <button onClick={closeMenu}>Back</button>
                         <ul>
-                            <li><Link to="/" className="hamburgerLink">Play game</Link></li>
-                            <li>Tuner</li>
-                            <li><Link to="/profile" className="hamburgerLink">Profile</Link></li>
+                            <li onClick={closeMenu}><Link to="/" className="hamburgerLink">Play game</Link></li>
+                            <li onClick={closeMenu}>Tuner</li>
+                            <li onClick={closeMenu}><Link to="/profile" className="hamburgerLink">Profile</Link></li>
                             <li onClick={handleClick}>Log out</li>
                         </ul>
                     </div>}

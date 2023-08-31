@@ -1,4 +1,6 @@
 .earTrainingContainer {
     min-height: 100vh; /* Set a minimum height of 100vh to cover the viewport */
     height: calc(100% + 1px); /* Add 1px to make sure it covers the full content height */
+    max-width: 700px;
+    margin: auto;
 }

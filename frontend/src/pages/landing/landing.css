@@ -8,7 +8,9 @@
 .lTitle {
     position: absolute;
     top: 400px;
-    left: 41px;
+    left: 50%;
+    width: 300px;
+    transform: translateX(-50%);
 }
 
 .lTitle h1 {
@@ -20,8 +22,10 @@
 
 .lButtons {
     position: absolute;
-    bottom: 40px;
-    width: 100vw;
+    top: 600px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
     display: flex;
     justify-content: space-around;
 }
