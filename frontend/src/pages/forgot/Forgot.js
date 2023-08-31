@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import PacmanLoader from "react-spinners/PacmanLoader";
 import './forgot.css'
 import Loading from '../../components/loading/Loading';
 import Error from '../../components/error/Error';
@@ -58,7 +57,7 @@ const Forgot = () => {
                     </div>
                 </form>
             </div>
-            : <div className="good-response">A reset link has been sent to your email.</div> }
+            : <div className="resetResponse">A reset link has been sent to your email.</div> }
             
         </div>
     )

@@ -1,6 +1,7 @@
 .reset {
     min-height: 100vh; /* Set a minimum height of 100vh to cover the viewport */
     height: calc(100% + 1px); /* Add 1px to make sure it covers the full content height */
+    padding: 20px;
 }
 
 .reset p {
@@ -28,4 +29,11 @@
 .passwordScreen {
     position: absolute;
     border: 2px solid red;
+}
+
+.resetResponse {
+    display: block;
+    color: #fff;
+    width: 300px;
+    margin: 200px auto;
 }

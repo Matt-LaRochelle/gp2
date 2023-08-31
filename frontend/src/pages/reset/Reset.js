@@ -105,7 +105,7 @@ const handleClickOutside = (e) => {
             <Password content={password} />
         </div>
       }
-      {!authenticated ? <h1>Bad link, please try again</h1> :
+      {!authenticated ? <h1 className="resetResponse">Bad link, please try again</h1> :
       <div>
         <p>Reset your password</p>
         {!completeReset ? 
@@ -123,7 +123,7 @@ const handleClickOutside = (e) => {
           <div className='resetBottom'>
             <button disabled={isLoading} type="submit">Reset Password</button>
           </div>
-        </form> : <div className="good-response">Password has been reset!</div> }
+        </form> : <div className="resetResponse">Password has been reset!</div> }
       </div> }
     </div>
   );
