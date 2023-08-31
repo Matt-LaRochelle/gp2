@@ -228,7 +228,7 @@ const Single = () => {
         <div className="singleContainer">
             <div>
                 <div className="singleScoresBanner">
-                    <p>Tries: <span>{count}</span></p>
+                    <p>Tries: <span>{count}/4</span></p>
                     <p>Current: <span>{highScore}</span></p>
                     <p>High Score: <span>{!scores ? "loading" : scores[0].single}</span></p>
                 </div>
