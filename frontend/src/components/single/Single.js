@@ -248,9 +248,9 @@ const Single = () => {
                     { gotAnswer === false ? <AiOutlineCloseCircle className="singleIncorrect"/> : null }
                 </div>
                 <div className="bottomButtons">
-                    <button className={help ? "highlight raise help" : "help"} onClick={helpScreen}>Help</button>
-                    <button className={key ? "highlight raise key" : "key"} onClick={keyScreen}>Key</button>
-                    <button className={key ? "raise key" : "key"} onClick={sharpFlatToggle}>#/b</button>
+                    <button className={help ? "highlight raise" : null} onClick={helpScreen}>Help</button>
+                    <button className={key ? "highlight raise" : null} onClick={keyScreen}>Key</button>
+                    <button className={key ? "raise" : null} onClick={sharpFlatToggle}>#/b</button>
                 </div>
                 {testUser && 
                     <div className="test-features">

@@ -113,25 +113,32 @@
     padding-bottom: 30px;
 }
 
-.key {
+.bottomButtons button {
     border-radius: 100%;
     background-color: #fff;
     color: #333;
     width: 60px;
     height: 60px;
     padding: 5px;
-    /* z-index: 10; */
+}
+
+/* .key {
+    border-radius: 100%;
+    background-color: #fff;
+    color: #333;
+    width: 60px;
+    height: 60px;
+    padding: 5px;
 }
 
 .help {
-    /* z-index: 100; */
     border-radius: 100%;
     background-color: #fff;
     color: #333;
     width: 60px;
     height: 60px;
     padding: 5px;
-}
+} */
 
 .raise {
    z-index: 20; 
