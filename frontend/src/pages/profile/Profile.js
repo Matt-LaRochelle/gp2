@@ -1,13 +1,17 @@
-// import { useEffect } from 'react'
+import { useState } from 'react'
 import { useAuthContext } from '../../hooks/useAuthContext'
 // import { useScoresContext } from '../hooks/useScores'
-import { format } from 'date-fns'
 import './profile.css'
 import Navbar from '../../components/navbar/Navbar'
+import Loading from '../../components/loading/Loading'
+import Error from '../../components/error/Error'
 
 const Profile = () => {
     // const {scores, dispatch: scoresDispatch} = useScoresContext()
     const { user } = useAuthContext()
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
+    const [linkSent, setLinkSent] = useState(false)
 
     // useEffect(() => {
     //     const fetchScores = async () => {
@@ -31,24 +35,39 @@ const Profile = () => {
         
     // }, [scoresDispatch, user])
 
-    // let bDay = user.birthday
-    // const birth = bDay.split('T')[0]
-    // console.log("b:", birth)
+    const handleResetPassword = async () => {
+        setIsLoading(true)
+        const response = await fetch('https://guitar-paths-api.onrender.com/api/user/forgot', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email: user.email})
+        })
+        const json = await response.json()
+
+        if (!response.ok) {
+            setIsLoading(false)
+            setError("There was an error: " + json.error)
+        }
+        if (response.ok) {
+            const text = JSON.stringify(json)
+            console.log("got things back: " + text)
+            setLinkSent(true)
+            setIsLoading(false)
+            setError(false)
+        }
+    }
 
 
-    // let date = format(birth, 'MMMM do, yyyy')
-    // console.log("d:", date)
-    // let date = format((bDay), 'MMMM do, yyyy')
 
     let bDay = new Date(Date.parse(user.birthday));
     const options = { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' };
     const formattedDate = bDay.toLocaleDateString('en-US', options);
-
-    console.log(formattedDate); // Output: January 1, 1991
     
     return (
         <div className="profileContainer">
             <Navbar />
+            {isLoading && <Loading />}
+            {error && <Error error={error}/>}
             <div className="profileContentContainer">
                 <div>
                     <label>First name:</label>
@@ -68,7 +87,8 @@ const Profile = () => {
                     <p>Progressions: </p><p>{scores && scores[0].progression}</p>
                 </div> */}
             </div>
-            <button className="resetPassword">Reset password</button>
+            <button className="resetPassword" onClick={handleResetPassword}>Reset password</button>
+            {linkSent && <div className="resetPasswordResponse">A reset link has been sent to your email.</div> }
         </div>
     )
 }

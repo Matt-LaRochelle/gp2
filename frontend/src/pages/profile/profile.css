@@ -35,3 +35,11 @@
     font-weight: 600;
     margin: auto;
 }
+
+.resetPasswordResponse {
+    display: block;
+    margin: 30px auto;
+    width: 300px;
+    color: #fff;
+
+}
