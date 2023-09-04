@@ -39,7 +39,7 @@ const Forgot = () => {
                 <div className="forgotCircle" />
                 {isLoading && <Loading />}
                 {error && <Error error={error}/>}
-                <p>Enter your email and we will send you a reset link.</p>
+                <p className="forgotText">Enter your email and we will send you a reset link.</p>
                 <form onSubmit={handleForgotSubmit}>
                     <input
                         type="email"
@@ -55,7 +55,7 @@ const Forgot = () => {
             : 
                 <div>
                     <div className="forgotCircle" />
-                    <div className="resetResponse">A reset link has been sent to your email.</div>
+                    <div className="forgotText">A reset link has been sent to your email.</div>
                 </div> }
             
         </div>

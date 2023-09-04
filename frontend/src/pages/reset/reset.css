@@ -1,39 +1,30 @@
-.reset {
+.resetContainer {
     min-height: 100vh; /* Set a minimum height of 100vh to cover the viewport */
     height: calc(100% + 1px); /* Add 1px to make sure it covers the full content height */
-    padding: 20px;
 }
 
-.reset p {
+.resetCircle {
+    height: 310px;
+    width: 310px;
+    border-radius: 50%;
+    margin: 60px auto 30px;
+    background: url('../../images/logo9.jpg') center/cover no-repeat;
+}
+
+.resetText {
     color: var(--secondary);
-    font-size: 22px;
+    font-size: 1.4rem;
     display: block;
     width: 300px;
-    margin: 5vh auto;
+    margin: 40px auto;
 }
 
-.loginLogo p {
-    color: #333;
-}
 
-.reset input {
+.resetContainer input {
     margin-bottom: 30px;
-    font-size: 28px;
 }
 
 .resetBottom {
     width: 300px;
-    margin: 7vh auto;
-}
-
-.passwordScreen {
-    position: absolute;
-    border: 2px solid red;
-}
-
-.resetResponse {
-    display: block;
-    color: #fff;
-    width: 300px;
-    margin: 200px auto;
+    margin: 30px auto;
 }

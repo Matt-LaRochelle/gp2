@@ -92,22 +92,17 @@ const handleClickOutside = (e) => {
   }, []);
 
   return (
-    <div className="reset">
-      <div className='loginTop'>
-        <div className="loginLogo">
-            <p>Logo</p>
-        </div>   
-      </div>
+    <div className="resetContainer">
+      <div className="resetCircle" />
       {isLoading && <Loading />}
-      {error && <Error error={error}/>}
       {checkList && 
         <div className='passwordScreen'>
             <Password content={password} />
         </div>
       }
-      {!authenticated ? <h1 className="resetResponse">Bad link, please try again</h1> :
+      {!authenticated ? <p className="resetText">Bad link, please try again</p> :
       <div>
-        <p>Reset your password</p>
+        <p className="resetText">Reset your password</p>
         {!completeReset ? 
         <form onSubmit={handleSubmit}>
           <input type="hidden" value={token} name="token" />
@@ -121,6 +116,7 @@ const handleClickOutside = (e) => {
             ref={passwordInputRef}
             required />
           <div className='resetBottom'>
+            {error && <Error error={error}/>}
             <button disabled={isLoading} type="submit">Reset Password</button>
           </div>
         </form> : <div className="resetResponse">Password has been reset!</div> }
