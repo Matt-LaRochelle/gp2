@@ -81,8 +81,10 @@ const Signup = () => {
                     ref={passwordInputRef}
                     className={emptyFields.includes('password') && 'signupError'}
                 />
-                {error && <Error error={error}/>}
-                <button disabled={isLoading}>Sign Up</button>
+                <div className='signupBottom'>
+                    {error && <Error error={error}/>}
+                    <button disabled={isLoading}>Sign Up</button>
+                </div>
             </form>
         </div>
     )

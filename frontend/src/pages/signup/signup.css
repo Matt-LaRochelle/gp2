@@ -23,7 +23,11 @@
     outline: 2.7px solid var(--error)
 }
 
+.signupBottom {
+    width: 300px;
+    margin: 30px auto;
+}
+
 .signupForm button {
     display: block;
-    margin: auto;
 }
