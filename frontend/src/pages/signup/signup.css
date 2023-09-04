@@ -19,6 +19,10 @@
     margin-bottom: 15px;
 }
 
+.signupError {
+    outline: 2.7px solid var(--error)
+}
+
 .signupForm button {
     display: block;
     margin: auto;

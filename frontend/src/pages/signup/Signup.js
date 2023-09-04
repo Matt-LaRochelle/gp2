@@ -10,6 +10,7 @@ const Signup = () => {
     const [birthday, setBirthday] = useState('');
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
     const [checkList, setCheckList] = useState(false)
     const {signup, error, isLoading, emptyFields} = useSignup()
     const passwordInputRef = useRef(null);
@@ -59,18 +60,21 @@ const Signup = () => {
                     placeholder='First name'
                     onChange={(e) => setFName(e.target.value)}
                     value={fName}
+                    className={emptyFields.includes('fName') && 'signupError'}
                 />
                 <input
                     type="date"
                     placeholder='Birthday'
                     onChange={(e) => setBirthday(e.target.value)}
                     value={birthday}
+                    className={emptyFields.includes('birthday') && 'signupError'}
                     />
                 <input
                     type="email"
                     placeholder='Email'
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
+                    className={emptyFields.includes('email') && 'signupError'}
                 />
                 <input
                     type="password"
@@ -79,6 +83,7 @@ const Signup = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
                     ref={passwordInputRef}
+                    className={emptyFields.includes('password') && 'signupError'}
                 />
                 {error && <Error error={error}/>}
                 <button disabled={isLoading}>Sign Up</button>
