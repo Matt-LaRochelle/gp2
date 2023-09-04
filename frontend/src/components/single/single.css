@@ -5,9 +5,9 @@
     justify-content: space-around;
     align-items: center;
     width: 90%;
-    margin: 5px auto 28px;
+    margin: 5px auto 22px;
     height: 50px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .singleScoresBanner p {
@@ -48,29 +48,29 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     place-items: center;
-    /* grid-column-gap: 20px;*/
     grid-row-gap: 16px;
-    width: 90%;
+    max-width: 380px;
     margin: 30px auto;
 }
 
 .singleNote {
     color: #737373;
     background-color: #fff;
-    font-size: 26px;
+    font-size: 1.6rem;
     font-weight: 700;
-    height: 58px;
-    width: 58px;
+    height: 52px;
+    width: 52px;
     padding: 3px;
 }
 
 .highlightNote {
     color: #515151;
     background-color: #b3b2b2;
-    font-size: 26px;
+    font-size: 1.6rem;
     font-weight: 700;
-    height: 58px;
-    width: 58px;
+    height: 52px;
+    width: 52px;
+    padding: 3px;
 }
 
 .guessContainer {
@@ -80,10 +80,10 @@
 .guessContainer button {
     display: block;
     margin: auto;
-    font-size: 28px;
+    font-size: 1.8rem;
     font-weight: 500;
     width: 142px;
-    height: 70px;
+    height: 60px;
     text-align: center;
 }
 
