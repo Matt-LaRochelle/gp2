@@ -1,25 +1,29 @@
-.forgot {
+.forgotContainer {
     min-height: 100vh; /* Set a minimum height of 100vh to cover the viewport */
     height: calc(100% + 1px); /* Add 1px to make sure it covers the full content height */
 }
 
-.forgot p {
+.forgotCircle {
+    height: 310px;
+    width: 310px;
+    border-radius: 50%;
+    margin: 60px auto 30px;
+    background: url('../../images/logo9.jpg') center/cover no-repeat;
+}
+
+.forgotContainer p {
     color: var(--secondary);
-    font-size: 22px;
+    font-size: 1.4rem;
     display: block;
     width: 300px;
-    margin: 5vh auto;
+    margin: 40px auto;
 }
 
-.loginLogo p {
-    color: #333;
-}
-
-.forgot input {
-    font-size: 28px;
+.forgotContainer input {
+    font-size: 1.7rem;
 }
 
 .forgotBottom {
     width: 300px;
-    margin: 10vh auto;
+    margin: 50px auto;
 }
