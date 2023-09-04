@@ -25,7 +25,7 @@ const Navbar = () => {
         <header className='navbarHeader'>
             <div className="navContainer">
                 <div className="navLogo">
-                    <div><h4 className='logoPlaceholder'>Logo</h4></div>
+                    <div className="navCircle"/>
                     <h2>Ear Training Buddy</h2>
                 </div>
                 <nav>

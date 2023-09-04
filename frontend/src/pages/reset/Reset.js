@@ -119,7 +119,7 @@ const handleClickOutside = (e) => {
             {error && <Error error={error}/>}
             <button disabled={isLoading} type="submit">Reset Password</button>
           </div>
-        </form> : <div className="resetResponse">Password has been reset!</div> }
+        </form> : <div className="resetText">Password has been reset!</div> }
       </div> }
     </div>
   );
