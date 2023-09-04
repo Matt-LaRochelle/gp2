@@ -5,6 +5,7 @@ import { useSetup } from './useSetup'
 export const useSignup = () => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
+    const [emptyFields, setEmptyFields] = useState([])
     const { dispatch } = useAuthContext()
     const { setup } = useSetup()
 
@@ -22,6 +23,7 @@ export const useSignup = () => {
         if (!response.ok) {
             setIsLoading(false)
             setError(json.error)
+            setEmptyFields(json.emptyFields)
         }
         if (response.ok) {
             // save the user to local storage
@@ -37,6 +39,5 @@ export const useSignup = () => {
             setIsLoading(false)
         }
     }
-
-    return { signup, isLoading, error}
+    return { signup, isLoading, error, emptyFields}
 }

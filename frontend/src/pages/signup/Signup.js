@@ -11,8 +11,12 @@ const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [checkList, setCheckList] = useState(false)
-    const {signup, error, isLoading} = useSignup()
+    const {signup, error, isLoading, emptyFields} = useSignup()
     const passwordInputRef = useRef(null);
+
+    useEffect(() => {
+        console.log(emptyFields)
+    }, [emptyFields])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
