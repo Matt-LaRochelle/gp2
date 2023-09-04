@@ -41,8 +41,7 @@ const Login = () => {
     return (
         <div className='login'>
             <div className='loginTop'>
-                <div className="loginLogo">
-                    <p>Logo</p>
+                <div className="lCircle">
                 </div>   
             </div>
             {checkList && 

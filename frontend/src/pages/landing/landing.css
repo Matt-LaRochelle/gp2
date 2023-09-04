@@ -1,30 +1,31 @@
 .lContainer {
-    background-image: linear-gradient(#426BFF, #3E3BD7);
     min-height: 100vh; /* Set a minimum height of 100vh to cover the viewport */
     height: calc(100% + 1px); /* Add 1px to make sure it covers the full content height */
     position: relative;
 }
 
+.lCircle {
+    height: 310px;
+    width: 310px;
+    border-radius: 50%;
+    margin: 60px auto 30px;
+    background: url('../../images/logo9.jpg') center/cover no-repeat;
+}
+
 .lTitle {
-    position: absolute;
-    top: 400px;
-    left: 50%;
-    width: 300px;
-    transform: translateX(-50%);
+    margin: 10px auto;
+    width: 290px;
 }
 
 .lTitle h1 {
-    font-size: 48px;
-    font-weight: 400;
+    font-size: 3rem;
+    font-weight: 500;
     text-align: left;
-    color: white;
+    color: #fff;
 }
 
 .lButtons {
-    position: absolute;
-    top: 600px;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 60px auto 20px;
     width: 400px;
     display: flex;
     justify-content: space-around;
