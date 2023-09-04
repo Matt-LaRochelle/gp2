@@ -39,21 +39,16 @@ const Login = () => {
       }, []);
 
     return (
-        <div className='login'>
-            <div className='loginTop'>
-                <div className="lCircle">
-                </div>   
-            </div>
+        <div className='loginContainer'>
+            <div className="loginCircle" />
             {checkList && 
                     <div className='passwordScreen'>
                         <Password content={password} />
                     </div>
                 }
             {isLoading && <Loading />}
-            {error && <Error error={error}/>}
 
             <form className="loginForm" onSubmit={handleSubmit}>
-                <div className='loginMiddle'>
                     <input
                         type="email"
                         placeholder='Email'
@@ -68,13 +63,9 @@ const Login = () => {
                         value={password}
                         ref={passwordInputRef}
                     />
-                    <div className='loginLinkContainer'>
-                        <Link to="/forgot" className="loginLink">Forgot password</Link>
-                    </div>
-                </div>
-                <div className="loginBottom">
+                    <Link to="/forgot" className="loginLink">Forgot password</Link>
+                    {error && <Error error={error}/>}
                     <button disabled={isLoading}>Log In</button>
-                </div>
             </form>
         </div>
     )

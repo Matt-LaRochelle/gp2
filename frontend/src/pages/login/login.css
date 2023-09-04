@@ -1,74 +1,41 @@
-.login {
+.loginContainer {
     min-height: 100vh; /* Set a minimum height of 100vh to cover the viewport */
     height: calc(100% + 1px); /* Add 1px to make sure it covers the full content height */
-    max-width: 700px;
-    margin: auto;
-    padding: 20px;
 }
 
-.loginForm {
-    position: relative;
-    color: #fff;
-}
-
-.loginTop {
-    margin-top: 5%;
-}
-
-.loginLogo {
-    width: 40vh; /* 40% of the viewport height */
-    height: 40vh; /* 40% of the viewport height */
-    max-width: 100%; /* Ensure the circle does not exceed the viewport width */
-    background-color: #fff;
+.loginCircle {
+    height: 310px;
+    width: 310px;
     border-radius: 50%;
-    margin-left: 50%;
-    transform: translate(-50%);
+    margin: 60px auto 30px;
+    background: url('../../images/logo9.jpg') center/cover no-repeat;
 }
 
-.loginLogo p {
-    text-align: center;
-    padding-top: 140px;
-}
-
-.loginMiddle {
-    margin-top: 10%;
-}
-
-
-
-.login input {
+.loginForm input {
     margin-bottom: 30px;
-    font-size: 28px;
-    color: #333;
-    z-index: 10;
 }
 
-.loginLinkContainer {
-    display: flex;
-    justify-content: center;
-}
 .loginLink {
-    display: inline-block;
-    font-size: 22px;
+    display: block;
+    font-size: 1.4rem;
     width: 290px;
     margin: auto;
     text-decoration: none;
 }
 
-.loginLink:link{
+.loginLink:link {
 color:var(--secondary);
 }
-.loginLink:visited{
+.loginLink:visited {
 color:var(--secondary);
 }
-.loginLink:hover{
-color:var(--subtext);
+.loginLink:hover {
+color:#ccc;
 }
 
-.loginBottom {
-    width: 304px;
-    margin: auto;
-    margin-top: 10%;
+.loginForm button {
+    display: block;
+    margin: 30px auto;
 }
 
 .passwordScreen {
