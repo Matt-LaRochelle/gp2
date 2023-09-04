@@ -1,25 +1,25 @@
 .signupContainer {
     min-height: 100vh; /* Set a minimum height of 100vh to cover the viewport */
     height: calc(100% + 1px); /* Add 1px to make sure it covers the full content height */
-    padding: 20px;
+}
+
+.signupCircle {
+    height: 310px;
+    width: 310px;
+    border-radius: 50%;
+    margin: 60px auto 30px;
+    background: url('../../images/logo9.jpg') center/cover no-repeat;
 }
 
 .signupForm {
-    margin-top: 5vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 52vh;
-    /* border: 2px solid lime; */
+    margin: 20px auto;
 }
 
 .signupForm input {
-    font-size: 28px;
-    color: gray;
+    margin-bottom: 15px;
 }
 
-.signupBottom {
-    width: 300px;
+.signupForm button {
+    display: block;
     margin: auto;
-    /* border: 2px solid red; */
 }

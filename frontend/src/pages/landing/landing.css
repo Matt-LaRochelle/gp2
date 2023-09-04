@@ -1,10 +1,9 @@
-.lContainer {
+.landingContainer {
     min-height: 100vh; /* Set a minimum height of 100vh to cover the viewport */
     height: calc(100% + 1px); /* Add 1px to make sure it covers the full content height */
-    position: relative;
 }
 
-.lCircle {
+.landingCircle {
     height: 310px;
     width: 310px;
     border-radius: 50%;
@@ -12,19 +11,18 @@
     background: url('../../images/logo9.jpg') center/cover no-repeat;
 }
 
-.lTitle {
+.landingTitle {
     margin: 10px auto;
     width: 290px;
 }
 
-.lTitle h1 {
+.landingTitle h1 {
     font-size: 3rem;
     font-weight: 500;
-    text-align: left;
     color: #fff;
 }
 
-.lButtons {
+.landingButtons {
     margin: 60px auto 20px;
     width: 400px;
     display: flex;

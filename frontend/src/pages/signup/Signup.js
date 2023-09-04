@@ -41,14 +41,9 @@ const Signup = () => {
 
 
     return (
-        <div className="signUpContianer">
-            <div className='loginTop'>
-                <div className="loginLogo">
-                    <p>Logo</p>
-                </div>   
-            </div>
+        <div className="signupContianer">
+                <div className='signupCircle' />
             {isLoading && <Loading />}
-            {error && <Error error={error}/>}
             {checkList && 
                     <div className='passwordScreen'>
                         <Password content={password} />
@@ -81,9 +76,8 @@ const Signup = () => {
                     value={password}
                     ref={passwordInputRef}
                 />
-                <div className="signupBottom">
-                    <button disabled={isLoading}>Sign Up</button>
-                </div>
+                {error && <Error error={error}/>}
+                <button disabled={isLoading}>Sign Up</button>
             </form>
         </div>
     )
