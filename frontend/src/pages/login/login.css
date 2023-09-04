@@ -15,12 +15,15 @@
     margin-bottom: 30px;
 }
 
-.loginLink {
-    display: block;
-    font-size: 1.4rem;
-    width: 290px;
+.loginBottom {
+    width: 300px;
     margin: auto;
+}
+
+.loginLink {
+    font-size: 1.4rem;
     text-decoration: none;
+    display: block;
 }
 
 .loginLink:link {
@@ -33,9 +36,8 @@ color:var(--secondary);
 color:#ccc;
 }
 
-.loginForm button {
-    display: block;
-    margin: 30px auto;
+.loginBottom button {
+    margin: 50px 0px;
 }
 
 .passwordScreen {

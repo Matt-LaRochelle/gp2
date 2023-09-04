@@ -63,9 +63,11 @@ const Login = () => {
                         value={password}
                         ref={passwordInputRef}
                     />
-                    <Link to="/forgot" className="loginLink">Forgot password</Link>
-                    {error && <Error error={error}/>}
-                    <button disabled={isLoading}>Log In</button>
+                    <div className='loginBottom'>
+                        <Link to="/forgot" className="loginLink">Forgot password</Link>
+                        {error && <Error error={error}/>}
+                        <button disabled={isLoading}>Log In</button>
+                    </div>
             </form>
         </div>
     )
