@@ -63,7 +63,7 @@ const Signup = () => {
                     placeholder='Birthday'
                     onChange={(e) => setBirthday(e.target.value)}
                     value={birthday}
-                    className={emptyFields.includes('birthday') && 'signupError'}
+                    className={emptyFields.includes('birthday') ? 'signupDateInput signupError' : 'signupDateInput'}
                     />
                 <input
                     type="email"

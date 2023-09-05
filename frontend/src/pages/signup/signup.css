@@ -20,6 +20,14 @@
     margin-bottom: 15px;
 }
 
+.signupDateInput {
+    color: gray;
+}
+
+.signupDateInput::placeholder {
+    color: purple;
+}
+
 .signupError {
     outline: 2.7px solid var(--error)
 }
