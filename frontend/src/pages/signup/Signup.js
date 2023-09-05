@@ -4,16 +4,20 @@ import './signup.css'
 import Password from '../../components/password/Password';
 import Loading from '../../components/loading/Loading';
 import Error from '../../components/error/Error';
+import { DatePicker } from '@mui/x-date-pickers';
+import { Stack, TextField } from '@mui/material';
 
 const Signup = () => {
     const [fName, setFName] = useState('')
     const [birthday, setBirthday] = useState('');
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [dateInput, setDateInput] = useState(false)
 
     const [checkList, setCheckList] = useState(false)
     const {signup, error, isLoading, emptyFields} = useSignup()
     const passwordInputRef = useRef(null);
+    const dateInputRef = useRef(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -40,6 +44,24 @@ const Signup = () => {
         };
       }, []);
 
+    const dateClick = () => {
+        setDateInput(true)
+    }
+
+    useEffect(() => {
+        const handleClickOutsideD = (event) => {
+            if (dateInputRef.current && !dateInputRef.current.contains(event.target)) {
+                setDateInput(false)
+            }
+        };
+
+        document.addEventListener('click', handleClickOutsideD);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutsideD);
+        };
+    }, [])
+
 
     return (
         <div className="signupContianer">
@@ -58,13 +80,27 @@ const Signup = () => {
                     value={fName}
                     className={emptyFields.includes('fName') && 'signupError'}
                 />
-                <input
+                <div 
+                    className="signupDateContainer"
+                    onClick={dateClick}
+                    ref={dateInputRef}
+                    >
+                    {!dateInput 
+                    ? <p>Birthday</p>
+                    :
+                    <div className="signupDateInputContainer">
+                        <input className="signupDateInput" placeholder="Month" type="number" />
+                        <input className="signupDateInput" placeholder="Day" type="number" />
+                        <input className="signupDateInput" placeholder="Year" type="number" />
+                    </div>}
+                </div>
+                {/* <input
                     type="date"
                     placeholder='Birthday'
                     onChange={(e) => setBirthday(e.target.value)}
                     value={birthday}
                     className={emptyFields.includes('birthday') ? 'signupDateInput signupError' : 'signupDateInput'}
-                    />
+                    /> */}
                 <input
                     type="email"
                     placeholder='Email'

@@ -20,12 +20,45 @@
     margin-bottom: 15px;
 }
 
-.signupDateInput {
+/* .signupDateInput div {
+    display: block;
+    margin: auto;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 26px;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.7rem;
+} */
+
+.signupDateContainer {
+    display: flex;
+    outline: none;
+    padding: 10px 16px;
+    height: 63px;
+    width: 304px;
+    margin: 0 auto 15px;
+    font-size: 1.7rem;
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+.signupDateContainer p {
     color: gray;
 }
 
-.signupDateInput::placeholder {
-    color: purple;
+.signupDateInputContainer {
+    display: flex;
+    position: relative;
+    top: -5px;
+    left: -20px;
+}
+
+.signupDateInput {
+    width: 120px;
+    margin: 0;
+    border-radius: 0;
+    height: 40px;
 }
 
 .signupError {
