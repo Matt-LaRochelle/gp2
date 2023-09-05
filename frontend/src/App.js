@@ -10,15 +10,10 @@ import Landing from './pages/landing/Landing';
 import Profile from './pages/profile/Profile';
 import Tuner from './pages/tuner/Tuner';
 
-// Date-time things
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-
 function App() {
   const { user } = useAuthContext()
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className="App">
         <BrowserRouter>
           <div className='pages'>
@@ -59,7 +54,6 @@ function App() {
           </div>
         </BrowserRouter>
       </div>
-    </LocalizationProvider>
   );
 }
 
