@@ -10,6 +10,7 @@
 
 .window {
     max-width: 600px;
+    width: 90%;
 }
 
 .window img {
