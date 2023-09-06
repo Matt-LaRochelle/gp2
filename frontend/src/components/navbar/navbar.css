@@ -55,6 +55,11 @@
     transform: translate(-50%, -50%);
 }
 
+.navMenuContainer {
+    position: absolute;
+    z-index: 5000;
+}
+
 .navLogo h2 {
     font-size: 20px;
     font-weight: 700;
