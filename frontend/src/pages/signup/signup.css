@@ -14,6 +14,7 @@
 
 .signupForm {
     margin: 20px auto;
+    position: relative;
 }
 
 .signupForm input {
@@ -54,6 +55,25 @@
     left: -20px;
 }
 
+.signupBirthdayLabel {
+    color: gray;
+    font-size: 1.7rem;
+    position: absolute;
+    top: 93.5px;
+    left: 50%;
+    transform: translateX(-50%) translateX(-86px);
+}
+
+.signupHTMLDate::-webkit-calendar-picker-indicator { display: none; }
+.signupHTMLDate::-webkit-datetime-edit { 
+    text-align: right; 
+    width: 100%;
+}
+.signupHTMLDate {
+    color: #cf2323;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+}
 .signupDateInput {
     width: 120px;
     margin: 0;
