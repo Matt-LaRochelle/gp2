@@ -1,5 +1,10 @@
 .navbarHeader {
+    display: block;
+    margin: auto;
     height: 82px;
+    /* border: 2px solid lime; */
+    max-width: 665px;
+    transform: translateX(5px)
 }
 
 .navContainer {

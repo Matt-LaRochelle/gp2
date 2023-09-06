@@ -17,11 +17,11 @@
 }
 
 .singleScoresBanner span {
-    background-image: linear-gradient(to right, lime, aqua, rgb(135, 44, 255), rgb(255, 0, 255), red, orange, yellow, lime);
+    background-image: linear-gradient(to right, red, orange, yellow, lime, lime, aqua, rgb(135, 44, 255), rgb(255, 0, 255), red, orange, yellow, lime, aqua, rgba(10, 10, 137, 0.522), rgba(5, 5, 5, 0.01));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 1000% auto;
-    animation: rainbow-animation 32s linear infinite;
+    animation: rainbow-animation 90s linear infinite;
     font-size: 20px;
     font-weight: 700;
 }
