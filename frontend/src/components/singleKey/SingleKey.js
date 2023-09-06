@@ -14,14 +14,13 @@ const SKey = ({type}) => {
 
       const windowStyles = {
         // Apply styles based on the maximize state
-        width: isMaximized ? '100%' : '300px',
-        height: isMaximized ? 'auto' : '200px',
+        minWidth: isMaximized ? '100%' : '300px',
+        minHeight: isMaximized ? 'auto' : '200px',
         position: isMaximized ? 'fixed' : 'absolute',
         top: isMaximized ? '0' : '200px',
         left: isMaximized ? '0' : '50%',
-        transform: isMaximized ? 'none' : 'translate(-50%, -50%)',
+        transform: isMaximized ? 'none' : 'translateX(-50%)',
         zIndex: isMaximized ? '999' : '0',
-        transition: '1s'
       };
 
     // To do:
