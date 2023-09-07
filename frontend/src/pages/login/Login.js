@@ -41,11 +41,6 @@ const Login = () => {
     return (
         <div className='loginContainer'>
             <div className="loginCircle" />
-            {checkList && 
-                    <div className='passwordScreen'>
-                        <Password content={password} />
-                    </div>
-                }
             {isLoading && <Loading />}
 
             <form className="loginForm" onSubmit={handleSubmit}>
@@ -63,6 +58,7 @@ const Login = () => {
                         value={password}
                         ref={passwordInputRef}
                     />
+                    {checkList && <div className="loginPasswordChecklist"><Password content={password} /></div>}
                     <div className='loginBottom'>
                         <Link to="/forgot" className="loginLink">Forgot password</Link>
                         {error && <Error error={error}/>}

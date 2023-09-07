@@ -16,6 +16,13 @@
     margin-bottom: 30px;
 }
 
+.loginPasswordChecklist {
+    position: absolute;
+    top: 400px;
+    left: calc(50% + 160px);
+    /* border: 2px solid lime; */
+}
+
 .loginBottom {
     width: 300px;
     margin: auto;
@@ -44,4 +51,14 @@ color:#ccc;
 .passwordScreen {
     position: absolute;
     border: 2px solid red;
+}
+
+
+@media screen and (max-width: 840px ) {
+    .loginPasswordChecklist {
+        top: 130px;
+        left: calc(50%);
+        transform: translateX(-50%);
+        /* border: 2px solid lime; */
+    }
 }

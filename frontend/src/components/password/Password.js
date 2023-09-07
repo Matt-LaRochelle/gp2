@@ -48,7 +48,6 @@ const Password = ({content}) => {
 
 
     return (
-        <div className="passwordScreenContainer">
             <div className='passwordDisplay'>
                 <div className='passwordContent'>
                     <h4>Password must include</h4>
@@ -92,7 +91,6 @@ const Password = ({content}) => {
                     </ul>
                 </div>
             </div>
-        </div>
     )
 }
 
