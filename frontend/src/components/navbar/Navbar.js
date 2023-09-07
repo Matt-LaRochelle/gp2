@@ -3,11 +3,12 @@ import { useLogout } from '../../hooks/useLogout'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import './navbar.css'
 import {RxHamburgerMenu} from 'react-icons/rx';
+import {AiOutlineClose} from 'react-icons/ai';
 import { useState } from 'react';
+import logo from '../../images/logo9.jpg';
 
 const Navbar = () => {
     const { logout } = useLogout()
-    const { user } = useAuthContext()
     const [menu, setMenu] = useState(false)
 
     const openMenu = () => {
@@ -23,30 +24,19 @@ const Navbar = () => {
 
     return (
         <header className='navbarHeader'>
-            <div className="navContainer">
-                <div className="navLogo">
-                    <div className="navCircle"/>
-                    <h2>Ear Training Buddy</h2>
-                </div>
-                <nav>
-                    {/* <div className="user-nav">
-                        <Link to="/profile">{user.email}</Link>
-                        <span>Hello {user.fName}</span>
-                        <button onClick={handleClick}>Log Out</button>
-                    </div> */}
-                    <RxHamburgerMenu onClick={openMenu} className="menuIcon" />
-                    {menu && 
-                    <div className="navMenuContainer">
-                        <button onClick={closeMenu}>Back</button>
-                        <ul>
-                            <li onClick={closeMenu}><Link to="/" className="hamburgerLink">Play game</Link></li>
-                            <li onClick={closeMenu}><Link to="/tuner" className="hamburgerLink">Tuner</Link></li>
-                            <li onClick={closeMenu}><Link to="/profile" className="hamburgerLink">Profile</Link></li>
-                            <li onClick={handleClick} className="hamburgerLink">Log out</li>
-                        </ul>
-                    </div>}
-                </nav>
+            <div className="navLogo">
+                <img src={logo} alt="Logo" />
+                <h2>Ear Training Buddy</h2>
             </div>
+            <nav className={menu ? "navMenuContainer active" : "navMenuContainer"}>
+                    <ul>
+                        <li onClick={closeMenu}><Link to="/" className="navLink">Play game</Link></li>
+                        <li onClick={closeMenu}><Link to="/tuner" className="navLink">Tuner</Link></li>
+                        <li onClick={closeMenu}><Link to="/profile" className="navLink">Profile</Link></li>
+                        <li onClick={handleClick} className="navLink">Log out</li>
+                    </ul>
+                {!menu ? <RxHamburgerMenu onClick={openMenu} className="menuIcon" /> : <AiOutlineClose className="menuIcon" onClick={closeMenu} /> }
+            </nav>
         </header>
     )
 }
