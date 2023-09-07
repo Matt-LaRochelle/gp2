@@ -58,7 +58,7 @@
     text-decoration: none;
 }
 
-.navLink li {
+.navLink {
     font-size: 1.2rem;
     text-decoration: none;
     cursor: pointer;
@@ -127,7 +127,6 @@
 
     .navLink {
         font-size: 1.7rem;
-        /* border: 2px solid lime; */
         width: max-content;
         text-decoration: none;
     }

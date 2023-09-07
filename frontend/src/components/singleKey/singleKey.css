@@ -11,6 +11,7 @@
 .window {
     max-width: 600px;
     width: 100%;
+    margin: auto;
 }
 
 .window img {
@@ -18,7 +19,7 @@
     height: 100%;
     z-index: 10;
 }
-
+/* 
 .maximize {
     position: absolute;
     top: 1px;
@@ -43,4 +44,4 @@
     border-radius: 50%;
     color: var(--primary);
     cursor: pointer;
-}
+} */
