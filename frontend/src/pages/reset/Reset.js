@@ -96,7 +96,7 @@ const handleClickOutside = (e) => {
       <div className="resetCircle" />
       {isLoading && <Loading />}
       {checkList && 
-        <div className='passwordScreen'>
+        <div className='resetPasswordChecklist'>
             <Password content={password} />
         </div>
       }

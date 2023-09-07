@@ -12,6 +12,12 @@
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
 }
 
+.resetPasswordChecklist {
+    position: absolute;
+    top: 400px;
+    left: calc(50% + 160px);
+}
+
 .resetText {
     color: var(--secondary);
     font-size: 1.4rem;
@@ -28,4 +34,14 @@
 .resetBottom {
     width: 300px;
     margin: 30px auto;
+}
+
+
+@media screen and (max-width: 840px ) {
+    .resetPasswordChecklist {
+        top: 130px;
+        left: calc(50%);
+        transform: translateX(-50%);
+        /* border: 2px solid lime; */
+    }
 }
