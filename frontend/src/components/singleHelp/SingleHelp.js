@@ -10,7 +10,7 @@ const SHelp = () => {
     // }
     return (
         <div className="helpScreen">
-            <Navbar />
+            {/* <Navbar /> */}
             <h3>Instructions</h3>
             <p>
             Play the note using the play button, then using your guitar, 
