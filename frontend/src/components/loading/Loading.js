@@ -6,7 +6,7 @@ const Loading = () => {
         <div className="loadingScreenContainer">
             <div className='loadingDisplay'>   
                 <div className='loadingContent'>
-                    <PacmanLoader className="loadingIcon" color="var(--correct)" />
+                    <PacmanLoader className="loadingIcon" color="var(--primary)" />
                     <p>Fetching data from server...</p>
                     <p>This process tends to take 5-60 seconds</p>
                 </div> 
