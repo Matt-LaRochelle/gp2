@@ -243,7 +243,7 @@ const Single = () => {
 
                 </div>
                 <div className="guessContainer">
-                    <button className="primary-button" type="submit" onClick={check_answer}>Guess</button> 
+                    <button className="primary-button" onClick={check_answer}>Guess</button> 
                     { gotAnswer === true ? <AiOutlineCheckCircle className="singleCorrect"/> : null }
                     { gotAnswer === false ? <AiOutlineCloseCircle className="singleIncorrect"/> : null }
                 </div>
