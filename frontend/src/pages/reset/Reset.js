@@ -95,11 +95,6 @@ const handleClickOutside = (e) => {
     <div className="resetContainer">
       <div className="resetCircle" />
       {isLoading && <Loading />}
-      {checkList && 
-        <div className='resetPasswordChecklist'>
-            <Password content={password} />
-        </div>
-      }
       {!authenticated ? <p className="resetText">Bad link, please try again</p> :
       <div>
         <p className="resetText">Reset your password</p>
@@ -115,6 +110,7 @@ const handleClickOutside = (e) => {
             onChange={(e) => setPassword(e.target.value)} 
             ref={passwordInputRef}
             required />
+          {checkList && <div className='resetPasswordChecklist'><Password content={password} /></div>}
           <div className='resetBottom'>
             {error && <Error error={error}/>}
             <button disabled={isLoading} type="submit">Reset Password</button>

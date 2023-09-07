@@ -51,11 +51,7 @@ const Signup = () => {
         <div className="signupContianer">
                 <div className='signupCircle' />
             {isLoading && <Loading />}
-            {checkList && 
-                    <div className='passwordScreen'>
-                        <Password content={password} />
-                    </div>
-                }
+            
             <form className="signupForm" onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -88,6 +84,11 @@ const Signup = () => {
                     ref={passwordInputRef}
                     className={emptyFields.includes('password') && 'signupError'}
                 />
+                {checkList && 
+                    <div className='signupPasswordChecklist'>
+                        <Password content={password} />
+                    </div>
+                }
                 <div className='signupBottom'>
                     {error && <Error error={error}/>}
                     <button disabled={isLoading}>Sign Up</button>

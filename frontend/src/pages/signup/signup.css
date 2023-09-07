@@ -37,6 +37,12 @@
     text-transform: uppercase;
 }
 
+.signupPasswordChecklist {
+    position: absolute;
+    top: 36px;
+    left: calc(50% + 160px);
+}
+
 .signupError {
     outline: 2.7px solid var(--error)
 }
@@ -48,4 +54,13 @@
 
 .signupForm button {
     display: block;
+}
+
+@media screen and (max-width: 840px ) {
+    .signupPasswordChecklist {
+        top: -50px;
+        left: calc(50%);
+        transform: translateX(-50%);
+        /* border: 2px solid lime; */
+    }
 }
