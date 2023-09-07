@@ -4,7 +4,7 @@ import Navbar from '../../components/navbar/Navbar'
 const Tuner = () => {
     return (
         <div className="tunerPageContainer">
-            <Navbar />
+            <Navbar className="navbarComp" />
             <div className="tunerContainer">
             <div className='tunerTop'>
                 <h1>b</h1><h1>#</h1>

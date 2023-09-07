@@ -5,6 +5,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
     font-family: "Barlow";
 }
 
@@ -19,7 +21,8 @@
 }
 
 body {
-    background-image: linear-gradient(#426BFF, #3E3BD7);
+    /* background-image: linear-gradient(#426BFF, #3E3BD7); */
+    background-image: linear-gradient(#859ef8, #7e7bf5);
     min-height: 100vh; /* Set a minimum height of 100vh to cover the viewport */
     height: calc(100% + 1px); /* Add 1px to make sure it covers the full content height */
 }

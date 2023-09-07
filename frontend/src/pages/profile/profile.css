@@ -14,6 +14,7 @@
     border-radius: 20px;
     color: #737373;
     position: relative;
+    z-index: -5;
 }
 
 .profileContentContainer label {
