@@ -77,10 +77,10 @@ const Tuner = () => {
                 <h1>b</h1><h1>#</h1>
             </div>
             <div className='tunerMiddle'>
-                {/* <div className='tunerCurrentNote'>
-                    <p>E</p>
-                </div> */}
-                <h2>{currentNote}</h2>
+                <div className='tunerCurrentNote'>
+                    <p>{currentNote}</p>
+                </div>
+                <h2>Under construction...</h2>
             </div>
 
             <div className="tunerBottom">
