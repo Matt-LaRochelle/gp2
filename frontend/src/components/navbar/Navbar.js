@@ -31,7 +31,7 @@ const Navbar = () => {
             <nav className={menu ? "navMenuContainer active" : "navMenuContainer"}>
                     <ul>
                         <li onClick={closeMenu} className="navLink"><Link to="/" className="navLink">Play game</Link></li>
-                        <li onClick={closeMenu} className="navLink"><Link to="/tuner" className="navLink">Tuner</Link></li>
+                        {/* <li onClick={closeMenu} className="navLink"><Link to="/tuner" className="navLink">Tuner</Link></li> */}
                         <li onClick={closeMenu} className="navLink"><Link to="/profile" className="navLink" >Profile</Link></li>
                         <li onClick={handleClick} className="navLink">Log out</li>
                     </ul>

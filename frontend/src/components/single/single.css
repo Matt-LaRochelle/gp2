@@ -23,7 +23,7 @@
 }
 
 .singleScoresBanner span {
-    background-image: linear-gradient(to right, red, orange, yellow, lime, lime, aqua, rgb(72, 72, 232), purple, rgb(255, 0, 255), red, orange, yellow, lime, aqua, rgba(10, 10, 137, 0.522), rgba(5, 5, 5, 0.01));
+    background-image: linear-gradient(to right,rgb(255, 0, 140), red, orange, yellow, lime, lime, aqua, rgb(72, 72, 232), purple, rgb(255, 0, 255), red, orange, yellow, lime, aqua);
     /* background-image: linear-gradient(to right,yellow, lime, rgb(0, 156, 29), rgb(29, 165, 165), rgb(0, 255, 217), rgb(123, 246, 253), rgb(100, 121, 255), rgb(0, 195, 255), rgb(21, 224, 146)); */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

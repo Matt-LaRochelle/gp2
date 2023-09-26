@@ -8,7 +8,7 @@ import ResetPassword from './pages/reset/Reset';
 import Eartraining from './pages/eartraining/Eartraining';
 import Landing from './pages/landing/Landing';
 import Profile from './pages/profile/Profile';
-import Tuner from './pages/tuner/Tuner';
+// import Tuner from './pages/tuner/Tuner';
 
 function App() {
   const { user } = useAuthContext()
@@ -26,10 +26,10 @@ function App() {
                 path='/profile'
                 element={user ? <Profile /> : <Navigate to="/landing" />}
                 />
-              <Route
+              {/* <Route
                 path='/tuner'
                 element={user ? <Tuner /> : <Navigate to="/landing" />}
-                />
+                /> */}
               <Route
                 path='/landing'
                 element={!user ? <Landing /> : <Navigate to="/" />}
