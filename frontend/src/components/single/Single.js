@@ -7,6 +7,7 @@ import './single.css'
 
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useScoresContext } from '../../hooks/useScores'
+import { useFetch } from "../../hooks/useFetch";
 
 const Single = () => {
     //Database scores and client side rendering
@@ -14,6 +15,10 @@ const Single = () => {
     //User information
     const { user } = useAuthContext()
     //Object of audio clips
+
+    // fetch score
+    const { fetchInfo, isLoading, error: fetchError } = useFetch()
+
     const audioClips = audioClip;
     //Which sound is being used
     const [sound, setSound] = useState(audioClips[29].clip);
@@ -43,28 +48,34 @@ const Single = () => {
     ])
     const [sharp, setSharp] = useState(true)
 
-    //Fetch data from database before loading rest of page
     useEffect(() => {
         const fetchScores = async () => {
-            const response = await fetch('https://guitar-paths-api.onrender.com/api/score', {
-                headers: {
-                    'Authorization': `Bearer ${user.token}`
-                }
-            })
-            const json = await response.json()
-            if (!response.ok) {
-                setError(json.error)
-            }
-            if (response.ok) {
-                setError(null)
-                dispatch({type: 'SET_SCORES', payload: json})
-            }
+            await fetchInfo('score')
         }
-        if (user) {
-            fetchScores()
-        }
+    }, [])
+
+    //Fetch data from database before loading rest of page
+    // useEffect(() => {
+    //     const fetchScores = async () => {
+    //         const response = await fetch('https://guitar-paths-api.onrender.com/api/score', {
+    //             headers: {
+    //                 'Authorization': `Bearer ${user.token}`
+    //             }
+    //         })
+    //         const json = await response.json()
+    //         if (!response.ok) {
+    //             setError(json.error)
+    //         }
+    //         if (response.ok) {
+    //             setError(null)
+    //             dispatch({type: 'SET_SCORES', payload: json})
+    //         }
+    //     }
+    //     if (user) {
+    //         fetchScores()
+    //     }
         
-    }, [dispatch, user])
+    // }, [dispatch, user])
 
     // Check if the user is a test user - then set up page for a client
     useEffect(() => {
