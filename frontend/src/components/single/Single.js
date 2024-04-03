@@ -10,15 +10,15 @@ import { useScoresContext } from '../../hooks/useScores'
 import { useFetch } from "../../hooks/useFetch";
 
 const Single = () => {
-    //Database scores and client side rendering
-    const {scores, dispatch} = useScoresContext()
     //User information
     const { user } = useAuthContext()
     //Object of audio clips
-
+    
     // fetch score
-    const { fetchInfo, isLoading, error: fetchError } = useFetch()
-
+    const { isLoading, error: fetchError } = useFetch('score')
+    //Database scores and client side rendering
+    const {scores, dispatch} = useScoresContext()
+    
     const audioClips = audioClip;
     //Which sound is being used
     const [sound, setSound] = useState(audioClips[29].clip);
@@ -47,12 +47,6 @@ const Single = () => {
         "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#",
     ])
     const [sharp, setSharp] = useState(true)
-
-    useEffect(() => {
-        const fetchScores = async () => {
-            await fetchInfo('score')
-        }
-    }, [])
 
     //Fetch data from database before loading rest of page
     // useEffect(() => {
@@ -241,7 +235,7 @@ const Single = () => {
                 <div className="singleScoresBanner">
                     <p>Tries: <span>{count}/4</span></p>
                     <p>Current: <span>{highScore}</span></p>
-                    <p>High Score: <span>{!scores ? "loading" : scores[0].single}</span></p>
+                    <p>High Score: <span>{(isLoading && scores) ? "loading" : scores[0].single}</span></p>
                 </div>
                 <button className="singlePlayButton" onClick={play_note}><AiOutlinePlayCircle /></button>
                 <div className="singleNoteSelection">
