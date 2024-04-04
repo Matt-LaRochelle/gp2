@@ -5,6 +5,7 @@ import SHelp from '../singleHelp/SingleHelp'
 import SKey from '../singleKey/SingleKey'
 import './single.css'
 
+import Loading from "../loading/Loading";
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useScoresContext } from '../../hooks/useScores'
 import { useFetch } from "../../hooks/useFetch";
@@ -232,11 +233,16 @@ const Single = () => {
     return (
         <div className="singleContainer">
             <div>
-                <div className="singleScoresBanner">
-                    <p>Tries: <span>{count}/4</span></p>
-                    <p>Current: <span>{highScore}</span></p>
-                    <p>High Score: <span>{(isLoading && scores) ? "loading" : scores[0].single}</span></p>
-                </div>
+                {isLoading 
+                ?   <Loading />
+                :   fetchError 
+                    ?   <p>{fetchError}</p> 
+                    :   <div className="singleScoresBanner">
+                            <p>Tries: <span>{count}/4</span></p>
+                            <p>Current: <span>{highScore}</span></p>
+                            <p>High Score: <span>{scores[0].single}</span></p>
+                        </div>
+                }
                 <button className="singlePlayButton" onClick={play_note}><AiOutlinePlayCircle /></button>
                 <div className="singleNoteSelection">
                 

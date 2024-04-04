@@ -6,15 +6,16 @@ export const useFetch = (path) => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const { user } = useAuthContext()
-    const { dispatch } = useScoresContext()
+    const { scores, dispatch } = useScoresContext()
 
     useEffect(() => {
         const fetchInfo = async (path) => {
             setIsLoading(true)
             setError(null)
+            console.log("user token", user.token)
 
             const response = await fetch('https://guitar-paths-api.onrender.com/api/' + path, {
-                'Authorization': `Bearer ${ user.token }`
+                'Authorization': `Bearer ${user.token}`
             })
             const json = await response.json()
 
@@ -25,6 +26,7 @@ export const useFetch = (path) => {
             if (response.ok) {
                 // update the auth context
                 dispatch({type: 'SET_SCORES', payload: json})
+                console.log("Got to here", scores)
                 setIsLoading(false)
             }
         }
