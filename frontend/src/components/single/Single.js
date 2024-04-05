@@ -1,11 +1,19 @@
+import './single.css'
 import React, { useState, useEffect, useRef } from "react";
+
+// Icons
 import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlinePlayCircle } from 'react-icons/ai';
+
+// Sounds
 import audioClip from '../../sounds/noteSounds';
+
+// Components
+import Loading from "../loading/Loading";
+import Error from "../error/Error";
 import SHelp from '../singleHelp/SingleHelp'
 import SKey from '../singleKey/SingleKey'
-import './single.css'
 
-import Loading from "../loading/Loading";
+// Hooks
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useScoresContext } from '../../hooks/useScores'
 import { useFetch } from "../../hooks/useFetch";
@@ -236,7 +244,7 @@ const Single = () => {
                 {isLoading 
                 ?   <Loading />
                 :   fetchError 
-                    ?   <p>{fetchError}</p> 
+                    ?   <Error error={fetchError} /> 
                     :   <div className="singleScoresBanner">
                             <p>Tries: <span>{count}/4</span></p>
                             <p>Current: <span>{highScore}</span></p>

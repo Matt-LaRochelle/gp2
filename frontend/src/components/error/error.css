@@ -7,4 +7,5 @@
     width: 300px;
     margin: 20px auto;
     border-radius: 5px;
+    border: 1px solid var(--error);
 }
