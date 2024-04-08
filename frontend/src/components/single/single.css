@@ -55,22 +55,38 @@
 }
 
 .singleNoteSelection {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(4, 1fr);
     place-items: center;
     grid-row-gap: 16px;
-    max-width: 380px;
+    max-width: 380px; */
     margin: 30px auto;
+    display: flex;
+    max-width: 390px;
 }
 
+.singleNote:nth-child(2),
+.singleNote:nth-child(5),
+.singleNote:nth-child(7),
+.singleNote:nth-child(10),
+.singleNote:nth-child(12) {
+    background-color: #333;
+    height: 92px;
+    width: 40px;
+    margin-left: -20px;
+    margin-right: -20px;
+    z-index: 5;
+    padding: 50px 0 0;
+}
 .singleNote {
     color: #737373;
     background-color: #fff;
     font-size: 1.6rem;
     font-weight: 700;
-    height: 52px;
+    height: 122px;
     width: 52px;
-    padding: 0px;
+    padding: 90px 0 0;
+    border-radius: 4px;
 }
 
 .highlightNote {
@@ -80,10 +96,26 @@
     background-color: hsl(176, 81%, 79%);
     font-size: 1.6rem;
     font-weight: 700;
-    height: 52px;
+    border-radius: 4px;
+    padding: 90px 0 0;
+    /* height: 52px; */
     width: 52px;
-    padding: 2px;
+    /* padding: 2px; */
     box-shadow: 0px 0px 13px 0px rgba(255, 255, 255, 0.7);
+}
+.highlightNote:nth-child(2),
+.highlightNote:nth-child(5),
+.highlightNote:nth-child(7),
+.highlightNote:nth-child(10),
+.highlightNote:nth-child(12) {
+    color: hsl(175, 28%, 38%);;
+    background-color: hsl(176, 81%, 79%);
+    height: 92px;
+    width: 40px;
+    margin-left: -20px;
+    margin-right: -20px;
+    z-index: 5;
+    padding: 50px 0 0;
 }
 
 .primary-button {
