@@ -135,7 +135,7 @@
     width: 75px;
     color: var(--correct);
     position: absolute;
-    top: 521px;
+    top: 457px;
     left: calc(50% + 93px);
     /* background-image: linear-gradient(-15deg, #9493D0, #BDCCFF); */
     background-color: rgb(201, 248, 216);
@@ -149,7 +149,7 @@
     width: 75px;
     color: var(--error);
     position: absolute;
-    top: 521px;
+    top: 457px;
     left: calc(50% + 93px);
     /* background-image: linear-gradient(-15deg, #9493D0, #BDCCFF); */
     background-color: rgb(247, 215, 212);
