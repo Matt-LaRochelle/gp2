@@ -12,6 +12,7 @@ import Loading from "../loading/Loading";
 import Error from "../error/Error";
 import SHelp from '../singleHelp/SingleHelp'
 import SKey from '../singleKey/SingleKey'
+import { sharpGuitarNotes, flatGuitarNotes } from './guitarNotes';
 
 // Hooks
 import { useAuthContext } from '../../hooks/useAuthContext'
@@ -254,12 +255,11 @@ const Single = () => {
                 <button className="singlePlayButton" onClick={play_note}><AiOutlinePlayCircle /></button>
                 <div className="singleNoteSelection">
                 
-                {noteNames.map((note) => (
+                {sharpGuitarNotes[0].E.map((note) => (
                     <button className={note === inputText ? "highlightNote" : "singleNote"} value={note} onClick={handleClick}>
                         {note}
                     </button>
                     ))}
-
                 </div>
                 <div className="guessContainer">
                     <button className="primary-button" onClick={check_answer}>Guess</button> 
