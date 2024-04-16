@@ -254,12 +254,48 @@ const Single = () => {
                 }
                 <button className="singlePlayButton" onClick={play_note}><AiOutlinePlayCircle /></button>
                 <div className="singleNoteSelection">
-                
-                {sharpGuitarNotes[0].E.map((note) => (
-                    <button className={note === inputText ? "highlightNote" : "singleNote"} value={note} onClick={handleClick}>
-                        {note}
-                    </button>
-                    ))}
+                    <div className="string">
+                        {sharpGuitarNotes[5].e.map((note) => (
+                            <button className={note === inputText ? "highlightNote singleNote" : "singleNote"} value={note} onClick={handleClick}>
+                                {note}
+                            </button>
+                            ))}
+                    </div>
+                    <div className="string">
+                        {sharpGuitarNotes[4].B.map((note) => (
+                            <button className={note === inputText ? "highlightNote singleNote" : "singleNote"} value={note} onClick={handleClick}>
+                                {note}
+                            </button>
+                            ))}
+                    </div>
+                    <div className="string">
+                        {sharpGuitarNotes[3].G.map((note) => (
+                            <button className={note === inputText ? "highlightNote singleNote" : "singleNote"} value={note} onClick={handleClick}>
+                                {note}
+                            </button>
+                            ))}
+                    </div>
+                    <div className="string">
+                        {sharpGuitarNotes[2].D.map((note) => (
+                            <button className={note === inputText ? "highlightNote singleNote" : "singleNote"} value={note} onClick={handleClick}>
+                                {note}
+                            </button>
+                            ))}
+                    </div>
+                    <div className="string">
+                        {sharpGuitarNotes[1].A.map((note) => (
+                            <button className={note === inputText ? "highlightNote singleNote" : "singleNote"} value={note} onClick={handleClick}>
+                                {note}
+                            </button>
+                            ))}
+                    </div>
+                    <div className="string">
+                        {sharpGuitarNotes[0].E.map((note) => (
+                            <button className={note === inputText ? "highlightNote singleNote" : "singleNote"} value={note} onClick={handleClick}>
+                                {note}
+                            </button>
+                            ))}
+                    </div>
                 </div>
                 <div className="guessContainer">
                     <button className="primary-button" onClick={check_answer}>Guess</button> 
